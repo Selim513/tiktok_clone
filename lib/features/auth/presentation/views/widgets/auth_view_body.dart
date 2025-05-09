@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiktok_clone/features/auth/presentation/views/widgets/custom_login_navigator_section.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/widgets/signup_with_email_section.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/widgets/signup_with_google_button.dart';
 
@@ -22,26 +23,7 @@ class AuthViewBody extends StatelessWidget {
             SignUpWithEmailButton(),
             SignUpWithGoogleButton(),
             Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Already have an account?',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Log in',
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            CustomLoginNavigatorSection(),
           ],
         ),
       ),

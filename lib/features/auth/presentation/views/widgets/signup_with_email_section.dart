@@ -9,7 +9,7 @@ class SignUpWithEmailButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomAutthSelectionButton(
-      onPress: () => GoRouter.of(context).goNamed(AppRouter.kSignUpWithEmail),
+      onPress: () => GoRouter.of(context).pushNamed(AppRouter.kSignUpWithEmail),
       icon: Icons.email,
       title: 'Continue with Email',
     );

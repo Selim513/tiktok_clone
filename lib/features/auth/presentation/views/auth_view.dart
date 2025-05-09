@@ -6,6 +6,10 @@ class AuthView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: AuthViewBody());
+    return Scaffold(
+      appBar: AppBar(title: Text('Tiktok')),
+
+      body: AuthViewBody(),
+    );
   }
 }
