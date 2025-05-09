@@ -7,8 +7,8 @@ import 'package:tiktok_clone/core/widgets/custom_elevated_button.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/widgets/custom_password_text_form_field.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/widgets/custom_textform_field.dart';
 
-class EmailAuthViewBody extends StatelessWidget {
-  const EmailAuthViewBody({super.key});
+class EmailSignUpViewBody extends StatelessWidget {
+  const EmailSignUpViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {

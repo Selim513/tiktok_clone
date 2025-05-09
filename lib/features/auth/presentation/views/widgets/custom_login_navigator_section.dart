@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:tiktok_clone/core/utils/app_route.dart';
 
 class CustomLoginNavigatorSection extends StatelessWidget {
   const CustomLoginNavigatorSection({super.key});
@@ -13,7 +15,9 @@ class CustomLoginNavigatorSection extends StatelessWidget {
           style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            GoRouter.of(context).pushNamed(AppRouter.kLoginView);
+          },
           child: Text(
             'Log in',
             style: TextStyle(
