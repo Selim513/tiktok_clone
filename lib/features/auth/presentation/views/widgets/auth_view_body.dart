@@ -1,0 +1,50 @@
+import 'package:flutter/material.dart';
+import 'package:tiktok_clone/features/auth/presentation/views/widgets/signup_with_email_section.dart';
+import 'package:tiktok_clone/features/auth/presentation/views/widgets/signup_with_google_button.dart';
+
+class AuthViewBody extends StatelessWidget {
+  const AuthViewBody({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          spacing: 20,
+          children: [
+            Spacer(),
+            Text(
+              'Sign up for TikTok',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            SignUpWithEmailButton(),
+            SignUpWithGoogleButton(),
+            Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Already have an account?',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Log in',
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

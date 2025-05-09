@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tiktok_clone/features/auth/presentation/views/widgets/auth_view.dart';
+import 'package:tiktok_clone/core/utils/app_route.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,10 +10,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: AuthView(),
+      routerConfig: AppRouter.router,
     );
   }
 }
