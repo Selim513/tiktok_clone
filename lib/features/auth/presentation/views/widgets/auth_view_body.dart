@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/widgets/custom_login_navigator_section.dart';
-import 'package:tiktok_clone/features/auth/presentation/views/widgets/signup_with_email_section.dart';
+import 'package:tiktok_clone/features/auth/presentation/views/widgets/signup_with_email_button.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/widgets/signup_with_google_button.dart';
 
 class AuthViewBody extends StatelessWidget {
