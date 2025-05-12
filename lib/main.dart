@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
+import 'package:tiktok_clone/features/auth/presentation/manger/google_auth/google_auth_cubit.dart';
 import 'package:tiktok_clone/firebase_options.dart';
 
 void main() async {
@@ -10,13 +12,6 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MainApp());
   //-------------
-  FirebaseAuth.instance.authStateChanges().listen((User? user) {
-    if (user == null) {
-      print('User is currently signed out!');
-    } else {
-      print('User is signed in!');
-    }
-  });
 }
 
 class MainApp extends StatelessWidget {
@@ -24,10 +19,13 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      theme: ThemeData.dark().copyWith(),
-      debugShowCheckedModeBanner: false,
-      routerConfig: AppRouter.router,
+    return BlocProvider(
+      create: (context) => GoogleAuthCubit(),
+      child: MaterialApp.router(
+        theme: ThemeData.dark().copyWith(),
+        debugShowCheckedModeBanner: false,
+        routerConfig: AppRouter.router,
+      ),
     );
   }
 }
