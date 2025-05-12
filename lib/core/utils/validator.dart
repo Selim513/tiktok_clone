@@ -29,10 +29,13 @@ String? checkEmailValidator(String? value) {
   return null;
 }
 
-String? checkPasswordValidator(String? value) {
+String? checkPasswordValidator(String? value, {bool isLogin = true}) {
   if (value == null || value.isEmpty) {
     return 'This field is required';
   } else if (value.length <= 7) {
+    if (isLogin) {
+      return 'Enter a valid Password';
+    }
     return 'Password must be bigger than 7 letters and numbers';
   }
   return null;
