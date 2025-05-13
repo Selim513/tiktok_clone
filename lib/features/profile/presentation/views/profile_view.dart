@@ -18,10 +18,15 @@ class ProfileView extends StatelessWidget {
           children: [Text(name, style: AppFontstyle.fontStyle20)],
         ),
         Gap(50),
-        CircleAvatar(
-          radius: 80,
-          backgroundImage: AssetImage('assets/images/me.jpg'),
+        GestureDetector(
+          onTap: () {},
+          child: CircleAvatar(
+            radius: 80,
+            backgroundImage: AssetImage('assets/images/me.jpg'),
+          ),
         ),
+        Gap(30),
+        Text('My Vedios', style: AppFontstyle.fontStyle30),
       ],
     );
   }

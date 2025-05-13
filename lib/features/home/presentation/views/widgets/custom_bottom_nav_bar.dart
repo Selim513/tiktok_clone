@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({
@@ -73,8 +76,31 @@ class _CameraScreenState extends State<CameraScreen> {
       _isRecording = false;
     });
 
-    print("📸 Video saved to: ${file.path}");
-    // ممكن توديه لصفحة معاينة الفيديو هنا
+    final filePath = file.path;
+    final fileName = filePath.split('/').last;
+
+    try {
+      final supabase = Supabase.instance.client;
+final newFileName = 'VID_${DateTime.now().millisecondsSinceEpoch}.mp4';
+
+      final storageResponse = await supabase.storage
+          .from('videos') // اسم الباكت اللي أنشأته في Supabase
+          .upload(
+            'user_videos/$newFileName',
+            // المسار داخل الباكت
+            File(filePath),
+            fileOptions: const FileOptions(cacheControl: '3600', upsert: false),
+          );
+
+      print('✅ Video uploaded: $storageResponse');
+      // تقدر بعد كده تجيب رابط الملف لو محتاج
+      final publicUrl = supabase.storage
+          .from('videos')
+          .getPublicUrl('user_videos/$newFileName');
+      print('🔗 Video URL: $publicUrl');
+    } catch (e) {
+      print('❌ Upload error: $e');
+    }
   }
 
   @override

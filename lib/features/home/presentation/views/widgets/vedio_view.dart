@@ -44,9 +44,3 @@ class _VideoScreenState extends State<VideoScreen> {
     return Scaffold(body: Center(child: BetterPlayer(controller: _controller)));
   }
 }
-
-// قائمة روابط الفيديوهات
-final List<String> videoUrls = [
-  "https://cdn.pixabay.com/video/2019/04/06/22634-328940142_small.mp4",
-  "https://cdn.pixabay.com/video/2019/04/06/22634-328940142_small.mp4",
-];
