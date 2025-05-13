@@ -15,10 +15,12 @@ class RegisterCubit extends Cubit<UserAuthState> {
     emit(RegisterLoading());
     try {
       final AuthResponse res = await supabase.client.auth.signUp(
+        
         email: registerEmailController.text,
         data: {'Name': userNameController.text},
         password: registerPasswordController.text,
       );
+      
       emit(RegisterSuccess(succMessage: 'Account has been created !.'));
     } catch (e) {
       print(e.toString());
