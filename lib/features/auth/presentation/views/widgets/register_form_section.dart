@@ -14,36 +14,33 @@ class RegisterFormSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      child: Form(
-        key: cubit.formKey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          spacing: 20,
-          children: [
-            Text('Join Us', style: AppFontstyle.fontStyle30),
-            Gap(30),
-            CustomTextFormField(
-              keyboardType: TextInputType.name,
-              controller: cubit.userNameController,
-              prefixIcon: Icon(FontAwesomeIcons.user),
-              hintText: 'User name',
-            ),
-            CustomTextFormField(
-              validator: (value) {
-                return checkEmailValidator(value);
-              },
-              keyboardType: TextInputType.emailAddress,
-              controller: cubit.registerEmailController,
-              prefixIcon: Icon(Icons.email_outlined),
-              hintText: 'Email address',
-            ),
-            CusotmPasswordTextFormField(
-              controller: cubit.registerPasswordController,
-            ),
-          ],
-        ),
+    return Form(
+      key: cubit.formKey,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        spacing: 20,
+        children: [
+          Text('Join Us', style: AppFontstyle.fontStyle30),
+          Gap(30),
+          CustomTextFormField(
+            keyboardType: TextInputType.name,
+            controller: cubit.userNameController,
+            prefixIcon: Icon(FontAwesomeIcons.user),
+            hintText: 'User name',
+          ),
+          CustomTextFormField(
+            validator: (value) {
+              return checkEmailValidator(value);
+            },
+            keyboardType: TextInputType.emailAddress,
+            controller: cubit.registerEmailController,
+            prefixIcon: Icon(Icons.email_outlined),
+            hintText: 'Email address',
+          ),
+          CusotmPasswordTextFormField(
+            controller: cubit.registerPasswordController,
+          ),
+        ],
       ),
     );
   }

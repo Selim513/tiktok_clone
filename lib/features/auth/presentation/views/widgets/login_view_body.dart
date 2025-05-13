@@ -17,7 +17,7 @@ class LoginViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: BlocConsumer<LoginCubit, AuthState>(
+      child: BlocConsumer<LoginCubit, UserAuthState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
             CustomSnackBar.successSnackBar(context, message: state.succMessage);
@@ -33,6 +33,7 @@ class LoginViewBody extends StatelessWidget {
         builder: (context, state) {
           var cubit = context.read<LoginCubit>();
           return Column(
+            spacing: 10,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               LoginFormSection(cubit: cubit),

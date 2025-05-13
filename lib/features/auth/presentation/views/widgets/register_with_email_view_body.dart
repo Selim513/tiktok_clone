@@ -14,7 +14,7 @@ class RegisterWithEmailViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<RegisterCubit, AuthState>(
+    return BlocConsumer<RegisterCubit, UserAuthState>(
       listener: (context, state) {
         if (state is RegisterSuccess) {
           CustomSnackBar.successSnackBar(context, message: state.succMessage);
@@ -29,19 +29,26 @@ class RegisterWithEmailViewBody extends StatelessWidget {
       },
       builder: (context, state) {
         var cubit = context.read<RegisterCubit>();
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            RegisterFormSection(cubit: cubit),
-            state is RegisterLoading
-                ? CircularProgressIndicator()
-                : CustomElevatedButton(
-                  widget: Text('Register Now', style: AppFontstyle.fontStyle20),
-                  onPress: () {
-                    cubit.register();
-                  },
-                ),
-          ],
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15),
+          child: Column(
+            spacing: 20,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RegisterFormSection(cubit: cubit),
+              state is RegisterLoading
+                  ? CircularProgressIndicator()
+                  : CustomElevatedButton(
+                    widget: Text(
+                      'Register Now',
+                      style: AppFontstyle.fontStyle20,
+                    ),
+                    onPress: () {
+                      cubit.register();
+                    },
+                  ),
+            ],
+          ),
         );
       },
     );

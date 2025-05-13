@@ -1,6 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
 
 class SplashView extends StatefulWidget {
@@ -15,13 +15,12 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 2)).then((value) {
-      FirebaseAuth.instance.authStateChanges().listen((User? user) {
-        if (user == null) {
-          GoRouter.of(context).replaceNamed(AppRouter.kAuth);
-        } else {
-          GoRouter.of(context).goNamed(AppRouter.kHome);
-        }
-      });
+      final user = Supabase.instance.client.auth.currentUser;
+      if (user == null) {
+        GoRouter.of(context).goNamed(AppRouter.kAuth);
+      } else {
+        GoRouter.of(context).goNamed(AppRouter.kHome);
+      }
     });
   }
 

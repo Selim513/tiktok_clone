@@ -1,17 +1,17 @@
-abstract class AuthState {}
+abstract class UserAuthState {}
 
-class AuthInital extends AuthState {}
+class AuthInital extends UserAuthState {}
 
-class RegisterFailure extends AuthState {
+class RegisterFailure extends UserAuthState {
   final String errMessage;
 
   RegisterFailure({required this.errMessage});
 }
 
-class RegisterSuccess extends AuthState {
+class RegisterSuccess extends UserAuthState {
   final String succMessage;
 
   RegisterSuccess({required this.succMessage});
 }
 
-class RegisterLoading extends AuthState {}
+class RegisterLoading extends UserAuthState {}
