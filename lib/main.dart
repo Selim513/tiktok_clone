@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/core/utils/service_locator.dart';
+import 'package:tiktok_clone/features/auth/presentation/manger/google_auth/google_auth_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,11 +23,14 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      theme: ThemeData.dark().copyWith(),
-      debugShowCheckedModeBanner: false,
-      // home: CustomBottomNavBar(),
-      routerConfig: AppRouter.router,
+    return BlocProvider(
+      create: (context) => GoogleAuthCubit(),
+      child: MaterialApp.router(
+        theme: ThemeData.dark().copyWith(),
+        debugShowCheckedModeBanner: false,
+        // home: CustomBottomNavBar(),
+        routerConfig: AppRouter.router,
+      ),
     );
   }
 }

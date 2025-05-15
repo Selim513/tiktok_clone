@@ -77,11 +77,10 @@ class _CameraScreenState extends State<CameraScreen> {
     });
 
     final filePath = file.path;
-    final fileName = filePath.split('/').last;
 
     try {
       final supabase = Supabase.instance.client;
-final newFileName = 'VID_${DateTime.now().millisecondsSinceEpoch}.mp4';
+      final newFileName = 'VID_${DateTime.now().millisecondsSinceEpoch}.mp4';
 
       final storageResponse = await supabase.storage
           .from('videos') // اسم الباكت اللي أنشأته في Supabase

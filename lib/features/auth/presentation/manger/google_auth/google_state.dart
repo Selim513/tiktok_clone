@@ -1,17 +1,14 @@
-import 'package:supabase_flutter/supabase_flutter.dart';
+abstract class GoogleAuthState {}
 
-abstract class GoogleState {}
+class GoogleAuthInitial extends GoogleAuthState {}
 
-class GoogleAuthInitial extends GoogleState {}
+class GoogleAuthLoading extends GoogleAuthState {}
 
-class GoogleAuthLoading extends GoogleState {}
+class GoogleAuthSuccess extends GoogleAuthState {}
 
-class GoogleAuthSuccess extends GoogleState {
-}
-
-class GoogleAuthFailure extends GoogleState {
+class GoogleAuthFailure extends GoogleAuthState {
   final String error;
   GoogleAuthFailure(this.error);
 }
 
-class GoogleAuthCancelled extends GoogleState {}
+class GoogleAuthCancelled extends GoogleAuthState {}

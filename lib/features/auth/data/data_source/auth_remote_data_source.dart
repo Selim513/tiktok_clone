@@ -17,7 +17,6 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     required String name,
   }) async {
     Supabase supabase = Supabase.instance;
-
     final AuthResponse res = await supabase.client.auth.signUp(
       email: email,
       password: password,
