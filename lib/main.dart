@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
+import 'package:tiktok_clone/core/utils/service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  serviceLocatorSetup();
   await Supabase.initialize(
     url: 'https://sgulxgoevpmygnebscao.supabase.co',
     anonKey:
