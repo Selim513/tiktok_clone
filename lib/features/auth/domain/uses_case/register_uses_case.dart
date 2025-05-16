@@ -1,5 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:tiktok_clone/core/uses_case/uses_case.dart';
+import 'package:tiktok_clone/core/uses_case/auth_uses_case.dart';
 import 'package:tiktok_clone/features/auth/domain/repo/auth_repo.dart';
 
 class RegisterUsesCase extends AuthUseCases<AuthResponse, RegisterParams> {
