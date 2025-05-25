@@ -6,9 +6,15 @@ import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/core/widgets/custom_elevated_button.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
 
+  @override
+  State<ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
+  String? imagePath;
   @override
   Widget build(BuildContext context) {
     final user = Supabase.instance.client.auth.currentUser;
@@ -22,10 +28,18 @@ class ProfileView extends StatelessWidget {
         ),
         Gap(50),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            // pickImageFromCamera(imagePath: imagePath);
+            // setState(() {});
+            // print("-----------------$imagePath");
+          },
           child: CircleAvatar(
             radius: 80,
-            backgroundImage: AssetImage('assets/images/me.jpg'),
+            backgroundImage:
+            // (imagePath != null)
+            // ? FileImage(File(imagePath!)) as ImageProvider
+            // :
+            AssetImage('assets/images/profile.jpg'),
           ),
         ),
         Gap(30),

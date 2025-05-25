@@ -3,6 +3,7 @@ import 'package:tiktok_clone/features/auth/presentation/views/auth_view.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/login_view.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/sign_up_with_email.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/sign_up_with_google.dart';
+import 'package:tiktok_clone/features/camera_record/upload_videos/presentation/views/video_preview.dart';
 import 'package:tiktok_clone/features/home/presentation/views/home_view.dart';
 import 'package:tiktok_clone/features/splash/presentation/views/splash_view.dart';
 
@@ -12,6 +13,7 @@ abstract class AppRouter {
   static const kSignUpWithGoogle = '/signUpWithGoogle';
   static const kLoginView = '/loginView';
   static const kHome = '/home';
+  static const kCameraPreviw = '/cameraPreview';
 
   static final router = GoRouter(
     routes: [
@@ -40,6 +42,14 @@ abstract class AppRouter {
         path: kHome,
         name: kHome,
         builder: (context, state) => HomeView(),
+      ),
+      GoRoute(
+        path: kCameraPreviw,
+        name: kCameraPreviw,
+        builder: (context, state) {
+          final videoPath = state.extra as String;
+          return VideoPreview(videoPath: videoPath);
+        },
       ),
     ],
   );

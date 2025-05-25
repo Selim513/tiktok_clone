@@ -16,7 +16,9 @@ class LoginCubit extends Cubit<UserAuthState> {
       await authRepoImpl.login(
         email: loginEmailController.text,
         password: loginPasswordController.text,
-      );
+      ).then((value) {
+        
+      },);
       emit(LoginSuccess(succMessage: 'Welcome Back !.'));
       emit(LoginLoading());
     } catch (e) {

@@ -9,7 +9,11 @@ class GoogleAuthCubit extends Cubit<GoogleAuthState> {
     emit(GoogleAuthLoading());
     try {
       Supabase supabase = Supabase.instance;
-      supabase.client.auth.signInWithOAuth(OAuthProvider.google);
+      await supabase.client.auth.signInWithOAuth(
+        OAuthProvider.google,
+        redirectTo: 'com.example.tiktok_clone://login-callback',
+      );
+
       emit(GoogleAuthSuccess());
     } catch (e) {
       emit(GoogleAuthFailure(e.toString()));

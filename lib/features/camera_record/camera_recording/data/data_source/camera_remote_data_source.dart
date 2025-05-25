@@ -4,13 +4,20 @@ abstract class CameraRemoteDataSource {
   Future<void> initCamera();
   Future<void> startRecording();
   Future<XFile> stopRecording();
+  Future<void> disposeCamera();
+  CameraController get controller; 
+
 }
 
 class CameraRemoteDataSourceImpl extends CameraRemoteDataSource {
+ 
+  
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
   // final bool _isRecording = false;
   late List<CameraDescription> _cameras;
+  
+
   @override
   Future<void> initCamera() async {
     _cameras = await availableCameras();
@@ -37,8 +44,19 @@ class CameraRemoteDataSourceImpl extends CameraRemoteDataSource {
     try {
       final file = await _controller.stopVideoRecording();
       return file;
-    } catch (e) {
+    } catch (e) { 
       throw Exception('Failed to stop recording: $e');
     }
   }
+
+  @override
+  Future<void> disposeCamera() async {
+    if (_controller.value.isInitialized) {
+      await _controller.dispose();
+    }
+  }
+  
+  @override
+    CameraController get controller => _controller;
+
 }

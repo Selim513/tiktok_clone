@@ -4,4 +4,6 @@ abstract class CameraRepo {
   Future<void> initCamera();
   Future<void> startRecording();
   Future<XFile> stopRecording();
+  Future<void> disposeCamera();
+  CameraController get controller;
 }
