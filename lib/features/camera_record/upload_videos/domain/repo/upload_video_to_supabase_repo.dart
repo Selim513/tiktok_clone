@@ -1,3 +1,5 @@
+import 'dart:io';
+
 abstract class UploadVideoToSupabaseRepo {
-  Future uploadVideoToSupabase();
+  Future<String> uploadVideoToSupabase({required File videoUrl});
 }
