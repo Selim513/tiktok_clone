@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
+import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/core/widgets/custom_elevated_button.dart';
 import 'package:tiktok_clone/core/widgets/custom_snack_bar.dart';
 import 'package:tiktok_clone/features/camera_record/upload_videos/presentation/cubit/upload_video_cubit.dart';
@@ -44,7 +45,9 @@ class VideoPreviewActionsButtons extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
-                  onPress: () {},
+                  onPress: () {
+                    GoRouter.of(context).goNamed(AppRouter.kCameraRecord);
+                  },
                 ),
               ),
               Expanded(

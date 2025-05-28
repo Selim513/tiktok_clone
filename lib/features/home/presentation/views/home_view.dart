@@ -16,7 +16,11 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> pages = [HomeViewBody(), CameraScreen(), ProfileView()];
+    final List<Widget> pages = [
+      HomeViewBody(),
+      CameraRecordView(),
+      ProfileView(),
+    ];
     return Scaffold(
       body: SafeArea(child: pages[currentIndex]),
 

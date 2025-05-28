@@ -6,14 +6,17 @@ import 'package:tiktok_clone/features/camera_record/upload_videos/presentation/c
 
 class UploadVideoCubit extends Cubit<UploadVideoState> {
   UploadVideoCubit(this.uploadVideosToSubaBase) : super(UploadVideoInitial());
-  final UploadVideosToSubaBase uploadVideosToSubaBase;
+  final UploadVideosToSubaBaseUsesCase uploadVideosToSubaBase;
 
   void uploadVideosToSupaBase({required File videoFile}) async {
     try {
       emit(UploadVideoLoading());
       await uploadVideosToSubaBase(videoFile);
       emit(
-        UploadVideoSuccess(succMessage: 'Video has Been Uploaded', videoFile.path),
+        UploadVideoSuccess(
+          succMessage: 'Video has Been Uploaded',
+          videoFile.path,
+        ),
       );
     } catch (e) {
       emit(UploadVideoFailure(errMessage: 'errMessage=== ${e.toString()}'));

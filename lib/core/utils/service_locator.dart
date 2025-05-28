@@ -7,6 +7,10 @@ import 'package:tiktok_clone/features/camera_record/camera_recording/domain/uses
 import 'package:tiktok_clone/features/camera_record/camera_recording/domain/uses_case/init_camera_uses_case.dart';
 import 'package:tiktok_clone/features/camera_record/camera_recording/domain/uses_case/start_record_uses_case.dart';
 import 'package:tiktok_clone/features/camera_record/camera_recording/domain/uses_case/stop_record_uses_case.dart';
+import 'package:tiktok_clone/features/camera_record/upload_videos/data/data_source/upload_video_to_supabase_remote_data_source.dart';
+import 'package:tiktok_clone/features/camera_record/upload_videos/data/repo/upload_video_to_supabase_repoimpl.dart';
+import 'package:tiktok_clone/features/camera_record/upload_videos/domain/repo/upload_video_to_supabase_repo.dart';
+import 'package:tiktok_clone/features/camera_record/upload_videos/domain/uses_case/upload_videos_to_supabase.dart';
 import 'package:tiktok_clone/features/home/data/data_source/home_remote_data_source.dart';
 import 'package:tiktok_clone/features/home/data/repo/home_repo_impl.dart';
 import 'package:tiktok_clone/features/home/domain/uses_case/fetch_videos_uses_case.dart';
@@ -29,7 +33,7 @@ void serviceLocatorSetup() {
   getIt.registerSingleton<FetchVideosUsesCase>(
     FetchVideosUsesCase(getIt.get<HomeRepoImpl>()),
   );
-  //------------
+  //------------Camera Services
   getIt.registerSingleton<CameraRemoteDataSourceImpl>(
     CameraRemoteDataSourceImpl(),
   );
@@ -47,5 +51,17 @@ void serviceLocatorSetup() {
   );
   getIt.registerSingleton<DisposeCameraUsesCase>(
     DisposeCameraUsesCase(getIt.get<CameraRepoImpl>()),
+  );
+  //----------------Uplaod videos Services------
+  getIt.registerSingleton<UploadVideoToSupabaseRemoteDataSourceImpl>(
+    UploadVideoToSupabaseRemoteDataSourceImpl(),
+  );
+  getIt.registerSingleton<UploadVideoToSupabaseRepo>(
+    UploadVideoToSupabaseRepoimpl(
+      getIt.get<UploadVideoToSupabaseRemoteDataSourceImpl>(),
+    ),
+  );
+  getIt.registerSingleton<UploadVideosToSubaBaseUsesCase>(
+    UploadVideosToSubaBaseUsesCase(getIt.get<UploadVideoToSupabaseRepo>()),
   );
 }

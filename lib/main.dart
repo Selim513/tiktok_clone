@@ -5,11 +5,6 @@ import 'package:tiktok_clone/core/observer/simple_bloc_observer.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/core/utils/service_locator.dart';
 import 'package:tiktok_clone/features/auth/presentation/manger/google_auth/google_auth_cubit.dart';
-import 'package:tiktok_clone/features/camera_record/camera_recording/domain/uses_case/dispose_camera_uses_case.dart';
-import 'package:tiktok_clone/features/camera_record/camera_recording/domain/uses_case/init_camera_uses_case.dart';
-import 'package:tiktok_clone/features/camera_record/camera_recording/domain/uses_case/start_record_uses_case.dart';
-import 'package:tiktok_clone/features/camera_record/camera_recording/domain/uses_case/stop_record_uses_case.dart';
-import 'package:tiktok_clone/features/camera_record/camera_recording/presentation/manger/camera_cubit/camera_cubit.dart';
 import 'package:tiktok_clone/features/home/domain/uses_case/fetch_videos_uses_case.dart';
 import 'package:tiktok_clone/features/home/presentation/manger/fetch_videos_cubit/fetch_videos_cubit.dart';
 
@@ -40,15 +35,6 @@ class MainApp extends StatelessWidget {
                     ..fetchVideos(),
         ),
         BlocProvider(create: (context) => GoogleAuthCubit()),
-        BlocProvider(
-          create:
-              (context) => CameraCubit(
-                getIt.get<InitCameraUsesCase>(),
-                getIt.get<StartRecordUsesCase>(),
-                getIt.get<StopRecordUsesCase>(),
-                getIt.get<DisposeCameraUsesCase>(),
-              )..initCamera(),
-        ),
       ],
 
       child: MaterialApp.router(
