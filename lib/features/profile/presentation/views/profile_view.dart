@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
@@ -29,23 +32,21 @@ class _ProfileViewState extends State<ProfileView> {
         Gap(50),
         GestureDetector(
           onTap: () {
-            // pickImageFromCamera(imagePath: imagePath);
-            // setState(() {});
-            // print("-----------------$imagePath");
+            uploadFromCamera();
           },
           child: CircleAvatar(
+            backgroundColor: Colors.black,
             radius: 80,
             backgroundImage:
-            // (imagePath != null)
-            // ? FileImage(File(imagePath!)) as ImageProvider
-            // :
-            AssetImage('assets/images/profile.jpg'),
+                (imagePath != null)
+                    ? FileImage(File(imagePath!)) as ImageProvider
+                    : AssetImage('assets/images/profile.png'),
           ),
         ),
         Gap(30),
         Text('My Vedios', style: AppFontstyle.fontStyle30),
         CustomElevatedButton(
-          widget: Text('Log out'),
+          widget: Text('Log out', style: AppFontstyle.fontStyle20),
           onPress: () async {
             await Supabase.instance.client.auth.signOut().then((value) {
               GoRouter.of(context).goNamed(AppRouter.kAuth);
@@ -54,5 +55,14 @@ class _ProfileViewState extends State<ProfileView> {
         ),
       ],
     );
+  }
+
+  uploadFromCamera() async {
+    final imagePicker = await ImagePicker()
+        .pickImage(source: ImageSource.camera)
+        .then((value) {
+          imagePath = value!.path;
+          setState(() {});
+        });
   }
 }

@@ -14,7 +14,9 @@ class GoogleAuthCubit extends Cubit<GoogleAuthState> {
         redirectTo: 'com.example.tiktok_clone://login-callback',
       );
 
-      emit(GoogleAuthSuccess());
+      if (supabase.client.accessToken != null) {
+        emit(GoogleAuthSuccess());
+      }
     } catch (e) {
       emit(GoogleAuthFailure(e.toString()));
     }
