@@ -29,6 +29,7 @@ class LoginFormSection extends StatelessWidget {
           CustomTextFormField(
             hintText: 'Password',
             controller: cubit.loginPasswordController,
+            isVisible: true,
             validator: (value) => checkPasswordValidator(value),
           ),
           Gap(10),

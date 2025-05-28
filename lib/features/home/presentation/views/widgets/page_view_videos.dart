@@ -8,15 +8,13 @@ class PageViewVideos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: PageView.builder(
-        scrollDirection: Axis.vertical,
-        itemCount: videos.length,
+    return PageView.builder(
+      scrollDirection: Axis.vertical,
+      itemCount: videos.length,
 
-        itemBuilder: (context, index) {
-          return VideoScreen(videoUrl: videos[index]);
-        },
-      ),
+      itemBuilder: (context, index) {
+        return VideoScreen(videoUrl: videos[index]);
+      },
     );
   }
 }

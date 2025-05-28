@@ -40,7 +40,7 @@ class MainApp extends StatelessWidget {
       child: MaterialApp.router(
         theme: ThemeData.dark().copyWith(),
         debugShowCheckedModeBanner: false,
-        // home: CameraScreen(),
+        // home: HomeViewBody(),
         routerConfig: AppRouter.router,
       ),
     );

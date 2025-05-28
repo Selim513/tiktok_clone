@@ -26,8 +26,9 @@ class _VideoScreenState extends State<VideoScreen> {
       BetterPlayerConfiguration(
         autoPlay: true,
         looping: true,
-        aspectRatio: 9 / 16,
-        fit: BoxFit.contain,
+        aspectRatio: 9 / 18,
+
+        fit: BoxFit.cover,
       ),
       betterPlayerDataSource: dataSource,
     );
