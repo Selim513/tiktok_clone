@@ -1,6 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/core/utils/service_locator.dart';
+import 'package:tiktok_clone/features/auth/data/repo/auth_repo_impl.dart';
+import 'package:tiktok_clone/features/auth/presentation/manger/login_cubit/login_cubit.dart';
+import 'package:tiktok_clone/features/auth/presentation/manger/register_cubit/register_cubit.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/auth_view.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/login_view.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/sign_up_with_email.dart';
@@ -12,6 +15,8 @@ import 'package:tiktok_clone/features/camera_record/camera_recording/domain/uses
 import 'package:tiktok_clone/features/camera_record/camera_recording/presentation/manger/camera_cubit/camera_cubit.dart';
 import 'package:tiktok_clone/features/camera_record/camera_recording/presentation/views/widgets/camera_record_view_body.dart';
 import 'package:tiktok_clone/features/camera_record/upload_videos/presentation/views/video_preview.dart';
+import 'package:tiktok_clone/features/home/domain/uses_case/fetch_videos_uses_case.dart';
+import 'package:tiktok_clone/features/home/presentation/manger/fetch_videos_cubit/fetch_videos_cubit.dart';
 import 'package:tiktok_clone/features/home/presentation/views/home_view.dart';
 import 'package:tiktok_clone/features/splash/presentation/views/splash_view.dart';
 
@@ -36,22 +41,37 @@ abstract class AppRouter {
       GoRoute(
         name: kSignUpWithEmail,
         path: kSignUpWithEmail,
-        builder: (context, state) => EmailAuthView(),
+        builder:
+            (context, state) => BlocProvider(
+              create: (context) => RegisterCubit(getIt.get<AuthRepoImpl>()),
+              child: EmailAuthView(),
+            ),
       ),
       GoRoute(
         name: kSignUpWithGoogle,
         path: kSignUpWithGoogle,
-        builder: (context, state) => GoogleAuthView(),
+        builder: (context, state) => GoogleAuthCubitViewBody(),
       ),
       GoRoute(
         path: kLoginView,
         name: kLoginView,
-        builder: (context, state) => LoginView(),
+        builder:
+            (context, state) => BlocProvider(
+              create: (context) => LoginCubit(getIt.get<AuthRepoImpl>()),
+              child: LoginView(),
+            ),
       ),
       GoRoute(
         path: kHome,
         name: kHome,
-        builder: (context, state) => HomeView(),
+        builder:
+            (context, state) => BlocProvider(
+              create:
+                  (context) =>
+                      FetchVideosCubit(getIt.get<FetchVideosUsesCase>())
+                        ..fetchVideos(),
+              child: HomeView(),
+            ),
       ),
       GoRoute(
         path: kCameraRecord,

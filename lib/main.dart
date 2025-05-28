@@ -4,9 +4,6 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/core/observer/simple_bloc_observer.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/core/utils/service_locator.dart';
-import 'package:tiktok_clone/features/auth/presentation/manger/google_auth/google_auth_cubit.dart';
-import 'package:tiktok_clone/features/home/domain/uses_case/fetch_videos_uses_case.dart';
-import 'package:tiktok_clone/features/home/presentation/manger/fetch_videos_cubit/fetch_videos_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,23 +23,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create:
-              (context) =>
-                  FetchVideosCubit(getIt.get<FetchVideosUsesCase>())
-                    ..fetchVideos(),
-        ),
-        BlocProvider(create: (context) => GoogleAuthCubit()),
-      ],
-
-      child: MaterialApp.router(
-        theme: ThemeData.dark().copyWith(),
-        debugShowCheckedModeBanner: false,
-        // home: HomeViewBody(),
-        routerConfig: AppRouter.router,
-      ),
+    return MaterialApp.router(
+      theme: ThemeData.dark().copyWith(),
+      debugShowCheckedModeBanner: false,
+      // home: HomeViewBody(),
+      routerConfig: AppRouter.router,
     );
   }
 }

@@ -32,7 +32,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           ),
           Positioned(
             left: 30,
-            top: 50,
+            top: 10,
             child: Text('Videos', style: AppFontstyle.fontStyle30),
           ),
         ],
