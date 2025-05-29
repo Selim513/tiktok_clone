@@ -7,8 +7,8 @@ import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/core/widgets/custom_elevated_button.dart';
 import 'package:tiktok_clone/core/widgets/custom_snack_bar.dart';
-import 'package:tiktok_clone/features/camera_record/upload_videos/presentation/cubit/upload_video_cubit.dart';
-import 'package:tiktok_clone/features/camera_record/upload_videos/presentation/cubit/upload_video_state.dart';
+import 'package:tiktok_clone/features/camera_record/upload_videos/presentation/cubit/upload_from_camera/upload_video_cubit.dart';
+import 'package:tiktok_clone/features/camera_record/upload_videos/presentation/cubit/upload_from_camera/upload_video_state.dart';
 
 class VideoPreviewActionsButtons extends StatelessWidget {
   const VideoPreviewActionsButtons({super.key, required this.vedioFile});

@@ -29,25 +29,27 @@ class RegisterWithEmailViewBody extends StatelessWidget {
       },
       builder: (context, state) {
         var cubit = context.read<RegisterCubit>();
-        return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            spacing: 20,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              RegisterFormSection(cubit: cubit),
-              state is RegisterLoading
-                  ? CircularProgressIndicator()
-                  : CustomElevatedButton(
-                    widget: Text(
-                      'Register Now',
-                      style: AppFontstyle.fontStyle20,
+        return SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              spacing: 20,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                RegisterFormSection(cubit: cubit),
+                state is RegisterLoading
+                    ? CircularProgressIndicator()
+                    : CustomElevatedButton(
+                      widget: Text(
+                        'Register Now',
+                        style: AppFontstyle.fontStyle20,
+                      ),
+                      onPress: () {
+                        cubit.register();
+                      },
                     ),
-                    onPress: () {
-                      cubit.register();
-                    },
-                  ),
-            ],
+              ],
+            ),
           ),
         );
       },

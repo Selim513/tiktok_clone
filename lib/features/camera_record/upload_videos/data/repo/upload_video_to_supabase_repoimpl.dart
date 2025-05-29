@@ -18,4 +18,17 @@ class UploadVideoToSupabaseRepoimpl extends UploadVideoToSupabaseRepo {
       throw Exception('---- ${e.toString()}');
     }
   }
+
+  @override
+  Future<String> uploadVideoToSubaBaseFromGallery() async {
+    try {
+      var videoFile =
+          await uploadVideoToSupabaseRemoteDataSourceImpl
+              .uploadVideoToSubaBaseFromGallery();
+      return videoFile;
+    } catch (e) {
+           
+      throw Exception('----ErorVideosUpload ${e.toString()}');
+    }
+  }
 }

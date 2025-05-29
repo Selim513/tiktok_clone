@@ -10,6 +10,7 @@ import 'package:tiktok_clone/features/camera_record/camera_recording/domain/uses
 import 'package:tiktok_clone/features/camera_record/upload_videos/data/data_source/upload_video_to_supabase_remote_data_source.dart';
 import 'package:tiktok_clone/features/camera_record/upload_videos/data/repo/upload_video_to_supabase_repoimpl.dart';
 import 'package:tiktok_clone/features/camera_record/upload_videos/domain/repo/upload_video_to_supabase_repo.dart';
+import 'package:tiktok_clone/features/camera_record/upload_videos/domain/uses_case/upload_video_to_supabase_from_gallery.dart';
 import 'package:tiktok_clone/features/camera_record/upload_videos/domain/uses_case/upload_videos_to_supabase.dart';
 import 'package:tiktok_clone/features/home/data/data_source/home_remote_data_source.dart';
 import 'package:tiktok_clone/features/home/data/repo/home_repo_impl.dart';
@@ -63,5 +64,11 @@ void serviceLocatorSetup() {
   );
   getIt.registerSingleton<UploadVideosToSubaBaseUsesCase>(
     UploadVideosToSubaBaseUsesCase(getIt.get<UploadVideoToSupabaseRepo>()),
+  );
+  //------------
+  getIt.registerSingleton<UploadVideosToSubaBaseFromGalleryUsesCase>(
+    UploadVideosToSubaBaseFromGalleryUsesCase(
+      getIt.get<UploadVideoToSupabaseRepo>(),
+    ),
   );
 }

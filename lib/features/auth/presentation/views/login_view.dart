@@ -6,6 +6,7 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: LoginViewBody());
+    return Scaffold(
+      body: LoginViewBody());
   }
 }
