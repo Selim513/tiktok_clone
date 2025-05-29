@@ -4,8 +4,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/core/observer/simple_bloc_observer.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/core/utils/service_locator.dart';
-import 'package:tiktok_clone/features/camera_record/upload_videos/domain/uses_case/upload_video_to_supabase_from_gallery.dart';
-import 'package:tiktok_clone/features/camera_record/upload_videos/presentation/cubit/upload_video_from_gallery/upload_video_from_gallery_cubit.dart';
+import 'package:tiktok_clone/features/post_videos/upload_videos/domain/uses_case/upload_video_to_supabase_from_gallery.dart';
+import 'package:tiktok_clone/features/post_videos/upload_videos/presentation/cubit/upload_video_from_gallery/upload_video_from_gallery_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

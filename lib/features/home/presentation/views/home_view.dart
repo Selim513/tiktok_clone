@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tiktok_clone/features/camera_record/camera_recording/presentation/views/camera_record_view.dart';
+import 'package:tiktok_clone/features/post_videos/camera_recording/presentation/views/camera_record_view.dart';
 import 'package:tiktok_clone/features/home/presentation/views/widgets/custom_bottom_nav_bar.dart';
 import 'package:tiktok_clone/features/home/presentation/views/widgets/home_view_body.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/profile_view.dart';
