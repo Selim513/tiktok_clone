@@ -27,7 +27,7 @@ class _ProfileViewState extends State<ProfileView> {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text(name, style: AppFontstyle.fontStyle20)],
+          children: [Text(name ?? 'user', style: AppFontstyle.fontStyle20)],
         ),
         Gap(50),
         GestureDetector(
@@ -58,11 +58,9 @@ class _ProfileViewState extends State<ProfileView> {
   }
 
   uploadFromCamera() async {
-    final imagePicker = await ImagePicker()
-        .pickImage(source: ImageSource.camera)
-        .then((value) {
-          imagePath = value!.path;
-          setState(() {});
-        });
+    await ImagePicker().pickImage(source: ImageSource.camera).then((value) {
+      imagePath = value!.path;
+      setState(() {});
+    });
   }
 }

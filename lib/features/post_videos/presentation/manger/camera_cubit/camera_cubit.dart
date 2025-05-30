@@ -1,10 +1,10 @@
 import 'package:camera/camera.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tiktok_clone/features/post_videos/camera_recording/domain/uses_case/dispose_camera_uses_case.dart';
-import 'package:tiktok_clone/features/post_videos/camera_recording/domain/uses_case/init_camera_uses_case.dart';
-import 'package:tiktok_clone/features/post_videos/camera_recording/domain/uses_case/start_record_uses_case.dart';
-import 'package:tiktok_clone/features/post_videos/camera_recording/domain/uses_case/stop_record_uses_case.dart';
-import 'package:tiktok_clone/features/post_videos/camera_recording/presentation/manger/camera_cubit/camera_satte.dart';
+import 'package:tiktok_clone/features/post_videos/domain/uses_case/dispose_camera_uses_case.dart';
+import 'package:tiktok_clone/features/post_videos/domain/uses_case/init_camera_uses_case.dart';
+import 'package:tiktok_clone/features/post_videos/domain/uses_case/start_record_uses_case.dart';
+import 'package:tiktok_clone/features/post_videos/domain/uses_case/stop_record_uses_case.dart';
+import 'package:tiktok_clone/features/post_videos/presentation/manger/camera_cubit/camera_satte.dart';
 
 class CameraCubit extends Cubit<CameraState> {
   CameraCubit(

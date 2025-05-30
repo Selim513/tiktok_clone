@@ -1,6 +1,6 @@
 import 'package:camera/camera.dart';
-import 'package:tiktok_clone/features/post_videos/camera_recording/data/data_source/camera_remote_data_source.dart';
-import 'package:tiktok_clone/features/post_videos/camera_recording/domain/repo/camera_repo.dart';
+import 'package:tiktok_clone/features/post_videos/data/data_source/camera_remote_data_source.dart';
+import 'package:tiktok_clone/features/post_videos/domain/repo/camera_repo.dart';
 
 class CameraRepoImpl extends CameraRepo {
   final CameraRemoteDataSource cameraRemoteDataSource;

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
-import 'package:tiktok_clone/features/post_videos/camera_recording/presentation/manger/camera_cubit/camera_cubit.dart';
-import 'package:tiktok_clone/features/post_videos/camera_recording/presentation/manger/camera_cubit/camera_satte.dart';
+import 'package:tiktok_clone/features/post_videos/presentation/manger/camera_cubit/camera_cubit.dart';
+import 'package:tiktok_clone/features/post_videos/presentation/manger/camera_cubit/camera_satte.dart';
 
 class CameraRecordViewBody extends StatelessWidget {
   const CameraRecordViewBody({super.key});

@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tiktok_clone/core/utils/service_locator.dart';
 import 'package:tiktok_clone/features/post_videos/upload_videos/domain/uses_case/upload_videos_to_supabase.dart';
 import 'package:tiktok_clone/features/post_videos/upload_videos/presentation/cubit/upload_from_camera/upload_video_cubit.dart';
-import 'package:tiktok_clone/features/post_videos/camera_recording/presentation/views/widgets/video_preview_body.dart';
+import 'package:tiktok_clone/features/post_videos/presentation/views/widgets/video_preview_body.dart';
 
 class VideoPreview extends StatefulWidget {
   const VideoPreview({super.key, required this.videoPath});

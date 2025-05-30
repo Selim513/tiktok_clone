@@ -22,7 +22,7 @@ class LoginCubit extends Cubit<UserAuthState> {
       emit(LoginSuccess(succMessage: 'Welcome Back !.'));
       emit(LoginLoading());
     } catch (e) {
-      print(e.toString());
+    
       emit(LoginFailure(errMessage: 'Your password or email is incorrect'));
     }
   }
