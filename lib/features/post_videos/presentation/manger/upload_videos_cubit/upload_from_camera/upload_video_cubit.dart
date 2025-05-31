@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tiktok_clone/features/post_videos/domain/uses_case/upload_videos_uses_case/upload_videos_to_supabase.dart';
+import 'package:tiktok_clone/features/post_videos/domain/use_cases/upload_videos_use_cases/upload_videos_to_supabase_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/presentation/manger/upload_videos_cubit/upload_from_camera/upload_video_state.dart';
 
 class UploadVideoCubit extends Cubit<UploadVideoState> {
   UploadVideoCubit(this.uploadVideosToSubaBase) : super(UploadVideoInitial());
-  final UploadVideosToSubaBaseUsesCase uploadVideosToSubaBase;
+  final UploadVideosToSubaBaseUseCase uploadVideosToSubaBase;
 
   void uploadVideosToSupaBase({required File videoFile}) async {
     try {
