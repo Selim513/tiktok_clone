@@ -1,5 +1,5 @@
 import 'package:tiktok_clone/core/uses_case/uses_case.dart';
-import 'package:tiktok_clone/features/post_videos/upload_videos/domain/repo/upload_video_to_supabase_repo.dart';
+import 'package:tiktok_clone/features/post_videos/domain/repo/upload_video_to_supabase_repo.dart';
 
 class UploadVideosToSubaBaseFromGalleryUsesCase extends UsesCase<String, void> {
   final UploadVideoToSupabaseRepo uploadVideoToSupabaseRepo;

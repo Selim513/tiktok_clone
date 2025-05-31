@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tiktok_clone/features/post_videos/upload_videos/domain/uses_case/upload_video_to_supabase_from_gallery.dart';
-import 'package:tiktok_clone/features/post_videos/upload_videos/presentation/cubit/upload_video_from_gallery/upload_video_from_gallery_state.dart';
+import 'package:tiktok_clone/features/post_videos/domain/uses_case/upload_videos_uses_case/upload_video_to_supabase_from_gallery.dart';
+import 'package:tiktok_clone/features/post_videos/presentation/manger/upload_videos_cubit/upload_video_from_gallery/upload_video_from_gallery_state.dart';
 
 class UploadVideoFromGalleryCubit extends Cubit<UploadVideosFromGallerySatate> {
   UploadVideoFromGalleryCubit(this.uploadVideosToSubaBaseFromGalleryUsesCase)
