@@ -21,10 +21,10 @@ class VideoPreviewActionsButtons extends StatelessWidget {
           CustomSnackBar.successSnackBar(context, message: state.succMessage);
           GoRouter.of(context).pop();
         } else if (state is UploadVideoFailure) {
-          CustomSnackBar.successSnackBar(
+          CustomSnackBar.errorSnackBar(
             context,
             message: state.errMessage,
-            isSuccess: false,
+          
           );
         }
       },

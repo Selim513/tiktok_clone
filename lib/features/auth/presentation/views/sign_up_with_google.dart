@@ -21,10 +21,10 @@ class GoogleAuthCubitViewBody extends StatelessWidget {
           GoRouter.of(context).goNamed(AppRouter.kHome);
         } else if (state is GoogleAuthFailure) {
           print('==================${state.error}');
-          CustomSnackBar.successSnackBar(
+          CustomSnackBar.errorSnackBar(
             context,
             message: state.error,
-            isSuccess: false,
+             
           );
         } else if (state is GoogleAuthCancelled) {
           GoRouter.of(context).pop();

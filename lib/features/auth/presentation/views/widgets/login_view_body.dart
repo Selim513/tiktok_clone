@@ -23,10 +23,10 @@ class LoginViewBody extends StatelessWidget {
             CustomSnackBar.successSnackBar(context, message: state.succMessage);
             GoRouter.of(context).goNamed(AppRouter.kHome);
           } else if (state is LoginFailure) {
-            CustomSnackBar.successSnackBar(
+            CustomSnackBar.errorSnackBar(
               context,
               message: state.errMessage,
-              isSuccess: false,
+            
             );
           }
         },

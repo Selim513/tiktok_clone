@@ -20,10 +20,10 @@ class RegisterWithEmailViewBody extends StatelessWidget {
           CustomSnackBar.successSnackBar(context, message: state.succMessage);
           GoRouter.of(context).pushNamed(AppRouter.kLoginView);
         } else if (state is RegisterFailure) {
-          CustomSnackBar.successSnackBar(
+          CustomSnackBar.errorSnackBar(
             context,
             message: state.errMessage,
-            isSuccess: false,
+          
           );
         }
       },

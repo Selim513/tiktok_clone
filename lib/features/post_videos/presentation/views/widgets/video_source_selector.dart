@@ -38,10 +38,10 @@ class VideoSourceSelector extends StatelessWidget {
                 );
               } else if (state is UploadCanceld) {
               } else if (state is UploadFailure) {
-                CustomSnackBar.successSnackBar(
+                CustomSnackBar.errorSnackBar(
                   context,
                   message: state.errMessage,
-                  isSuccess: false,
+                 
                 );
               } else {
                 CustomSnackBar.successSnackBar(context, message: 'loading...');

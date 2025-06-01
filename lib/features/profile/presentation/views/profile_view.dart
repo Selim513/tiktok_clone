@@ -20,7 +20,6 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
-  @override
   String? name;
   String? imageUrl;
   @override
@@ -61,10 +60,9 @@ class _ProfileViewState extends State<ProfileView> {
                 );
                 print('============${state.imageUr}');
               } else if (state is PickImageFromCameraFailure) {
-                CustomSnackBar.successSnackBar(
+                CustomSnackBar.errorSnackBar(
                   context,
                   message: state.errMessage,
-                  isSuccess: false,
                 );
               }
             },
@@ -80,9 +78,14 @@ class _ProfileViewState extends State<ProfileView> {
                   child: CircleAvatar(
                     backgroundColor: Colors.black,
                     radius: 80,
-                    backgroundImage: NetworkImage(imageUrl ?? ''),
+                    backgroundImage:
+                        imageUrl != null
+                            ? NetworkImage(imageUrl!)
+                            : AssetImage('assets/images/profile.png'),
                   ),
                 );
+              } else if (state is PickImageFromCameraLoading) {
+                return CircularProgressIndicator();
               } else {
                 return GestureDetector(
                   onTap: () async {
@@ -99,7 +102,7 @@ class _ProfileViewState extends State<ProfileView> {
             },
           ),
           Gap(30),
-          Text('My Vedios', style: AppFontstyle.fontStyle30),
+          Text('My Videos', style: AppFontstyle.fontStyle30),
           CustomElevatedButton(
             widget: Text('Log out', style: AppFontstyle.fontStyle20),
             onPress: () async {

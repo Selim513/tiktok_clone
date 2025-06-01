@@ -19,11 +19,7 @@ class SignUpWithGoogleButton extends StatelessWidget {
           GoRouter.of(context).goNamed(AppRouter.kHome);
         } else if (state is GoogleAuthFailure) {
           print('==================${state.error}');
-          CustomSnackBar.successSnackBar(
-            context,
-            message: state.error,
-            isSuccess: false,
-          );
+          CustomSnackBar.errorSnackBar(context, message: state.error);
         } else if (state is GoogleAuthCancelled) {
           GoRouter.of(context).pop();
         } else {

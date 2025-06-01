@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 
 abstract class CustomSnackBar {
-  static successSnackBar(
-    BuildContext context, {
-    required String message,
-    bool isSuccess = true,
-  }) {
+  //---------ForSuccess Messages
+  static successSnackBar(BuildContext context, {required String message}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
@@ -14,7 +11,21 @@ abstract class CustomSnackBar {
           textAlign: TextAlign.center,
           style: AppFontstyle.fontStyle20,
         ),
-        backgroundColor: isSuccess ? Colors.green : Colors.red,
+        backgroundColor: Colors.green,
+      ),
+    );
+  }
+
+  //-----------for error Messages
+  static errorSnackBar(BuildContext context, {required String message}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          message,
+          textAlign: TextAlign.center,
+          style: AppFontstyle.fontStyle20,
+        ),
+        backgroundColor: Colors.red,
       ),
     );
   }
