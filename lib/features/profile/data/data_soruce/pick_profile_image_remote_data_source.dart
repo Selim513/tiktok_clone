@@ -4,20 +4,20 @@ import 'package:image_picker/image_picker.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class PickProfileImageRemoteDataSource {
-  Future pickProfileImageFromCamera();
+  Future<String> pickProfileImageFromCamera();
   Future pickProfileImageFromImage();
 }
 
 class PickProfileImageRemoteDataSourceImpl
     extends PickProfileImageRemoteDataSource {
   @override
-  Future pickProfileImageFromCamera() async {
+  Future<String> pickProfileImageFromCamera() async {
     var userId = Supabase.instance.client.auth.currentUser?.id;
     SupabaseStorageClient storage = Supabase.instance.client.storage;
     try {
       var image = await ImagePicker().pickImage(source: ImageSource.camera);
       if (image == null) {
-        return;
+        return '';
       }
       var imageFile = File(image.path);
 
@@ -38,9 +38,11 @@ class PickProfileImageRemoteDataSourceImpl
       Supabase.instance.client.auth.updateUser(
         UserAttributes(data: {'picture': puplicUrl}),
       );
-      print(puplicUrl);
+
+      return puplicUrl;
     } catch (e) {
       print('Erooooooooooooor${e.toString()}');
+      throw Exception('There is an eerror happen ${e.toString()}');
     }
   }
 

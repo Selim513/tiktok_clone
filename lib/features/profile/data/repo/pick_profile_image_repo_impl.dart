@@ -7,11 +7,14 @@ class PickProfileImageRepoImpl extends PickProileImageRepo {
 
   PickProfileImageRepoImpl(this.pickProfileImageRemoteDataSourceImpl);
   @override
-  Future pickProfileImageFromCamera() async {
+  Future<String> pickProfileImageFromCamera() async {
     try {
-      await pickProfileImageRemoteDataSourceImpl.pickProfileImageFromCamera();
+      var imageUrl =
+          await pickProfileImageRemoteDataSourceImpl
+              .pickProfileImageFromCamera();
+      return imageUrl;
     } on Exception catch (e) {
-      print('Thereee is an erorr ${e.toString()}');
+      throw Exception('There is an error');
     }
   }
 

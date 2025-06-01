@@ -4,8 +4,12 @@ class PickImageFromCameraInitial extends PickImageFromCameraState {}
 
 class PickImageFromCameraSuccess extends PickImageFromCameraState {
   final String succMessage;
+  final String imageUr;
 
-  PickImageFromCameraSuccess({required this.succMessage});
+  PickImageFromCameraSuccess({
+    required this.imageUr,
+    required this.succMessage,
+  });
 }
 
 class PickImageFromCameraFailure extends PickImageFromCameraState {

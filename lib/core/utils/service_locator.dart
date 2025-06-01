@@ -15,6 +15,9 @@ import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_ca
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/stop_record_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/upload_videos_use_cases/upload_video_to_supabase_from_gallery_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/upload_videos_use_cases/upload_videos_to_supabase_use_case.dart';
+import 'package:tiktok_clone/features/profile/data/data_soruce/pick_profile_image_remote_data_source.dart';
+import 'package:tiktok_clone/features/profile/data/repo/pick_profile_image_repo_impl.dart';
+import 'package:tiktok_clone/features/profile/domain/use_cases/pick_profile_image_use_case.dart';
 
 final getIt = GetIt.instance;
 
@@ -65,10 +68,20 @@ void serviceLocatorSetup() {
   getIt.registerSingleton<UploadVideosToSubaBaseUseCase>(
     UploadVideosToSubaBaseUseCase(getIt.get<UploadVideoToSupabaseRepo>()),
   );
-  //------------
+  //------------ Upload From Gallery-------------
   getIt.registerSingleton<UploadVideosToSubaBaseFromGalleryUsesCase>(
     UploadVideosToSubaBaseFromGalleryUsesCase(
       getIt.get<UploadVideoToSupabaseRepo>(),
     ),
+  );
+  //----------------Pick Profile Image------------------
+  getIt.registerSingleton<PickProfileImageRemoteDataSourceImpl>(
+    PickProfileImageRemoteDataSourceImpl(),
+  );
+  getIt.registerSingleton<PickProfileImageRepoImpl>(
+    PickProfileImageRepoImpl(getIt.get<PickProfileImageRemoteDataSourceImpl>()),
+  );
+  getIt.registerSingleton<PickProfileImageFromCameraUseCase>(
+    PickProfileImageFromCameraUseCase(getIt.get<PickProfileImageRepoImpl>()),
   );
 }

@@ -5,13 +5,18 @@ import 'package:tiktok_clone/features/profile/presentation/manger/pick_profile_i
 class PickProfileImageFromCameraCubit extends Cubit<PickImageFromCameraState> {
   PickProfileImageFromCameraCubit(this.pickProfileImageUseCase)
     : super(PickImageFromCameraInitial());
-  final PickProfileImageUseCase pickProfileImageUseCase;
+  final PickProfileImageFromCameraUseCase pickProfileImageUseCase;
 
   pickProfileImageFromCamera() async {
     try {
       emit(PickImageFromCameraLoading());
-      await pickProfileImageUseCase.call();
-      emit(PickImageFromCameraSuccess(succMessage: 'Image has been updated .'));
+      String imageUrl = await pickProfileImageUseCase.call();
+      emit(
+        PickImageFromCameraSuccess(
+          imageUr: imageUrl,
+          succMessage: 'Image has been updated .',
+        ),
+      );
     } catch (e) {
       emit(PickImageFromCameraFailure(errMessage: 'Error ${e.toString()}'));
     }

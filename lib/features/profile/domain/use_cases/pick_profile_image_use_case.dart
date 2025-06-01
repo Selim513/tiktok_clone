@@ -1,11 +1,11 @@
 import 'package:tiktok_clone/features/profile/domain/repo/upload_profile_image_repo.dart';
 
-class PickProfileImageUseCase {
+class PickProfileImageFromCameraUseCase {
   final PickProileImageRepo pickProfileImageUseCase;
 
-  PickProfileImageUseCase(this.pickProfileImageUseCase);
+  PickProfileImageFromCameraUseCase(this.pickProfileImageUseCase);
 
-  Future call() {
+  Future<String> call() {
     return pickProfileImageUseCase.pickProfileImageFromCamera();
   }
 }
