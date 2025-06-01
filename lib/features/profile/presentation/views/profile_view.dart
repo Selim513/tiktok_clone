@@ -22,7 +22,8 @@ class _ProfileViewState extends State<ProfileView> {
   Widget build(BuildContext context) {
     final user = Supabase.instance.client.auth.currentUser;
     final name = user?.userMetadata?['Name'];
-
+    final useProfile = user?.userMetadata?['picture'] as String?;
+    print(useProfile);
     return Column(
       children: [
         Row(
@@ -31,15 +32,15 @@ class _ProfileViewState extends State<ProfileView> {
         ),
         Gap(50),
         GestureDetector(
-          onTap: () {
-            uploadFromCamera();
+          onTap: () async {
+            await uploadFromCamera();
           },
           child: CircleAvatar(
             backgroundColor: Colors.black,
             radius: 80,
             backgroundImage:
-                (imagePath != null)
-                    ? FileImage(File(imagePath!)) as ImageProvider
+                (useProfile != null)
+                    ? NetworkImage(useProfile)
                     : AssetImage('assets/images/profile.png'),
           ),
         ),
@@ -58,9 +59,28 @@ class _ProfileViewState extends State<ProfileView> {
   }
 
   uploadFromCamera() async {
-    await ImagePicker().pickImage(source: ImageSource.camera).then((value) {
+    await ImagePicker().pickImage(source: ImageSource.camera).then((
+      value,
+    ) async {
       imagePath = value!.path;
-      setState(() {});
+
+      var user = Supabase.instance.client.auth;
+
+      var file = File(value.path);
+      await Supabase.instance.client.storage
+          .from('profile-image')
+          .upload(
+            '${user.currentUser?.id}',
+            fileOptions: const FileOptions(upsert: true),
+            file,
+          )
+          .then((value) {
+            final publicUrl = Supabase.instance.client.storage
+                .from('profile-image')
+                .getPublicUrl('${user.currentUser?.id}');
+            user.updateUser(UserAttributes(data: {'picture': publicUrl}));
+          });
     });
+    setState(() {});
   }
 }
