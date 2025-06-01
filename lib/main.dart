@@ -6,6 +6,10 @@ import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/core/utils/service_locator.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/upload_videos_use_cases/upload_video_to_supabase_from_gallery_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/presentation/manger/upload_videos_cubit/upload_video_from_gallery/upload_video_from_gallery_cubit.dart';
+import 'package:tiktok_clone/features/profile/data/data_soruce/pick_profile_image_remote_data_source.dart';
+import 'package:tiktok_clone/features/profile/data/repo/pick_profile_image_repo_impl.dart';
+import 'package:tiktok_clone/features/profile/domain/use_cases/pick_profile_image_use_case.dart';
+import 'package:tiktok_clone/features/profile/presentation/manger/pick_profile_image_from_camera_cubit/pick_profile_image_from_camera_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,11 +29,25 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create:
-          (context) => UploadVideoFromGalleryCubit(
-            getIt.get<UploadVideosToSubaBaseFromGalleryUsesCase>(),
-          ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create:
+              (context) => UploadVideoFromGalleryCubit(
+                getIt.get<UploadVideosToSubaBaseFromGalleryUsesCase>(),
+              ),
+        ),
+        BlocProvider(
+          create:
+              (context) => PickProfileImageFromCameraCubit(
+                PickProfileImageUseCase(
+                  PickProfileImageRepoImpl(
+                    PickProfileImageRemoteDataSourceImpl(),
+                  ),
+                ),
+              ),
+        ),
+      ],
       child: MaterialApp.router(
         theme: ThemeData.dark().copyWith(),
         debugShowCheckedModeBanner: false,
