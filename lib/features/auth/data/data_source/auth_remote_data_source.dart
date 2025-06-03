@@ -20,6 +20,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     final AuthResponse res = await supabase.client.auth.signUp(
       email: email,
       password: password,
+      emailRedirectTo: 'com.example.tiktok_clone://auth-callback/',
       data: {'Name': name},
     );
     return res;

@@ -76,10 +76,18 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                       .read<PickProfileImageFromCameraCubit>()
                       .pickProfileImageFromCamera();
                 },
-                child: CircleAvatar(
-                  radius: 80,
-                  backgroundImage: AssetImage('assets/images/profile.png'),
-                ),
+                child:
+                    (imageUrl != null)
+                        ? CircleAvatar(
+                          radius: 80,
+                          backgroundImage: NetworkImage(imageUrl!),
+                        )
+                        : CircleAvatar(
+                          radius: 80,
+                          backgroundImage: AssetImage(
+                            'assets/images/profile.png',
+                          ),
+                        ),
               );
             }
           },

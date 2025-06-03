@@ -20,7 +20,7 @@ class RegisterCubit extends Cubit<UserAuthState> {
         name: userNameController.text,
       );
 
-      emit(RegisterSuccess(succMessage: 'Account has been created !.'));
+      emit(RegisterSuccess(succMessage: 'Account has been created please confirm your email !.'));
     } catch (e) {
       print(e.toString());
       emit(
