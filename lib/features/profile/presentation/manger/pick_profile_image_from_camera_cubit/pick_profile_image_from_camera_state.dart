@@ -1,23 +1,20 @@
-abstract class PickImageFromCameraState {}
+abstract class PickProfileImageState {}
 
-class PickImageFromCameraInitial extends PickImageFromCameraState {}
+class PickProfileImageInitial extends PickProfileImageState {}
 
-class PickImageFromCameraSuccess extends PickImageFromCameraState {
+class PickProfileImageSuccess extends PickProfileImageState {
   final String succMessage;
   final String? imageUrl;
 
-  PickImageFromCameraSuccess({
-    required this.imageUrl,
-    required this.succMessage,
-  });
+  PickProfileImageSuccess({required this.imageUrl, required this.succMessage});
 }
 
-class PickImageFromCameraFailure extends PickImageFromCameraState {
+class PickProfileImageFailure extends PickProfileImageState {
   final String errMessage;
 
-  PickImageFromCameraFailure({required this.errMessage});
+  PickProfileImageFailure({required this.errMessage});
 }
 
-class PickImageFromCameraLoading extends PickImageFromCameraState {}
+class PickProfileImageLoading extends PickProfileImageState {}
 
-class PickImageFromCamerCancle extends PickImageFromCameraState {}
+class PickProfileImageCancle extends PickProfileImageState {}

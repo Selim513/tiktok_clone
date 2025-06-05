@@ -19,8 +19,14 @@ class PickProfileImageRepoImpl extends PickProileImageRepo {
   }
 
   @override
-  Future pickProfileImageFromImage() {
-    // TODO: implement pickProfileImageFromImage
-    throw UnimplementedError();
+  Future<String?> pickProfileImageFromGallery() async {
+    try {
+      var imageUrl =
+          await pickProfileImageRemoteDataSourceImpl
+              .pickProfileImageFromGallery();
+      return imageUrl;
+    } on Exception {
+      throw Exception('-----There is an error');
+    }
   }
 }

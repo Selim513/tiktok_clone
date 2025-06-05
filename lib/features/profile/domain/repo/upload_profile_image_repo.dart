@@ -1,4 +1,4 @@
 abstract class PickProileImageRepo {
   Future<String?> pickProfileImageFromCamera();
-  Future pickProfileImageFromImage();
+  Future<String?> pickProfileImageFromGallery();
 }

@@ -13,7 +13,7 @@ OutlineInputBorder customOutLineBorders({Color? color, double? circular}) {
 
 Future<dynamic> customShowDialogPickImageSourceOptions(
   BuildContext context,
-  PickProfileImageFromCameraCubit cubit,
+  PickProfileImageCubit cubit,
 ) {
   return showDialog(
     context: context,
@@ -31,7 +31,6 @@ Future<dynamic> customShowDialogPickImageSourceOptions(
                 child: ImagePickerOptionButton(
                   title: 'Camera',
                   onpress: () async {
-                    
                     GoRouter.of(context).pop();
 
                     await cubit.pickProfileImageFromCamera();
@@ -42,7 +41,10 @@ Future<dynamic> customShowDialogPickImageSourceOptions(
               Flexible(
                 child: ImagePickerOptionButton(
                   title: 'Gallery',
-                  onpress: () {},
+                  onpress: () async {
+                    GoRouter.of(context).pop();
+                    await cubit.pickProfileImageFromGallery();
+                  },
                 ),
               ),
             ],

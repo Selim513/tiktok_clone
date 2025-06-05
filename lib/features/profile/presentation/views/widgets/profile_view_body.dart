@@ -41,24 +41,21 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
 
         GestureDetector(
           onTap: () async {
-            final cubit = BlocProvider.of<PickProfileImageFromCameraCubit>(
+            final cubit = BlocProvider.of<PickProfileImageCubit>(
               context,
               listen: false,
             );
             await customShowDialogPickImageSourceOptions(context, cubit);
           },
-          child: BlocListener<
-            PickProfileImageFromCameraCubit,
-            PickImageFromCameraState
-          >(
+          child: BlocListener<PickProfileImageCubit, PickProfileImageState>(
             listener: (context, state) {
-              if (state is PickImageFromCameraSuccess) {
+              if (state is PickProfileImageSuccess) {
                 print("------------------------${state.imageUrl}");
                 CustomSnackBar.successSnackBar(
                   context,
                   message: state.succMessage,
                 );
-              } else if (state is PickImageFromCameraFailure) {
+              } else if (state is PickProfileImageFailure) {
                 CustomSnackBar.errorSnackBar(
                   context,
                   message: state.errMessage,
