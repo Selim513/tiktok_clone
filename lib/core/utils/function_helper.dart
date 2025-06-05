@@ -1,7 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
+import 'package:tiktok_clone/core/widgets/image_picker_option_button.dart';
+import 'package:tiktok_clone/features/profile/presentation/manger/pick_profile_image_from_camera_cubit/pick_profile_image_from_camera_cubit.dart';
 
 OutlineInputBorder customOutLineBorders({Color? color, double? circular}) {
   return OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(circular ?? 15)),
-      borderSide: BorderSide(color: color ?? const Color(0xffE6E6E6)));
+    borderRadius: BorderRadius.all(Radius.circular(circular ?? 15)),
+    borderSide: BorderSide(color: color ?? const Color(0xffE6E6E6)),
+  );
+}
+
+Future<dynamic> customShowDialogPickImageSourceOptions(
+  BuildContext context,
+  PickProfileImageFromCameraCubit cubit,
+) {
+  return showDialog(
+    context: context,
+
+    builder:
+        (context) => AlertDialog(
+          title: Center(child: Text('Select ')),
+
+          actionsOverflowAlignment: OverflowBarAlignment.start,
+
+          content: Row(
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Flexible(
+                child: ImagePickerOptionButton(
+                  title: 'Camera',
+                  onpress: () async {
+                    
+                    GoRouter.of(context).pop();
+
+                    await cubit.pickProfileImageFromCamera();
+                  },
+                ),
+              ),
+              Gap(30),
+              Flexible(
+                child: ImagePickerOptionButton(
+                  title: 'Gallery',
+                  onpress: () {},
+                ),
+              ),
+            ],
+          ),
+        ),
+  );
 }

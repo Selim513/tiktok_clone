@@ -5,7 +5,7 @@ class PickProfileImageFromCameraUseCase {
 
   PickProfileImageFromCameraUseCase(this.pickProfileImageUseCase);
 
-  Future<String> call() {
+  Future<String?> call() {
     return pickProfileImageUseCase.pickProfileImageFromCamera();
   }
 }

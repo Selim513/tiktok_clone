@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
+import 'package:tiktok_clone/core/utils/function_helper.dart';
 import 'package:tiktok_clone/core/widgets/custom_elevated_button.dart';
 import 'package:tiktok_clone/core/widgets/custom_snack_bar.dart';
 import 'package:tiktok_clone/features/profile/presentation/manger/pick_profile_image_from_camera_cubit/pick_profile_image_from_camera_cubit.dart';
@@ -37,61 +38,45 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
           children: [Text(name ?? 'user', style: AppFontstyle.fontStyle20)],
         ),
         Gap(50),
-        BlocConsumer<PickProfileImageFromCameraCubit, PickImageFromCameraState>(
-          listener: (context, state) {
-            if (state is PickImageFromCameraSuccess) {
-              CustomSnackBar.successSnackBar(
-                context,
-                message: state.succMessage,
-              );
-              print('============${state.imageUr}');
-            } else if (state is PickImageFromCameraFailure) {
-              CustomSnackBar.errorSnackBar(context, message: state.errMessage);
-            }
+
+        GestureDetector(
+          onTap: () async {
+            final cubit = BlocProvider.of<PickProfileImageFromCameraCubit>(
+              context,
+              listen: false,
+            );
+            await customShowDialogPickImageSourceOptions(context, cubit);
           },
-          builder: (context, state) {
-            if (state is PickImageFromCameraSuccess) {
-              imageUrl = state.imageUr;
-              return GestureDetector(
-                onTap: () async {
-                  await context
-                      .read<PickProfileImageFromCameraCubit>()
-                      .pickProfileImageFromCamera();
-                },
-                child: CircleAvatar(
-                  backgroundColor: Colors.black,
-                  radius: 80,
-                  backgroundImage:
-                      imageUrl != null
-                          ? NetworkImage(imageUrl!)
-                          : AssetImage('assets/images/profile.png'),
-                ),
-              );
-            } else if (state is PickImageFromCameraLoading) {
-              return CircularProgressIndicator();
-            } else {
-              return GestureDetector(
-                onTap: () async {
-                  await context
-                      .read<PickProfileImageFromCameraCubit>()
-                      .pickProfileImageFromCamera();
-                },
-                child:
-                    (imageUrl != null)
-                        ? CircleAvatar(
-                          radius: 80,
-                          backgroundImage: NetworkImage(imageUrl!),
-                        )
-                        : CircleAvatar(
-                          radius: 80,
-                          backgroundImage: AssetImage(
-                            'assets/images/profile.png',
-                          ),
-                        ),
-              );
-            }
-          },
+          child: BlocListener<
+            PickProfileImageFromCameraCubit,
+            PickImageFromCameraState
+          >(
+            listener: (context, state) {
+              if (state is PickImageFromCameraSuccess) {
+                print("------------------------${state.imageUrl}");
+                CustomSnackBar.successSnackBar(
+                  context,
+                  message: state.succMessage,
+                );
+              } else if (state is PickImageFromCameraFailure) {
+                CustomSnackBar.errorSnackBar(
+                  context,
+                  message: state.errMessage,
+                );
+              }
+            },
+            child: CircleAvatar(
+              backgroundColor: Colors.black,
+              radius: 80,
+              backgroundImage:
+                  imageUrl != null
+                      ? NetworkImage(imageUrl!)
+                      : AssetImage('assets/images/profile.png')
+                          as ImageProvider,
+            ),
+          ),
         ),
+
         Gap(30),
         Text('My Videos', style: AppFontstyle.fontStyle30),
         CustomElevatedButton(

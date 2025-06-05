@@ -4,14 +4,14 @@ import 'package:image_picker/image_picker.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract class PickProfileImageRemoteDataSource {
-  Future<String> pickProfileImageFromCamera();
+  Future<String?> pickProfileImageFromCamera();
   Future pickProfileImageFromImage();
 }
 
 class PickProfileImageRemoteDataSourceImpl
     extends PickProfileImageRemoteDataSource {
   @override
-  Future<String> pickProfileImageFromCamera() async {
+  Future<String?> pickProfileImageFromCamera() async {
     var userId = Supabase.instance.client.auth.currentUser?.id;
     SupabaseStorageClient storage = Supabase.instance.client.storage;
     try {

@@ -10,13 +10,18 @@ class PickProfileImageFromCameraCubit extends Cubit<PickImageFromCameraState> {
   pickProfileImageFromCamera() async {
     try {
       emit(PickImageFromCameraLoading());
-      String imageUrl = await pickProfileImageUseCase.call();
-      emit(
-        PickImageFromCameraSuccess(
-          imageUr: imageUrl,
-          succMessage: 'Image has been updated .',
-        ),
-      );
+
+      String? imageUrl = await pickProfileImageUseCase.call();
+      if (imageUrl == '') {
+        emit(PickImageFromCamerCancle());
+      } else {
+        emit(
+          PickImageFromCameraSuccess(
+            imageUrl: imageUrl,
+            succMessage: 'Image has been  updated .',
+          ),
+        );
+      }
     } catch (e) {
       emit(PickImageFromCameraFailure(errMessage: 'Error ${e.toString()}'));
     }
