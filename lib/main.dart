@@ -14,9 +14,7 @@ void main() async {
   serviceLocatorSetup();
   await Supabase.initialize(
     url: dotenv.env['SUPABASE_URL'] ?? '',
-    //  'https://sgulxgoevpmygnebscao.supabase.co',
     anonKey: dotenv.env['SUPABASE_ANON_KEY'] ?? '',
-    // 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNndWx4Z29ldnBteWduZWJzY2FvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0NzE1MzQ2OSwiZXhwIjoyMDYyNzI5NDY5fQ.GvgBH6K84Yaz86_TcRkGm1UFTYybADkS_lF5vPrLvm0',
   );
   Bloc.observer = SimpleBlocObserver();
   runApp(const MainApp());
