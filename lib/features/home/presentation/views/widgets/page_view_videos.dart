@@ -13,7 +13,7 @@ class PageViewVideos extends StatelessWidget {
       itemCount: videos.length,
 
       itemBuilder: (context, index) {
-        return VideoScreen(videoUrl: videos[index]);
+        return VideoPreview(videoUrl: videos[index]);
       },
     );
   }

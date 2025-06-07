@@ -15,10 +15,11 @@ class UploadVideoToSupabaseRemoteDataSourceImpl
   Future<String> uploadVideoToSupaBase({required File videoUrl}) async {
     final SupabaseStorageClient supabaseStorage =
         Supabase.instance.client.storage;
+    final userId = Supabase.instance.client.auth.currentUser?.id;
     final fileName = generateUniqueFileName(videoUrl.path);
     await supabaseStorage
         .from('videos')
-        .upload('user_videos/$fileName', videoUrl);
+        .upload('user_videos/$userId/$fileName', videoUrl);
     final publicUrl = supabaseStorage.from('videos').getPublicUrl(fileName);
     return publicUrl;
   }

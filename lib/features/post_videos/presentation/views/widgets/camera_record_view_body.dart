@@ -89,7 +89,7 @@ class CameraRecordViewBody extends StatelessWidget {
               // );
               GoRouter.of(
                 context,
-              ).goNamed(AppRouter.kCameraPreviw, extra: state.videoPath);
+              ).goNamed(AppRouter.kPickedVideoPreviw, extra: state.videoPath);
             }
           },
         ),

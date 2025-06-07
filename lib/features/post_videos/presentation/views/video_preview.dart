@@ -8,14 +8,14 @@ import 'package:tiktok_clone/features/post_videos/domain/use_cases/upload_videos
 import 'package:tiktok_clone/features/post_videos/presentation/manger/upload_videos_cubit/upload_from_camera/upload_video_cubit.dart';
 import 'package:tiktok_clone/features/post_videos/presentation/views/widgets/video_preview_body.dart';
 
-class VideoPreview extends StatefulWidget {
-  const VideoPreview({super.key, required this.videoPath});
+class PickedVideoPreview extends StatefulWidget {
+  const PickedVideoPreview({super.key, required this.videoPath});
   final String videoPath;
   @override
-  State<VideoPreview> createState() => _VideoPreviewState();
+  State<PickedVideoPreview> createState() => _PickedVideoPreviewState();
 }
 
-class _VideoPreviewState extends State<VideoPreview> {
+class _PickedVideoPreviewState extends State<PickedVideoPreview> {
   late BetterPlayerController betterPlayerController;
   @override
   void initState() {

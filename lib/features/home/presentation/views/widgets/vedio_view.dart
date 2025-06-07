@@ -2,16 +2,16 @@ import 'package:better_player_plus/better_player_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/features/home/presentation/views/widgets/pause_and_start_icon.dart';
 
-class VideoScreen extends StatefulWidget {
+class VideoPreview extends StatefulWidget {
   final String videoUrl;
 
-  const VideoScreen({super.key, required this.videoUrl});
+  const VideoPreview({super.key, required this.videoUrl});
 
   @override
-  State<VideoScreen> createState() => _VideoScreenState();
+  State<VideoPreview> createState() => _VideoPreviewState();
 }
 
-class _VideoScreenState extends State<VideoScreen> {
+class _VideoPreviewState extends State<VideoPreview> {
   late BetterPlayerController _controller;
 
   @override

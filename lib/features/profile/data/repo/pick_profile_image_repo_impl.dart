@@ -1,4 +1,4 @@
-import 'package:tiktok_clone/features/profile/data/data_soruce/pick_profile_image_remote_data_source.dart';
+import 'package:tiktok_clone/features/profile/data/data_soruce/pick_profile_image_remote_data_source/pick_profile_image_remote_data_source.dart';
 import 'package:tiktok_clone/features/profile/domain/repo/upload_profile_image_repo.dart';
 
 class PickProfileImageRepoImpl extends PickProileImageRepo {

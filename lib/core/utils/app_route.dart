@@ -8,16 +8,18 @@ import 'package:tiktok_clone/features/auth/presentation/views/auth_view.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/login_view.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/sign_up_with_email.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/sign_up_with_google.dart';
+import 'package:tiktok_clone/features/home/domain/use_cases/fetch_videos_use_case.dart';
+import 'package:tiktok_clone/features/home/presentation/manger/fetch_videos_cubit/fetch_videos_cubit.dart';
+import 'package:tiktok_clone/features/home/presentation/views/home_view.dart';
+import 'package:tiktok_clone/features/home/presentation/views/widgets/vedio_view.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/dispose_camera_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/init_camera_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/start_record_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/stop_record_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/presentation/manger/camera_cubit/camera_cubit.dart';
-import 'package:tiktok_clone/features/post_videos/presentation/views/widgets/camera_record_view_body.dart';
 import 'package:tiktok_clone/features/post_videos/presentation/views/video_preview.dart';
-import 'package:tiktok_clone/features/home/domain/use_cases/fetch_videos_use_case.dart';
-import 'package:tiktok_clone/features/home/presentation/manger/fetch_videos_cubit/fetch_videos_cubit.dart';
-import 'package:tiktok_clone/features/home/presentation/views/home_view.dart';
+import 'package:tiktok_clone/features/post_videos/presentation/views/widgets/camera_record_view_body.dart';
+import 'package:tiktok_clone/features/profile/presentation/views/profile_view.dart';
 import 'package:tiktok_clone/features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
@@ -28,7 +30,9 @@ abstract class AppRouter {
   static const kHome = '/home';
   static const kCameraRecord = '/cameraRecord';
 
-  static const kCameraPreviw = '/cameraPreview';
+  static const kPickedVideoPreviw = '/pickedVideoPreview';
+  static const kVideoPreviw = '/videoPreview';
+  static const kProfileView = '/profileView';
 
   static final router = GoRouter(
     routes: [
@@ -74,6 +78,13 @@ abstract class AppRouter {
             ),
       ),
       GoRoute(
+        path: kProfileView,
+        name: kProfileView,
+        builder: (context, state) {
+          return ProfileView();
+        },
+      ),
+      GoRoute(
         path: kCameraRecord,
         name: kCameraRecord,
         builder:
@@ -89,11 +100,19 @@ abstract class AppRouter {
             ),
       ),
       GoRoute(
-        path: kCameraPreviw,
-        name: kCameraPreviw,
+        path: kPickedVideoPreviw,
+        name: kPickedVideoPreviw,
         builder: (context, state) {
           final videoPath = state.extra as String;
-          return VideoPreview(videoPath: videoPath);
+          return PickedVideoPreview(videoPath: videoPath);
+        },
+      ),
+      GoRoute(
+        path: kVideoPreviw,
+        name: kVideoPreviw,
+        builder: (context, state) {
+          final videoUrl = state.extra as String;
+          return VideoPreview(videoUrl: videoUrl);
         },
       ),
     ],
