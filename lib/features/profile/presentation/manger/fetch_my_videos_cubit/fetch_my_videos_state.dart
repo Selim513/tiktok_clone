@@ -8,6 +8,10 @@ class FetchMyVideosSuccess extends FetchMyVideosState {
   FetchMyVideosSuccess({required this.videosUrl});
 }
 
-class FetchMyVideosFailure extends FetchMyVideosState {}
+class FetchMyVideosFailure extends FetchMyVideosState {
+  final String errMessage;
+
+  FetchMyVideosFailure({required this.errMessage});
+}
 
 class FetchMyVideosLoading extends FetchMyVideosState {}

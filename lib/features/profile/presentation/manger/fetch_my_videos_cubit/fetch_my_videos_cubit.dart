@@ -12,7 +12,7 @@ class FetchMyVideosCubit extends Cubit<FetchMyVideosState> {
       var videoUrl = await fetchMyVideosUseCase.call();
       emit(FetchMyVideosSuccess(videosUrl: videoUrl));
     } catch (e) {
-      emit(FetchMyVideosFailure());
+      emit(FetchMyVideosFailure(errMessage: e.toString()));
       print('Cubit----FetchMy Videos Error--------${e.toString()}');
     }
   }

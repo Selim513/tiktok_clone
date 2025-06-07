@@ -5,7 +5,7 @@ class FetchMyVideosUseCase {
 
   FetchMyVideosUseCase(this.fetchMyVideosRepo);
 
-  Future<List<String>> call() {
-    return fetchMyVideosRepo.myVideos();
+  Future<List<String>> call() async {
+    return await fetchMyVideosRepo.myVideos();
   }
 }

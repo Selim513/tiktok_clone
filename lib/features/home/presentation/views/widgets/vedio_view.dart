@@ -4,8 +4,9 @@ import 'package:tiktok_clone/features/home/presentation/views/widgets/pause_and_
 
 class VideoPreview extends StatefulWidget {
   final String videoUrl;
+  final bool autoPlay;
 
-  const VideoPreview({super.key, required this.videoUrl});
+  const VideoPreview({super.key, required this.videoUrl,  this.autoPlay=true});
 
   @override
   State<VideoPreview> createState() => _VideoPreviewState();
@@ -31,7 +32,7 @@ class _VideoPreviewState extends State<VideoPreview> {
           enablePlayPause: true,
         ),
 
-        autoPlay: true,
+        autoPlay:widget.autoPlay ,
         looping: true,
         aspectRatio: 9 / 18,
 
