@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 
-class CustomVideosToggleButtons extends StatelessWidget {
-  const CustomVideosToggleButtons({super.key, required this.title, this.onTap});
+class CustomProfileVideosToggleButtons extends StatelessWidget {
+  const CustomProfileVideosToggleButtons({
+    super.key,
+    required this.title,
+    this.onTap,
+  });
   final String title;
   final void Function()? onTap;
   @override

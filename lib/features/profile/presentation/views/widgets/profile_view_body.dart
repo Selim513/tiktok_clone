@@ -40,9 +40,12 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
           Gap(20),
           Row(
             children: [
-              CustomVideosToggleButtons(title: 'My Videos', onTap: () {}),
+              CustomProfileVideosToggleButtons(
+                title: 'My Videos',
+                onTap: () {},
+              ),
               Gap(10),
-              CustomVideosToggleButtons(title: 'Saved', onTap: () {}),
+              CustomProfileVideosToggleButtons(title: 'Saved', onTap: () {}),
             ],
           ),
         ],
