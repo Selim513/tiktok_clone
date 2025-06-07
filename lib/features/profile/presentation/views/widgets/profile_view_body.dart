@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
+import 'package:tiktok_clone/features/profile/presentation/views/widgets/custom_profile_videos_toggle_button.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/widgets/peofile_view_hear.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/widgets/profile_view_image.dart';
 
@@ -25,16 +26,27 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ProfileViewHeader(name: name),
-        Gap(50),
+    return Padding(
+      padding: EdgeInsetsGeometry.symmetric(horizontal: 10),
+      child: Column(
+        children: [
+          ProfileViewHeader(),
+          Gap(50),
 
-        ProfileViewImage(imageUrl: imageUrl),
+          ProfileViewImage(imageUrl: imageUrl),
 
-        Gap(30),
-        Text('My Videos', style: AppFontstyle.fontStyle30),
-      ],
+          Gap(30),
+          Text(name ?? 'User', style: AppFontstyle.fontStyle30),
+          Gap(20),
+          Row(
+            children: [
+              CustomVideosToggleButtons(title: 'My Videos', onTap: () {}),
+              Gap(10),
+              CustomVideosToggleButtons(title: 'Saved', onTap: () {}),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
