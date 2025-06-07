@@ -4,7 +4,6 @@ import 'package:tiktok_clone/features/home/presentation/manger/fetch_videos_cubi
 import 'package:tiktok_clone/features/home/presentation/manger/fetch_videos_cubit/fetch_videos_state.dart';
 import 'package:tiktok_clone/features/home/presentation/views/widgets/page_view_videos.dart';
 
-
 class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
 

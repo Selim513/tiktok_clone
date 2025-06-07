@@ -36,7 +36,11 @@ class MainApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp.router(
-        theme: ThemeData.dark().copyWith(),
+        theme: ThemeData.dark().copyWith(
+          progressIndicatorTheme: ProgressIndicatorThemeData(
+            color: Colors.white,
+          ),
+        ),
         debugShowCheckedModeBanner: false,
         // home: HomeViewBody(),
         routerConfig: AppRouter.router,
