@@ -5,7 +5,7 @@ class FetchMyVideosUseCase {
 
   FetchMyVideosUseCase(this.fetchMyVideosRepo);
 
-  Future<List<String>> fetchMyVideosUseCase() {
+  Future<List<String>> call() {
     return fetchMyVideosRepo.myVideos();
   }
 }
