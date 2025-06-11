@@ -6,7 +6,7 @@ class VideoPreview extends StatefulWidget {
   final String videoUrl;
   final bool autoPlay;
 
-  const VideoPreview({super.key, required this.videoUrl,  this.autoPlay=true});
+  const VideoPreview({super.key, required this.videoUrl, this.autoPlay = true});
 
   @override
   State<VideoPreview> createState() => _VideoPreviewState();
@@ -32,7 +32,7 @@ class _VideoPreviewState extends State<VideoPreview> {
           enablePlayPause: true,
         ),
 
-        autoPlay:widget.autoPlay ,
+        autoPlay: widget.autoPlay,
         looping: true,
         aspectRatio: 9 / 18,
 

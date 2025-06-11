@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 import 'package:tiktok_clone/features/profile/presentation/manger/fetch_my_videos_cubit/fetch_my_videos_cubit.dart';
 import 'package:tiktok_clone/features/profile/presentation/manger/fetch_my_videos_cubit/fetch_my_videos_state.dart';
+import 'package:tiktok_clone/features/profile/presentation/views/widgets/custom_no_videos_message.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/widgets/custom_profile_videos_toggle_button.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/widgets/my_videos_grid_view.dart';
 
@@ -28,7 +29,6 @@ class _MyVideosAndSavedVideosSectionState
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -65,6 +65,9 @@ class _MyVideosAndSavedVideosSectionState
                 builder: (context, state) {
                   if (state is FetchMyVideosSuccess) {
                     List<String> videos = state.videosUrl;
+                    if (videos.isEmpty) {
+                      return CustomNoVideosMessage();
+                    }
                     return MyVideosGridView(videos: videos);
                   } else if (state is FetchMyVideosLoading) {
                     return Center(child: CircularProgressIndicator());
