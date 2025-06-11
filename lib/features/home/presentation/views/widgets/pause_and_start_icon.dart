@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:better_player_plus/better_player_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 
 class TikTokStyleControls extends StatefulWidget {
   final BetterPlayerController controller;
@@ -19,7 +20,6 @@ class TikTokStyleControlsState extends State<TikTokStyleControls> {
   @override
   void initState() {
     super.initState();
-    // خلي الـ icon تختفي بعد 3 ثواني من بداية الفيديو
     _startHideTimer();
   }
 
@@ -64,10 +64,15 @@ class TikTokStyleControlsState extends State<TikTokStyleControls> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      behavior: HitTestBehavior.opaque, // مهم جدًا علشان يلتقط التاب
+      behavior: HitTestBehavior.opaque,
       onTap: _togglePlayPause,
       child: Stack(
         children: [
+          Positioned(
+            left: 10,
+            top: 10,
+            child: Text('Video', style: AppFontstyle.fontStyle30),
+          ),
           Center(
             child: AnimatedOpacity(
               opacity: _visible ? 1.0 : 0.0,
