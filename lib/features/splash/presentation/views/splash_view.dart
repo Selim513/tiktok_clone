@@ -19,7 +19,7 @@ class _SplashViewState extends State<SplashView> {
       if (user == null) {
         GoRouter.of(context).goNamed(AppRouter.kAuth);
       } else {
-        GoRouter.of(context).goNamed(AppRouter.kHome);
+        GoRouter.of(context).goNamed(AppRouter.kMainTab);
       }
     });
   }

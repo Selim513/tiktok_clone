@@ -18,14 +18,10 @@ class GoogleAuthCubitViewBody extends StatelessWidget {
       listener: (context, state) {
         if (state is GoogleAuthSuccess ||
             Supabase.instance.client.accessToken != null) {
-          GoRouter.of(context).goNamed(AppRouter.kHome);
+          GoRouter.of(context).goNamed(AppRouter.kMainTab);
         } else if (state is GoogleAuthFailure) {
           print('==================${state.error}');
-          CustomSnackBar.errorSnackBar(
-            context,
-            message: state.error,
-             
-          );
+          CustomSnackBar.errorSnackBar(context, message: state.error);
         } else if (state is GoogleAuthCancelled) {
           GoRouter.of(context).pop();
         } else {

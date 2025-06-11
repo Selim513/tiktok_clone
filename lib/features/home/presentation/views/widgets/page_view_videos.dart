@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:tiktok_clone/features/home/presentation/views/widgets/vedio_view.dart';
+import 'package:tiktok_clone/features/home/presentation/views/widgets/video_preview.dart';
 
 class PageViewVideos extends StatelessWidget {
   const PageViewVideos({super.key, required this.videos});

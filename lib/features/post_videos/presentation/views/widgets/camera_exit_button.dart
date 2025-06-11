@@ -14,7 +14,7 @@ class CameraExitButton extends StatelessWidget {
         alignment: Alignment.topLeft,
         child: GestureDetector(
           onTap: () {
-            GoRouter.of(context).goNamed(AppRouter.kHome);
+            GoRouter.of(context).goNamed(AppRouter.kMainTab);
           },
           child: Icon(FontAwesomeIcons.x),
         ),

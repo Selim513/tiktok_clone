@@ -10,8 +10,8 @@ import 'package:tiktok_clone/features/auth/presentation/views/sign_up_with_email
 import 'package:tiktok_clone/features/auth/presentation/views/sign_up_with_google.dart';
 import 'package:tiktok_clone/features/home/domain/use_cases/fetch_videos_use_case.dart';
 import 'package:tiktok_clone/features/home/presentation/manger/fetch_videos_cubit/fetch_videos_cubit.dart';
-import 'package:tiktok_clone/features/home/presentation/views/home_view.dart';
-import 'package:tiktok_clone/features/home/presentation/views/widgets/vedio_view.dart';
+import 'package:tiktok_clone/features/home/presentation/views/widgets/video_preview.dart';
+import 'package:tiktok_clone/features/main/presentation/views/home_view.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/dispose_camera_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/init_camera_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/start_record_use_case.dart';
@@ -27,7 +27,7 @@ abstract class AppRouter {
   static const kSignUpWithEmail = '/signUpWithEmail';
   static const kSignUpWithGoogle = '/signUpWithGoogle';
   static const kLoginView = '/loginView';
-  static const kHome = '/home';
+  static const kMainTab = '/mainTab';
   static const kCameraRecord = '/cameraRecord';
 
   static const kPickedVideoPreviw = '/pickedVideoPreview';
@@ -66,15 +66,15 @@ abstract class AppRouter {
             ),
       ),
       GoRoute(
-        path: kHome,
-        name: kHome,
+        path: kMainTab,
+        name: kMainTab,
         builder:
             (context, state) => BlocProvider(
               create:
                   (context) =>
                       FetchVideosCubit(getIt.get<FetchVideosUsesCase>())
                         ..fetchVideos(),
-              child: HomeView(),
+              child: MainTabView(),
             ),
       ),
       GoRoute(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
-import 'package:tiktok_clone/features/home/presentation/views/widgets/vedio_view.dart';
+import 'package:tiktok_clone/features/home/presentation/views/widgets/video_preview.dart';
 
 class MyVideosGridView extends StatelessWidget {
   const MyVideosGridView({super.key, required this.videos});
