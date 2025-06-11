@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 import 'package:tiktok_clone/core/observer/simple_bloc_observer.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/core/utils/service_locator.dart';
@@ -37,12 +38,16 @@ class MainApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         theme: ThemeData.dark().copyWith(
+          appBarTheme: AppBarTheme(
+            centerTitle: true,
+            titleTextStyle: AppFontstyle.fontStyle30,
+          ),
           progressIndicatorTheme: ProgressIndicatorThemeData(
             color: Colors.white,
           ),
         ),
         debugShowCheckedModeBanner: false,
-        // home: HomeViewBody(),
+        // home: SettingsView(),
         routerConfig: AppRouter.router,
       ),
     );

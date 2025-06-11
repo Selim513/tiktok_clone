@@ -20,6 +20,7 @@ import 'package:tiktok_clone/features/post_videos/presentation/manger/camera_cub
 import 'package:tiktok_clone/features/post_videos/presentation/views/video_preview.dart';
 import 'package:tiktok_clone/features/post_videos/presentation/views/widgets/camera_record_view_body.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/profile_view.dart';
+import 'package:tiktok_clone/features/profile/presentation/views/settings_view.dart';
 import 'package:tiktok_clone/features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
@@ -33,6 +34,7 @@ abstract class AppRouter {
   static const kPickedVideoPreviw = '/pickedVideoPreview';
   static const kVideoPreviw = '/videoPreview';
   static const kProfileView = '/profileView';
+  static const kSettingsView = '/settings';
 
   static final router = GoRouter(
     routes: [
@@ -82,6 +84,13 @@ abstract class AppRouter {
         name: kProfileView,
         builder: (context, state) {
           return ProfileView();
+        },
+      ),
+      GoRoute(
+        path: kSettingsView,
+        name: kSettingsView,
+        builder: (context, state) {
+          return SettingsView();
         },
       ),
       GoRoute(
