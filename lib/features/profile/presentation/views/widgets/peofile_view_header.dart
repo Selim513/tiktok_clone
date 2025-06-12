@@ -22,14 +22,6 @@ class ProfileViewHeader extends StatelessWidget {
           },
           icon: Icon(Icons.settings),
         ),
-        // IconButton(
-        //   onPressed: () async {
-        //     await Supabase.instance.client.auth.signOut().then((value) {
-        //       GoRouter.of(context).goNamed(AppRouter.kAuth);
-        //     });
-        //   },
-        //   icon: Icon(Icons.logout, color: Colors.red),
-        // ),
       ],
     );
   }

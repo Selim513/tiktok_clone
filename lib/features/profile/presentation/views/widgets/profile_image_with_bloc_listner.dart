@@ -4,11 +4,18 @@ import 'package:tiktok_clone/core/widgets/custom_snack_bar.dart';
 import 'package:tiktok_clone/features/profile/presentation/manger/pick_profile_image_from_camera_cubit/pick_profile_image_from_camera_cubit.dart';
 import 'package:tiktok_clone/features/profile/presentation/manger/pick_profile_image_from_camera_cubit/pick_profile_image_from_camera_state.dart';
 
-class ProfileImageWithBlocListner extends StatelessWidget {
+class ProfileImageWithBlocListner extends StatefulWidget {
   const ProfileImageWithBlocListner({super.key, required this.imageUrl});
 
   final String? imageUrl;
 
+  @override
+  State<ProfileImageWithBlocListner> createState() =>
+      _ProfileImageWithBlocListnerState();
+}
+
+class _ProfileImageWithBlocListnerState
+    extends State<ProfileImageWithBlocListner> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<PickProfileImageCubit, PickProfileImageState>(
@@ -24,8 +31,8 @@ class ProfileImageWithBlocListner extends StatelessWidget {
         backgroundColor: Colors.black,
         radius: 80,
         backgroundImage:
-            imageUrl != null
-                ? NetworkImage(imageUrl!)
+            widget.imageUrl != null
+                ? NetworkImage(widget.imageUrl!)
                 : AssetImage('assets/images/profile.png') as ImageProvider,
       ),
     );

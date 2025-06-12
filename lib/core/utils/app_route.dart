@@ -18,7 +18,7 @@ import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_ca
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/start_record_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/stop_record_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/presentation/manger/camera_cubit/camera_cubit.dart';
-import 'package:tiktok_clone/features/post_videos/presentation/views/video_preview.dart';
+import 'package:tiktok_clone/features/post_videos/presentation/views/picked_video_preview.dart';
 import 'package:tiktok_clone/features/post_videos/presentation/views/widgets/camera_record_view_body.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/profile_view.dart';
 import 'package:tiktok_clone/features/settings/presentation/views/name_edit_view.dart';

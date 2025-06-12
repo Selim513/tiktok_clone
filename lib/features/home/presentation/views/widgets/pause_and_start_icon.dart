@@ -19,6 +19,7 @@ class TikTokStyleControls extends StatefulWidget {
 }
 
 class TikTokStyleControlsState extends State<TikTokStyleControls> {
+  bool isSaved = false;
   bool _visible = true;
   Timer? _hideTimer;
   @override
@@ -81,7 +82,22 @@ class TikTokStyleControlsState extends State<TikTokStyleControls> {
                   child: Icon(FontAwesomeIcons.x),
                 ),
               )
-              : SizedBox(child: Text('eror')),
+              : SizedBox(),
+          Positioned(
+            bottom: 40,
+            right: 10,
+            child: GestureDetector(
+              onTap: () {
+                isSaved = !isSaved;
+                setState(() {});
+              },
+              child: Icon(
+                Icons.bookmark_outlined,
+                size: 40,
+                color: isSaved ? Colors.amber : Colors.white,
+              ),
+            ),
+          ),
           Center(
             child: AnimatedOpacity(
               opacity: _visible ? 1.0 : 0.0,

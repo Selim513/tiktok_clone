@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 
 class CustomNoVideosMessage extends StatelessWidget {
@@ -7,10 +7,19 @@ class CustomNoVideosMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(
-        'You haven’t uploaded any videos yet. Start by uploading your first one!',
-        textAlign: TextAlign.center,
-        style: AppFontstyle.fontStyle20,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.signal_wifi_statusbar_connected_no_internet_4_outlined,
+            size: 50,
+          ),
+          Text(
+            'You haven’t uploaded any videos yet. Start by uploading your first one!',
+            textAlign: TextAlign.center,
+            style: AppFontstyle.fontStyle20,
+          ),
+        ],
       ),
     );
   }
