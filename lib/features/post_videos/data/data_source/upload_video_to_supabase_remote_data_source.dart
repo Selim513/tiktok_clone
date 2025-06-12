@@ -28,6 +28,7 @@ class UploadVideoToSupabaseRemoteDataSourceImpl
   Future<String> uploadVideoToSubaBaseFromGallery() async {
     final SupabaseStorageClient supabaseStorage =
         Supabase.instance.client.storage;
+    final userId = Supabase.instance.client.auth.currentUser?.id;
     final pickVideo = await ImagePicker().pickVideo(
       source: ImageSource.gallery,
     );
@@ -38,7 +39,7 @@ class UploadVideoToSupabaseRemoteDataSourceImpl
     final File videoFile = File(pickVideo.path);
     await supabaseStorage
         .from('videos')
-        .upload('user_videos/$fileName', videoFile);
+        .upload('user_videos/$userId/$fileName', videoFile);
     final publicUrl = supabaseStorage.from('videos').getPublicUrl(fileName);
     return publicUrl;
   }

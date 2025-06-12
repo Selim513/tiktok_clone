@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tiktok_clone/constant.dart';
 import 'package:tiktok_clone/core/utils/service_locator.dart';
 import 'package:tiktok_clone/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:tiktok_clone/features/auth/presentation/manger/login_cubit/login_cubit.dart';
@@ -11,7 +12,7 @@ import 'package:tiktok_clone/features/auth/presentation/views/sign_up_with_googl
 import 'package:tiktok_clone/features/home/domain/use_cases/fetch_videos_use_case.dart';
 import 'package:tiktok_clone/features/home/presentation/manger/fetch_videos_cubit/fetch_videos_cubit.dart';
 import 'package:tiktok_clone/features/home/presentation/views/widgets/video_preview.dart';
-import 'package:tiktok_clone/features/main/presentation/views/home_view.dart';
+import 'package:tiktok_clone/features/main/presentation/views/main_tab_view.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/dispose_camera_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/init_camera_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/start_record_use_case.dart';
@@ -131,8 +132,11 @@ abstract class AppRouter {
         path: kVideoPreviw,
         name: kVideoPreviw,
         builder: (context, state) {
-          final videoUrl = state.extra as String;
-          return VideoPreview(videoUrl: videoUrl);
+          final data = state.extra as Map<String, dynamic>;
+          final videoUrl = data[Constant.videoPreviewUrl] as String;
+          final isPreview = data[Constant.isPreview] as bool;
+
+          return VideoPreview(videoUrl: videoUrl, isPreview: isPreview);
         },
       ),
     ],

@@ -3,11 +3,16 @@ import 'dart:async';
 import 'package:better_player_plus/better_player_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class TikTokStyleControls extends StatefulWidget {
   final BetterPlayerController controller;
-
-  const TikTokStyleControls(this.controller, {super.key});
+  final bool isPreview;
+  const TikTokStyleControls(
+    this.controller, {
+    super.key,
+    this.isPreview = false,
+  });
 
   @override
   State<TikTokStyleControls> createState() => TikTokStyleControlsState();
@@ -67,6 +72,16 @@ class TikTokStyleControlsState extends State<TikTokStyleControls> {
       onTap: _togglePlayPause,
       child: Stack(
         children: [
+          widget.isPreview
+              ? Positioned(
+                top: 60,
+                left: 10,
+                child: GestureDetector(
+                  onTap: () => GoRouter.of(context).pop(),
+                  child: Icon(FontAwesomeIcons.x),
+                ),
+              )
+              : SizedBox(child: Text('eror')),
           Center(
             child: AnimatedOpacity(
               opacity: _visible ? 1.0 : 0.0,

@@ -14,7 +14,6 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^9.1.1
   flutter_dotenv: ^5.2.1
-    
   font_awesome_flutter: ^10.8.0
   gap: ^3.0.1
   get_it: ^8.0.3
@@ -27,17 +26,16 @@ dependencies:
   path_provider: ^2.1.5
   supabase_flutter: ^2.9.0
   uuid: ^4.5.1
+  video_thumbnail: ^0.5.6
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.14.3
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.14.3
 flutter_launcher_icons:
   android: true
   image_path: "assets/icon_lanuch/app_icon.png"
-
-
 
 flutter:
   uses-material-design: true
