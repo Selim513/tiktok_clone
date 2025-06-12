@@ -35,9 +35,7 @@ class _AccountSettingContainerState extends State<AccountSettingContainer> {
           icon: Icons.person,
           onTap: () {
             GoRouter.of(context).pushNamed(AppRouter.kNameEdit);
-            // Supabase.instance.client.auth.updateUser(
-            //   UserAttributes(data: {'Name': 'Selim'}),
-            // );
+          
           },
         ),
         SettingsTile(
