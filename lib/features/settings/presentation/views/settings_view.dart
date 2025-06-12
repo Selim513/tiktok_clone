@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tiktok_clone/features/profile/presentation/views/widgets/custom_account_setting_container.dart';
-import 'package:tiktok_clone/features/profile/presentation/views/widgets/custom_settings_container.dart';
+import 'package:gap/gap.dart';
+import 'package:tiktok_clone/features/settings/presentation/views/widgets/custom_account_setting_container.dart';
+import 'package:tiktok_clone/features/settings/presentation/views/widgets/custom_settings_container.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({super.key});
@@ -21,6 +22,7 @@ class SettingsView extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            Gap(10),
             CustomSettingsContainer(widget: AccountSettingContainer()),
           ],
         ),

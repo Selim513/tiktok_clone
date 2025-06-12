@@ -3,7 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/widgets/my_videos_and_saved_videos_section.dart';
-import 'package:tiktok_clone/features/profile/presentation/views/widgets/peofile_view_hear.dart';
+import 'package:tiktok_clone/features/profile/presentation/views/widgets/peofile_view_header.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/widgets/profile_view_image.dart';
 
 class ProfileViewBody extends StatefulWidget {
