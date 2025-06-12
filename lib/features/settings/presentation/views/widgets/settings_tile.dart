@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class SettingsTile extends StatelessWidget {
@@ -23,7 +22,11 @@ class SettingsTile extends StatelessWidget {
           Icon(icon),
           Text(title),
           Spacer(),
-          Text(subTitle ?? '', style: TextStyle(color: Colors.grey)),
+          Text(
+            subTitle ?? '',
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(color: Colors.grey),
+          ),
           Icon(Icons.arrow_forward_ios),
         ],
       ),

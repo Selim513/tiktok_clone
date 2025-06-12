@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
+import 'package:tiktok_clone/core/utils/function_helper.dart';
 import 'package:tiktok_clone/features/settings/presentation/views/widgets/settings_tile.dart';
 
 class AccountSettingContainer extends StatefulWidget {
@@ -35,13 +36,12 @@ class _AccountSettingContainerState extends State<AccountSettingContainer> {
           icon: Icons.person,
           onTap: () {
             GoRouter.of(context).pushNamed(AppRouter.kNameEdit);
-          
           },
         ),
         SettingsTile(
           icon: Icons.email_outlined,
           title: 'Email',
-          subTitle: email ?? 'exapmle@gmail.com',
+          subTitle: obfuscateEmail(email ?? 'example@gmail.com'),
           onTap: () {
             //   Supabase.instance.client.auth.updateUser(
             //   UserAttributes(email: 'New email'),

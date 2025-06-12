@@ -11,6 +11,23 @@ OutlineInputBorder customOutLineBorders({Color? color, double? circular}) {
   );
 }
 
+String obfuscateEmail(String email) {
+  final parts = email.split('@');
+  if (parts.length != 2) return email;
+  final name = parts[0];
+  final domain = parts[1];
+
+  if (name.length <= 2) {
+    return '${name[0]}***@$domain';
+  }
+
+  final first = name[0];
+  final last = name[name.length - 1];
+  final stars = '*****';
+
+  return '$first$stars$last@$domain';
+}
+
 Future<dynamic> customShowDialogPickImageSourceOptions(
   BuildContext context,
   PickProfileImageCubit cubit,
