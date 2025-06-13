@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/core/widgets/image_picker_option_button.dart';
 import 'package:tiktok_clone/features/profile/presentation/manger/pick_profile_image_from_camera_cubit/pick_profile_image_from_camera_cubit.dart';
 
@@ -61,6 +62,48 @@ Future<dynamic> customShowDialogPickImageSourceOptions(
                   onpress: () async {
                     GoRouter.of(context).pop();
                     await cubit.pickProfileImageFromGallery();
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+  );
+}
+
+Future<dynamic> customShowDialogResetPasswordRequest(BuildContext context) {
+  return showDialog(
+    context: context,
+
+    builder:
+        (context) => AlertDialog(
+          title: Center(
+            child: Text('Are you sure you want to change your password?'),
+          ),
+
+          actionsOverflowAlignment: OverflowBarAlignment.start,
+
+          content: Row(
+            children: [
+              Flexible(
+                child: ImagePickerOptionButton(
+                  title: 'Reset now',
+                  onpress: () async {
+                    var user = Supabase.instance.client.auth;
+                    await user.resetPasswordForEmail(
+                      user.currentUser!.email!,
+                      redirectTo: "com.example.tiktok_clone://reset-password",
+                    );
+                    GoRouter.of(context).pop();
+                  },
+                ),
+              ),
+              Gap(30),
+              Flexible(
+                child: ImagePickerOptionButton(
+                  title: 'Cancle',
+                  onpress: () async {
+                    GoRouter.of(context).pop();
                   },
                 ),
               ),

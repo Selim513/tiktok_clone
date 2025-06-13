@@ -17,8 +17,8 @@ class SettingsView extends StatelessWidget {
         child: ListView(
           children: [
             CustomSettingsContainer(
-              widget: AccountSettingContainer(),
               title: 'Account',
+              widget: AccountSettingContainer(),
             ),
             Gap(20),
             CustomSettingsContainer(

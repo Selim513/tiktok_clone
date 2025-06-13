@@ -22,7 +22,6 @@ class _AccountSettingContainerState extends State<AccountSettingContainer> {
     final user = Supabase.instance.client.auth.currentUser;
     name = user?.userMetadata?['Name'];
     email = user?.email;
-    // email = user?.userMetadata?['email'] as String?;
   }
 
   @override
@@ -52,9 +51,7 @@ class _AccountSettingContainerState extends State<AccountSettingContainer> {
           icon: Icons.password,
           title: 'Password',
           onTap: () {
-            // Supabase.instance.client.auth.updateUser(
-            //   UserAttributes(password: 'NewPassword'),
-            // );
+            customShowDialogResetPasswordRequest(context);
           },
         ),
       ],

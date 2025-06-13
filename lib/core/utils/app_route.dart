@@ -22,6 +22,7 @@ import 'package:tiktok_clone/features/post_videos/presentation/views/picked_vide
 import 'package:tiktok_clone/features/post_videos/presentation/views/widgets/camera_record_view_body.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/profile_view.dart';
 import 'package:tiktok_clone/features/settings/presentation/views/name_edit_view.dart';
+import 'package:tiktok_clone/features/settings/presentation/views/password_reset_view.dart';
 import 'package:tiktok_clone/features/settings/presentation/views/settings_view.dart';
 import 'package:tiktok_clone/features/splash/presentation/views/splash_view.dart';
 
@@ -38,6 +39,7 @@ abstract class AppRouter {
   static const kProfileView = '/profileView';
   static const kSettingsView = '/settings';
   static const kNameEdit = '/nameEdit';
+  static const kPasswordReset = '/reset-password';
 
   static final router = GoRouter(
     routes: [
@@ -102,6 +104,11 @@ abstract class AppRouter {
             builder: (context, state) {
               return NameEditView();
             },
+          ),
+          GoRoute(
+            path: kPasswordReset,
+            name: kPasswordReset,
+            builder: (context, state) => PasswordResetView(),
           ),
         ],
       ),

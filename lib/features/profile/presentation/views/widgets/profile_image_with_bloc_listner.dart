@@ -15,7 +15,6 @@ class ProfileImageWithBlocListner extends StatelessWidget {
     return BlocListener<PickProfileImageCubit, PickProfileImageState>(
       listener: (context, state) {
         if (state is PickProfileImageSuccess) {
-          print("------------------------${state.imageUrl}");
           CustomSnackBar.successSnackBar(context, message: state.succMessage);
         } else if (state is PickProfileImageFailure) {
           CustomSnackBar.errorSnackBar(context, message: state.errMessage);
@@ -25,7 +24,7 @@ class ProfileImageWithBlocListner extends StatelessWidget {
         radius: 80,
         backgroundColor: Colors.grey[200],
         child: ClipOval(
-          child: CachedNetworkImage(
+          child:  CachedNetworkImage(
             imageUrl: imageUrl!,
             fit: BoxFit.cover,
             width: 160,

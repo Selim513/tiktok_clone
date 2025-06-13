@@ -47,7 +47,7 @@ class MainApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        // home: SettingsView(),
+        // home: PasswordResetView(),
         routerConfig: AppRouter.router,
       ),
     );

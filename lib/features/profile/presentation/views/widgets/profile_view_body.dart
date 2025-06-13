@@ -22,7 +22,6 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
     final user = Supabase.instance.client.auth.currentUser;
     name = user?.userMetadata?['Name'];
     imageUrl = user?.userMetadata?['picture'] as String?;
-    print("-------------------------------$imageUrl");
   }
 
   @override
