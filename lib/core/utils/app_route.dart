@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/constant.dart';
 import 'package:tiktok_clone/core/utils/service_locator.dart';
 import 'package:tiktok_clone/features/auth/data/repo/auth_repo_impl.dart';
+import 'package:tiktok_clone/features/auth/domain/use_cases/login_use_case.dart';
 import 'package:tiktok_clone/features/auth/presentation/manger/login_cubit/login_cubit.dart';
 import 'package:tiktok_clone/features/auth/presentation/manger/register_cubit/register_cubit.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/auth_view.dart';
@@ -55,21 +56,21 @@ abstract class AppRouter {
         builder:
             (context, state) => BlocProvider(
               create: (context) => RegisterCubit(getIt.get<AuthRepoImpl>()),
-              child: EmailAuthView(),
+              child: const EmailAuthView(),
             ),
       ),
       GoRoute(
         name: kSignUpWithGoogle,
         path: kSignUpWithGoogle,
-        builder: (context, state) => GoogleAuthCubitViewBody(),
+        builder: (context, state) => const GoogleAuthCubitViewBody(),
       ),
       GoRoute(
         path: kLoginView,
         name: kLoginView,
         builder:
             (context, state) => BlocProvider(
-              create: (context) => LoginCubit(getIt.get<AuthRepoImpl>()),
-              child: LoginView(),
+              create: (context) => LoginBloc(getIt.get<LoginUsesCase>()),
+              child: const LoginView(),
             ),
       ),
       GoRoute(
@@ -81,34 +82,34 @@ abstract class AppRouter {
                   (context) =>
                       FetchVideosCubit(getIt.get<FetchVideosUsesCase>())
                         ..fetchVideos(),
-              child: MainTabView(),
+              child: const MainTabView(),
             ),
       ),
       GoRoute(
         path: kProfileView,
         name: kProfileView,
         builder: (context, state) {
-          return ProfileView();
+          return const ProfileView();
         },
       ),
       GoRoute(
         path: kSettingsView,
         name: kSettingsView,
         builder: (context, state) {
-          return SettingsView();
+          return const SettingsView();
         },
         routes: [
           GoRoute(
             path: kNameEdit,
             name: kNameEdit,
             builder: (context, state) {
-              return NameEditView();
+              return const NameEditView();
             },
           ),
           GoRoute(
             path: kPasswordReset,
             name: kPasswordReset,
-            builder: (context, state) => PasswordResetView(),
+            builder: (context, state) => const PasswordResetView(),
           ),
         ],
       ),
@@ -124,7 +125,7 @@ abstract class AppRouter {
                     getIt.get<StopRecordUsesCase>(),
                     getIt.get<DisposeCameraUsesCase>(),
                   )..initCamera(),
-              child: CameraRecordViewBody(),
+              child: const CameraRecordViewBody(),
             ),
       ),
       GoRoute(

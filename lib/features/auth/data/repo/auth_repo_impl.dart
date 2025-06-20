@@ -5,7 +5,7 @@ import 'package:tiktok_clone/features/auth/domain/repo/auth_repo.dart';
 class AuthRepoImpl extends AuthRepo {
   final AuthRemoteDataSourceImpl authRemoteDataSourceImpl;
 
-  AuthRepoImpl({required this.authRemoteDataSourceImpl});
+  AuthRepoImpl( this.authRemoteDataSourceImpl);
   @override
   Future<AuthResponse> login({
     required String email,

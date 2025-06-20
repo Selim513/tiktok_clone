@@ -1,29 +1,40 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tiktok_clone/features/auth/data/repo/auth_repo_impl.dart';
-import 'package:tiktok_clone/features/auth/presentation/manger/login_cubit/login_state.dart';
-import 'package:tiktok_clone/features/auth/presentation/manger/register_cubit/register_state.dart';
+import 'package:tiktok_clone/core/enums/bloc_status.dart';
+import 'package:tiktok_clone/core/uses_case/auth_uses_case.dart';
+import 'package:tiktok_clone/features/auth/domain/use_cases/login_use_case.dart';
+import 'package:tiktok_clone/features/auth/presentation/manger/login_cubit/login_bloc_events.dart';
+import 'package:tiktok_clone/features/auth/presentation/manger/login_cubit/login_bloc_state.dart';
 
-class LoginCubit extends Cubit<UserAuthState> {
-  LoginCubit(this.authRepoImpl) : super(AuthInital());
-  TextEditingController loginEmailController = TextEditingController();
-  TextEditingController loginPasswordController = TextEditingController();
-  GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-  final AuthRepoImpl authRepoImpl;
-  void loging() async {
-    try {
-      emit(LoginLoading());
-      await authRepoImpl.login(
-        email: loginEmailController.text,
-        password: loginPasswordController.text,
-      ).then((value) {
-        
-      },);
-      emit(LoginSuccess(succMessage: 'Welcome Back !.'));
-      emit(LoginLoading());
-    } catch (e) {
-    
-      emit(LoginFailure(errMessage: 'Your password or email is incorrect'));
-    }
+// class LoginCubit extends Bloc<LoginBlocEvent, LoginBlocState> {
+//   LoginCubit(this.authRepoImpl) : super(const LoginBlocState()){}
+//   TextEditingController loginEmailController = TextEditingController();
+//   TextEditingController loginPasswordController = TextEditingController();
+//   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+//   final AuthRepoImpl authRepoImpl;
+
+// }
+class LoginBloc extends Bloc<LoginBlocEvent, LoginBlocState> {
+  final LoginUsesCase loginUsesCase;
+  LoginBloc(this.loginUsesCase) : super(const LoginBlocState()) {
+    on<LoginBlocEvent>((event, emit) async {
+      if (event is LoginSubmitted) {
+        try {
+          emit(state.copyWith(status: BlocStatus.loading));
+          await loginUsesCase.call(
+            LoginParams(email: event.email, password: event.password),
+          );
+          emit(
+            state.copyWith(
+              status: BlocStatus.success,
+              succMessage: 'Welcome Back !.',
+            ),
+          );
+        } catch (e) {
+          emit(
+            state.copyWith(status: BlocStatus.fail, errMessage: e.toString()),
+          );
+        }
+      }
+    });
   }
 }

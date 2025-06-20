@@ -12,11 +12,11 @@ import 'package:tiktok_clone/features/post_videos/presentation/manger/upload_vid
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load();
-  serviceLocatorSetup();
   await Supabase.initialize(
     url: dotenv.env['SUPABASE_URL'] ?? '',
     anonKey: dotenv.env['SUPABASE_ANON_KEY'] ?? '',
   );
+  serviceLocatorSetup();
   Bloc.observer = SimpleBlocObserver();
   runApp(const MainApp());
   //-------------
@@ -42,7 +42,7 @@ class MainApp extends StatelessWidget {
             centerTitle: true,
             titleTextStyle: AppFontstyle.fontStyle30,
           ),
-          progressIndicatorTheme: ProgressIndicatorThemeData(
+          progressIndicatorTheme: const ProgressIndicatorThemeData(
             color: Colors.white,
           ),
         ),

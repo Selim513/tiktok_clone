@@ -6,33 +6,35 @@ import 'package:tiktok_clone/features/auth/presentation/manger/login_cubit/login
 import 'package:tiktok_clone/features/auth/presentation/views/widgets/custom_textform_field.dart';
 
 class LoginFormSection extends StatelessWidget {
-  const LoginFormSection({super.key, required this.cubit});
+  const LoginFormSection({super.key, required this.loginEmailController, required this.loginPasswordController, required this.loginFormKey});
 
-  final LoginCubit cubit;
+  final TextEditingController loginEmailController;
+  final TextEditingController loginPasswordController;
+  final GlobalKey<FormState> loginFormKey;
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: cubit.loginFormKey,
+      key: loginFormKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: 15,
         children: [
           Text('Welcome Back!', style: AppFontstyle.fontStyle30),
-          Gap(10),
+          const Gap(10),
 
           CustomTextFormField(
             hintText: 'Email',
-            controller: cubit.loginEmailController,
+            controller: loginEmailController,
             validator: (value) => checkEmailValidator(value),
           ),
           CustomTextFormField(
             hintText: 'Password',
-            controller: cubit.loginPasswordController,
+            controller: loginPasswordController,
             isVisible: true,
             validator: (value) => checkPasswordValidator(value),
           ),
-          Gap(10),
+          const Gap(10),
         ],
       ),
     );
