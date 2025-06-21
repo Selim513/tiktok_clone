@@ -2,7 +2,9 @@ import 'package:get_it/get_it.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/features/auth/data/data_source/auth_remote_data_source.dart';
 import 'package:tiktok_clone/features/auth/data/repo/auth_repo_impl.dart';
+import 'package:tiktok_clone/features/auth/domain/repo/auth_repo.dart';
 import 'package:tiktok_clone/features/auth/domain/use_cases/login_use_case.dart';
+import 'package:tiktok_clone/features/auth/domain/use_cases/register_use_case.dart';
 import 'package:tiktok_clone/features/home/data/data_source/home_remote_data_source.dart';
 import 'package:tiktok_clone/features/home/data/repo/home_repo_impl.dart';
 import 'package:tiktok_clone/features/home/domain/use_cases/fetch_videos_use_case.dart';
@@ -32,11 +34,14 @@ void serviceLocatorSetup() {
   //--------- ----------------------------------Auth service Locator-----
   getIt.registerSingleton<AuthRemoteDataSourceImpl>(AuthRemoteDataSourceImpl());
   //-Auth repo
-  getIt.registerSingleton<AuthRepoImpl>(
-    AuthRepoImpl(AuthRemoteDataSourceImpl()),
-  );
+  getIt.registerSingleton<AuthRepo>(AuthRepoImpl(AuthRemoteDataSourceImpl()));
+  //---------Login use case
   getIt.registerSingleton<LoginUsesCase>(
-    LoginUsesCase(authRepo: getIt.get<AuthRepoImpl>()),
+    LoginUsesCase(authRepo: getIt.get<AuthRepo>()),
+  );
+  //--------register use case
+  getIt.registerSingleton<RegisterUsesCase>(
+    RegisterUsesCase(authRepo: getIt.get<AuthRepo>()),
   );
   //------------------------------------------- FetchVideos service locator----
   getIt.registerSingleton<HomeRemoteDataSourceImpl>(HomeRemoteDataSourceImpl());

@@ -11,16 +11,16 @@ class SettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Settings')),
+      appBar: AppBar(title: const Text('Settings')),
       body: Padding(
-        padding: EdgeInsetsGeometry.all(15),
+        padding: const EdgeInsetsGeometry.all(15),
         child: ListView(
           children: [
-            CustomSettingsContainer(
+            const CustomSettingsContainer(
               title: 'Account',
               widget: AccountSettingContainer(),
             ),
-            Gap(20),
+            const Gap(20),
             CustomSettingsContainer(
               title: 'Logout',
               widget: Column(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 import 'package:tiktok_clone/core/utils/validator.dart';
-import 'package:tiktok_clone/features/auth/presentation/manger/login_cubit/login_cubit.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/widgets/custom_textform_field.dart';
 
 class LoginFormSection extends StatelessWidget {

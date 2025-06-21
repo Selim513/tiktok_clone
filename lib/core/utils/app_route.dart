@@ -4,11 +4,12 @@ import 'package:tiktok_clone/constant.dart';
 import 'package:tiktok_clone/core/utils/service_locator.dart';
 import 'package:tiktok_clone/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:tiktok_clone/features/auth/domain/use_cases/login_use_case.dart';
-import 'package:tiktok_clone/features/auth/presentation/manger/login_cubit/login_cubit.dart';
-import 'package:tiktok_clone/features/auth/presentation/manger/register_cubit/register_cubit.dart';
+import 'package:tiktok_clone/features/auth/domain/use_cases/register_use_case.dart';
+import 'package:tiktok_clone/features/auth/presentation/manger/login_bloc/login_bloc.dart';
+import 'package:tiktok_clone/features/auth/presentation/manger/register_bloc/register_bloc.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/auth_view.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/login_view.dart';
-import 'package:tiktok_clone/features/auth/presentation/views/sign_up_with_email.dart';
+import 'package:tiktok_clone/features/auth/presentation/views/register_view.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/sign_up_with_google.dart';
 import 'package:tiktok_clone/features/home/domain/use_cases/fetch_videos_use_case.dart';
 import 'package:tiktok_clone/features/home/presentation/manger/fetch_videos_cubit/fetch_videos_cubit.dart';
@@ -55,8 +56,8 @@ abstract class AppRouter {
         path: kSignUpWithEmail,
         builder:
             (context, state) => BlocProvider(
-              create: (context) => RegisterCubit(getIt.get<AuthRepoImpl>()),
-              child: const EmailAuthView(),
+              create: (context) => RegisterBloc(getIt.get<RegisterUsesCase>()),
+              child: const RegisterView(),
             ),
       ),
       GoRoute(

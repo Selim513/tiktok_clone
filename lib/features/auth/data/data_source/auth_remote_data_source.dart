@@ -1,4 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tiktok_clone/constant.dart';
+import 'package:tiktok_clone/core/errors/errors.dart';
 
 abstract class AuthRemoteDataSource {
   Future<AuthResponse> register({
@@ -16,14 +18,21 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     required String password,
     required String name,
   }) async {
-    Supabase supabase = Supabase.instance;
-    final AuthResponse res = await supabase.client.auth.signUp(
-      email: email,
-      password: password,
-      emailRedirectTo: 'com.example.tiktok_clone://auth-callback/',
-      data: {'Name': name},
-    );
-    return res;
+    try {
+      final AuthResponse res = await Constant.supabase.auth.signUp(
+        email: email,
+        password: password,
+        emailRedirectTo: 'com.example.tiktok_clone://auth-callback/',
+        data: {'Name': name},
+      );
+      return res;
+    }
+    //  on AuthException catch (e) {
+    //   throw AuthenticationException(e.message);
+    // }
+    catch (e) {
+      throw AuthenticationException(e.toString());
+    }
   }
 
   @override
@@ -31,8 +40,18 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     required String email,
     required String password,
   }) async {
-    final AuthResponse res = await Supabase.instance.client.auth
-        .signInWithPassword(email: email, password: password);
-    return res;
+    try {
+      final AuthResponse res = await Constant.supabase.auth.signInWithPassword(
+        email: email,
+        password: password,
+      );
+      return res;
+    }
+    // on AuthException catch (e) {
+    //   throw AuthenticationException(e.message);
+    // }
+    catch (e) {
+      throw AuthenticationException(e.toString());
+    }
   }
 }

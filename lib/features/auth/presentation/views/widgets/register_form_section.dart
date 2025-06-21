@@ -3,29 +3,35 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 import 'package:tiktok_clone/core/utils/validator.dart';
-import 'package:tiktok_clone/features/auth/presentation/manger/register_cubit/register_cubit.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/widgets/custom_password_text_form_field.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/widgets/custom_textform_field.dart';
 
 class RegisterFormSection extends StatelessWidget {
-  const RegisterFormSection({super.key, required this.cubit});
+  const RegisterFormSection({
+    super.key,
+    required this.nameController,
+    required this.emailController,
+    required this.passwordController, required this.formKey,
+  });
 
-  final RegisterCubit cubit;
-
+  final TextEditingController nameController;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final GlobalKey<FormState> formKey;
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: cubit.formKey,
+      key: formKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: 20,
         children: [
           Text('Join Us', style: AppFontstyle.fontStyle30),
-          Gap(30),
+          const Gap(30),
           CustomTextFormField(
             keyboardType: TextInputType.name,
-            controller: cubit.userNameController,
-            prefixIcon: Icon(FontAwesomeIcons.user),
+            controller: nameController,
+            prefixIcon: const Icon(FontAwesomeIcons.user),
             hintText: 'User name',
           ),
           CustomTextFormField(
@@ -33,13 +39,11 @@ class RegisterFormSection extends StatelessWidget {
               return checkEmailValidator(value);
             },
             keyboardType: TextInputType.emailAddress,
-            controller: cubit.registerEmailController,
-            prefixIcon: Icon(Icons.email_outlined),
+            controller: emailController,
+            prefixIcon: const Icon(Icons.email_outlined),
             hintText: 'Email address',
           ),
-          CusotmPasswordTextFormField(
-            controller: cubit.registerPasswordController,
-          ),
+          CusotmPasswordTextFormField(controller: passwordController),
         ],
       ),
     );

@@ -6,9 +6,9 @@ import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/core/widgets/custom_elevated_button.dart';
 import 'package:tiktok_clone/core/widgets/custom_snack_bar.dart';
-import 'package:tiktok_clone/features/auth/presentation/manger/login_cubit/login_bloc_events.dart';
-import 'package:tiktok_clone/features/auth/presentation/manger/login_cubit/login_bloc_state.dart';
-import 'package:tiktok_clone/features/auth/presentation/manger/login_cubit/login_cubit.dart';
+import 'package:tiktok_clone/features/auth/presentation/manger/login_bloc/login_bloc.dart';
+import 'package:tiktok_clone/features/auth/presentation/manger/login_bloc/login_bloc_state.dart';
+import 'package:tiktok_clone/features/auth/presentation/manger/login_bloc/login_events.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/widgets/login_form_section.dart';
 
 class LoginViewBody extends StatefulWidget {
@@ -55,7 +55,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     onPress: () {
                       if (loginFormKey.currentState!.validate()) {
                         BlocProvider.of<LoginBloc>(context).add(
-                          LoginSubmitted(
+                          LoginSubmittedEvent(
                             email: loginEmailController.text,
                             password: loginPasswordController.text,
                           ),
