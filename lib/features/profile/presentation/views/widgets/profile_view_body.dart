@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tiktok_clone/constant.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
-import 'package:tiktok_clone/features/profile/presentation/views/widgets/my_videos_and_saved_videos_section.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/widgets/peofile_view_header.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/widgets/profile_view_image.dart';
 
@@ -19,7 +18,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
   @override
   void initState() {
     super.initState();
-    final user = Supabase.instance.client.auth.currentUser;
+    final user = Constant.supabase.auth.currentUser;
     name = user?.userMetadata?['Name'];
     imageUrl = user?.userMetadata?['picture'] as String?;
   }
@@ -27,18 +26,18 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsGeometry.symmetric(horizontal: 10),
+      padding: const EdgeInsetsGeometry.symmetric(horizontal: 10),
       child: Column(
         children: [
-          ProfileViewHeader(),
-          Gap(50),
+          const ProfileViewHeader(),
+          const Gap(50),
 
-          ProfileViewImage(imageUrl: imageUrl),
+          ProfileViewImage(imageUrl: imageUrl ?? ''),
 
-          Gap(30),
+          const Gap(30),
           Text(name ?? 'User', style: AppFontstyle.fontStyle30),
-          Gap(20),
-          MyVideosAndSavedVideosSection(),
+          const Gap(20),
+          // const MyVideosAndSavedVideosSection(),
         ],
       ),
     );

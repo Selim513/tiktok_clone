@@ -7,3 +7,4 @@ abstract class Constant {
   static String isPreview = 'isPreview';
   static SupabaseClient supabase = getIt.get<SupabaseClient>();
 }
+

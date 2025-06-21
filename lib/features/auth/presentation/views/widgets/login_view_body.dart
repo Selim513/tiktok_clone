@@ -54,7 +54,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     widget: Text('Login', style: AppFontstyle.fontStyle20),
                     onPress: () {
                       if (loginFormKey.currentState!.validate()) {
-                        BlocProvider.of<LoginBloc>(context).add(
+                        context.read<LoginBloc>().add(
                           LoginSubmittedEvent(
                             email: loginEmailController.text,
                             password: loginPasswordController.text,

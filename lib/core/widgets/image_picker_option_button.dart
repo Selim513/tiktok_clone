@@ -11,9 +11,9 @@ class ImagePickerOptionButton extends StatelessWidget {
   final void Function()? onpress;
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(  
+    return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         backgroundColor: Colors.black,
         shape: ContinuousRectangleBorder(
           borderRadius: BorderRadiusGeometry.circular(20),

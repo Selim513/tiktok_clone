@@ -12,7 +12,7 @@ class FetchMyVideosCubit extends Cubit<FetchMyVideosState> {
     try {
       emit(FetchMyVideosLoading());
       var videoUrl = await fetchMyVideosUseCase.call().timeout(
-        Duration(seconds: 15),
+        const Duration(seconds: 15),
         onTimeout: () => throw TimeoutException('Timeout'),
       );
       emit(FetchMyVideosSuccess(videosUrl: videoUrl));

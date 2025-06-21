@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/core/enums/bloc_status.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
+import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/core/widgets/custom_elevated_button.dart';
 import 'package:tiktok_clone/core/widgets/custom_snack_bar.dart';
 import 'package:tiktok_clone/features/auth/presentation/manger/register_bloc/register_bloc.dart';
@@ -27,7 +29,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
       listener: (context, state) {
         if (state.status == BlocStatus.success) {
           CustomSnackBar.successSnackBar(context, message: state.succMessage!);
-          // GoRouter.of(context).pushNamed(AppRouter.kLoginView);
+          GoRouter.of(context).pushNamed(AppRouter.kLoginView);
         } else if (state.status == BlocStatus.fail) {
           CustomSnackBar.errorSnackBar(context, message: state.errMessage!);
         }
@@ -54,7 +56,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                         style: AppFontstyle.fontStyle20,
                       ),
                       onPress: () {
-                        BlocProvider.of<RegisterBloc>(context).add(
+                        context.read<RegisterBloc>().add(
                           RegisterSubmittedEvent(
                             name: nameController.text,
                             email: emailController.text,

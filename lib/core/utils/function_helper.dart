@@ -38,7 +38,7 @@ Future<dynamic> customShowDialogPickImageSourceOptions(
 
     builder:
         (context) => AlertDialog(
-          title: Center(child: Text('Select ')),
+          title: const Center(child: Text('Select ')),
 
           actionsOverflowAlignment: OverflowBarAlignment.start,
 
@@ -55,7 +55,7 @@ Future<dynamic> customShowDialogPickImageSourceOptions(
                   },
                 ),
               ),
-              Gap(30),
+              const Gap(30),
               Flexible(
                 child: ImagePickerOptionButton(
                   title: 'Gallery',
@@ -77,7 +77,7 @@ Future<dynamic> customShowDialogResetPasswordRequest(BuildContext context) {
 
     builder:
         (context) => AlertDialog(
-          title: Center(
+          title: const Center(
             child: Text('Are you sure you want to change your password?'),
           ),
 
@@ -98,7 +98,7 @@ Future<dynamic> customShowDialogResetPasswordRequest(BuildContext context) {
                   },
                 ),
               ),
-              Gap(30),
+              const Gap(30),
               Flexible(
                 child: ImagePickerOptionButton(
                   title: 'Cancle',

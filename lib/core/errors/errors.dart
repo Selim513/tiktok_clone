@@ -5,7 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class AuthenticationException implements Exception {
   final String message;
   AuthenticationException(this.message);
-  
+
   @override
   String toString() => message;
 }
@@ -14,9 +14,9 @@ String mapSupabaseAuthError(String? errorMessage) {
   if (errorMessage == null) {
     return 'Something went wrong. Please try again.';
   }
-  
+
   // Map specific Supabase error codes and messages to friendly messages
-  if (errorMessage.contains('User already registered')) {
+  if (errorMessage.contains('The email is Already exist')) {
     return 'This email is already registered.';
   } else if (errorMessage.contains('Invalid login credentials')) {
     return 'Incorrect email or password.';

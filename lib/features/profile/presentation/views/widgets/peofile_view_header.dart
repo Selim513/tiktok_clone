@@ -12,15 +12,15 @@ class ProfileViewHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Spacer(),
-        Gap(15),
+        const Spacer(),
+        const Gap(15),
         Text('Profile', style: AppFontstyle.fontStyle30),
-        Spacer(),
+        const Spacer(),
         IconButton(
           onPressed: () {
             GoRouter.of(context).pushNamed(AppRouter.kSettingsView);
           },
-          icon: Icon(Icons.settings),
+          icon: const Icon(Icons.settings),
         ),
       ],
     );

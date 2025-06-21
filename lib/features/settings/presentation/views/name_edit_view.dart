@@ -7,8 +7,8 @@ class NameEditView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Edit Name')),
-      body: EditNameViewBody(),
+      appBar: AppBar(title: const Text('Edit Name')),
+      body: const EditNameViewBody(),
     );
   }
 }

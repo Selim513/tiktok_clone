@@ -7,16 +7,13 @@ import 'package:tiktok_clone/features/profile/presentation/views/widgets/profile
 class ProfileViewImage extends StatelessWidget {
   const ProfileViewImage({super.key, required this.imageUrl});
 
-  final String? imageUrl;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        final cubit = BlocProvider.of<PickProfileImageCubit>(
-          context,
-          listen: false,
-        );
+        final cubit = BlocProvider.of<PickProfileImageCubit>(context);
         await customShowDialogPickImageSourceOptions(context, cubit);
       },
       child: ProfileImageWithBlocListner(imageUrl: imageUrl),

@@ -1,5 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:tiktok_clone/core/errors/supabase_error_handler.dart';
+import 'package:tiktok_clone/core/errors/errors.dart';
 import 'package:tiktok_clone/features/auth/data/data_source/auth_remote_data_source.dart';
 import 'package:tiktok_clone/features/auth/domain/repo/auth_repo.dart';
 
@@ -17,7 +17,7 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-    } catch (e) {
+    } on AuthApiException catch (e) {
       throw mapSupabaseAuthError(e.toString());
     }
   }
@@ -34,7 +34,7 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-    } catch (e) {
+    } on AuthApiException catch (e) {
       throw mapSupabaseAuthError(e.toString());
     }
   }

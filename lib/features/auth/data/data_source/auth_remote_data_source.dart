@@ -1,3 +1,4 @@
+import 'package:flutter/rendering.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/constant.dart';
 import 'package:tiktok_clone/core/errors/errors.dart';
@@ -25,13 +26,18 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
         emailRedirectTo: 'com.example.tiktok_clone://auth-callback/',
         data: {'Name': name},
       );
+
+      if (res.user!.identities!.isEmpty) {
+        debugPrint('Email is Already exist');
+
+        throw AuthApiException(
+          code: 'The email is Already exist',
+          'Email is already used.',
+        );
+      }
       return res;
-    }
-    //  on AuthException catch (e) {
-    //   throw AuthenticationException(e.message);
-    // }
-    catch (e) {
-      throw AuthenticationException(e.toString());
+    } on AuthApiException catch (e) {
+      throw mapSupabaseAuthError(e.toString());
     }
   }
 
@@ -50,8 +56,8 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     // on AuthException catch (e) {
     //   throw AuthenticationException(e.message);
     // }
-    catch (e) {
-      throw AuthenticationException(e.toString());
+    on AuthApiException catch (e) {
+      throw mapSupabaseAuthError(e.toString());
     }
   }
 }

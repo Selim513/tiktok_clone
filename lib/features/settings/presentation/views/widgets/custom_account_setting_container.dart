@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tiktok_clone/constant.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/core/utils/function_helper.dart';
 import 'package:tiktok_clone/features/settings/presentation/views/widgets/settings_tile.dart';
@@ -19,7 +19,7 @@ class _AccountSettingContainerState extends State<AccountSettingContainer> {
   @override
   void initState() {
     super.initState();
-    final user = Supabase.instance.client.auth.currentUser;
+    final user = Constant.supabase.auth.currentUser;
     name = user?.userMetadata?['Name'];
     email = user?.email;
   }

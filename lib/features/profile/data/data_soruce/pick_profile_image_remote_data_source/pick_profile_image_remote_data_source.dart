@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tiktok_clone/constant.dart';
 
 abstract class PickProfileImageRemoteDataSource {
   Future<String?> pickProfileImageFromCamera();
@@ -12,8 +13,9 @@ class PickProfileImageRemoteDataSourceImpl
     extends PickProfileImageRemoteDataSource {
   @override
   Future<String?> pickProfileImageFromCamera() async {
-    var userId = Supabase.instance.client.auth.currentUser?.id;
-    SupabaseStorageClient storage = Supabase.instance.client.storage;
+    var userClient = Constant.supabase;
+    var userId = userClient.auth.currentUser?.id;
+    SupabaseStorageClient storage = userClient.storage;
     try {
       var image = await ImagePicker().pickImage(source: ImageSource.camera);
       if (image == null) {
@@ -22,22 +24,17 @@ class PickProfileImageRemoteDataSourceImpl
       var imageFile = File(image.path);
 
       final puplicUrl = storage.from('profile-image').getPublicUrl('$userId');
-      if (Supabase.instance.client.auth.currentUser?.userMetadata?['picture'] ==
-          puplicUrl) {
-        await Supabase.instance.client.storage.from('profile-image').remove([
-          '$userId',
-        ]);
+      if (userClient.auth.currentUser?.userMetadata?['picture'] == puplicUrl) {
+        await userClient.storage.from('profile-image').remove(['$userId']);
         await storage
             .from('profile-image')
             .upload(
               '$userId',
               imageFile,
-              fileOptions: FileOptions(upsert: true),
+              fileOptions: const FileOptions(upsert: true),
             );
       }
-      Supabase.instance.client.auth.updateUser(
-        UserAttributes(data: {'picture': puplicUrl}),
-      );
+      userClient.auth.updateUser(UserAttributes(data: {'picture': puplicUrl}));
 
       return puplicUrl;
     } catch (e) {
@@ -49,8 +46,9 @@ class PickProfileImageRemoteDataSourceImpl
   //--------------------
   @override
   Future<String?> pickProfileImageFromGallery() async {
-    var userId = Supabase.instance.client.auth.currentUser?.id;
-    SupabaseStorageClient storage = Supabase.instance.client.storage;
+    var userClient = Constant.supabase;
+    var userId = userClient.auth.currentUser?.id;
+    SupabaseStorageClient storage = userClient.storage;
     try {
       var image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image == null) {
@@ -59,22 +57,17 @@ class PickProfileImageRemoteDataSourceImpl
       var imageFile = File(image.path);
 
       final puplicUrl = storage.from('profile-image').getPublicUrl('$userId');
-      if (Supabase.instance.client.auth.currentUser?.userMetadata?['picture'] ==
-          puplicUrl) {
-        await Supabase.instance.client.storage.from('profile-image').remove([
-          '$userId',
-        ]);
+      if (userClient.auth.currentUser?.userMetadata?['picture'] == puplicUrl) {
+        await userClient.storage.from('profile-image').remove(['$userId']);
         await storage
             .from('profile-image')
             .upload(
               '$userId',
               imageFile,
-              fileOptions: FileOptions(upsert: true),
+              fileOptions: const FileOptions(upsert: true),
             );
       }
-      Supabase.instance.client.auth.updateUser(
-        UserAttributes(data: {'picture': puplicUrl}),
-      );
+      userClient.auth.updateUser(UserAttributes(data: {'picture': puplicUrl}));
 
       return puplicUrl;
     } catch (e) {

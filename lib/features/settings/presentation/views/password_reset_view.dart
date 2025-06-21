@@ -7,8 +7,8 @@ class PasswordResetView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Password reset')),
-      body: PasswordResetViewBody(),
+      appBar: AppBar(title: const Text('Password reset')),
+      body: const PasswordResetViewBody(),
     );
   }
 }

@@ -28,13 +28,15 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
               status: BlocStatus.success,
             ),
           );
-        } on AuthException catch (e) {
+        } on AuthApiException catch (e) {
           //-------------------Error------
           emit(
             state.copyWith(errMessage: e.toString(), status: BlocStatus.fail),
           );
         } catch (e) {
-          state.copyWith(errMessage: e.toString(), status: BlocStatus.fail);
+          emit(
+            state.copyWith(errMessage: e.toString(), status: BlocStatus.fail),
+          );
         }
       }
     });
