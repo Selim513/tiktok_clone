@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
@@ -8,9 +7,7 @@ import 'package:tiktok_clone/features/profile/presentation/views/widgets/custom_
 import 'package:tiktok_clone/features/profile/presentation/views/widgets/my_videos_grid_view.dart';
 
 class FetchMyVideosBlocBuilder extends StatelessWidget {
-  const FetchMyVideosBlocBuilder({
-    super.key,
-  });
+  const FetchMyVideosBlocBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,22 +17,17 @@ class FetchMyVideosBlocBuilder extends StatelessWidget {
           if (state is FetchMyVideosSuccess) {
             List<String> videos = state.videosUrl;
             if (videos.isEmpty) {
-              return CustomNoVideosMessage();
+              return const CustomNoVideosMessage();
             }
             return MyVideosGridView(videos: videos);
           } else if (state is FetchMyVideosLoading) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (state is FetchMyVideosFailure) {
             return Center(
-              child: Text(
-                state.errMessage,
-                style: AppFontstyle.fontStyle20,
-              ),
+              child: Text(state.errMessage, style: AppFontstyle.fontStyle20),
             );
           } else {
-            return Center(
-              child: Text('There is Some thing went Wrong'),
-            );
+            return const Center(child: Text('There is Some thing went Wrong'));
           }
         },
       ),

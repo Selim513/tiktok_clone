@@ -38,7 +38,7 @@ class PickProfileImageRemoteDataSourceImpl
 
       return puplicUrl;
     } catch (e) {
-      print('Erooooooooooooor${e.toString()}');
+      print('Erooooooooooooor ${e.toString()}');
       throw Exception('There is an eerror happen ${e.toString()}');
     }
   }

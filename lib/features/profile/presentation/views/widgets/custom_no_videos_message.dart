@@ -10,12 +10,9 @@ class CustomNoVideosMessage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.signal_wifi_statusbar_connected_no_internet_4_outlined,
-            size: 50,
-          ),
+          const Icon(Icons.upload, size: 50),
           Text(
-            'You haven’t uploaded any videos yet. Start by uploading your first one!',
+            'You haven’t uploaded any videos yet. \n Start by uploading your first one!',
             textAlign: TextAlign.center,
             style: AppFontstyle.fontStyle20,
           ),

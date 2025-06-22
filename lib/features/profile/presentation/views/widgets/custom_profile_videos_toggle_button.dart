@@ -16,7 +16,7 @@ class CustomProfileVideosToggleButtons extends StatelessWidget {
         onTap: onTap,
         child: Container(
           alignment: Alignment.center,
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: Colors.black,
             borderRadius: BorderRadius.circular(15),

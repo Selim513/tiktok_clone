@@ -44,7 +44,7 @@ class _MyVideosAndSavedVideosSectionState
                   print(isSelected);
                 },
               ),
-              Gap(10),
+              const Gap(10),
               CustomProfileVideosToggleButtons(
                 title: 'Saved',
                 onTap: () {
@@ -55,9 +55,9 @@ class _MyVideosAndSavedVideosSectionState
               ),
             ],
           ),
-          Gap(15),
-          if (isSelected == 0) FetchMyVideosBlocBuilder(),
-          if (isSelected == 1) Center(child: Text('Savved')),
+          const Gap(15),
+          if (isSelected == 0) const FetchMyVideosBlocBuilder(),
+          if (isSelected == 1) const Center(child: Text('Savved')),
         ],
       ),
     );
