@@ -3,7 +3,8 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/core/widgets/image_picker_option_button.dart';
-import 'package:tiktok_clone/features/profile/presentation/manger/pick_profile_image_from_camera_cubit/pick_profile_image_from_camera_cubit.dart';
+import 'package:tiktok_clone/features/profile/presentation/manger/pick_profile_image_from_camera_bloc/pick_image_profile_bloc.dart';
+import 'package:tiktok_clone/features/profile/presentation/manger/pick_profile_image_from_camera_bloc/pick_profile_image_event.dart';
 
 OutlineInputBorder customOutLineBorders({Color? color, double? circular}) {
   return OutlineInputBorder(
@@ -31,7 +32,7 @@ String obfuscateEmail(String email) {
 
 Future<dynamic> customShowDialogPickImageSourceOptions(
   BuildContext context,
-  PickProfileImageCubit cubit,
+  PickProfileImageBloc cubit,
 ) {
   return showDialog(
     context: context,
@@ -51,7 +52,7 @@ Future<dynamic> customShowDialogPickImageSourceOptions(
                   onpress: () async {
                     GoRouter.of(context).pop();
 
-                    await cubit.pickProfileImageFromCamera();
+                    cubit.add(PickProfileImageFromCameraEvent());
                   },
                 ),
               ),
@@ -61,7 +62,7 @@ Future<dynamic> customShowDialogPickImageSourceOptions(
                   title: 'Gallery',
                   onpress: () async {
                     GoRouter.of(context).pop();
-                    await cubit.pickProfileImageFromGallery();
+                    cubit.add(PickProfileImageFromGalleryEvent());
                   },
                 ),
               ),

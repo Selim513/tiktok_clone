@@ -5,7 +5,7 @@ import 'package:tiktok_clone/features/profile/domain/use_cases/fetch_my_videos_u
 import 'package:tiktok_clone/features/profile/domain/use_cases/pick_profile_image_use_case/pick_image_from_gallery.dart';
 import 'package:tiktok_clone/features/profile/domain/use_cases/pick_profile_image_use_case/pick_profile_image_use_case.dart';
 import 'package:tiktok_clone/features/profile/presentation/manger/fetch_my_videos_cubit/fetch_my_videos_cubit.dart';
-import 'package:tiktok_clone/features/profile/presentation/manger/pick_profile_image_from_camera_cubit/pick_profile_image_from_camera_cubit.dart';
+import 'package:tiktok_clone/features/profile/presentation/manger/pick_profile_image_from_camera_bloc/pick_image_profile_bloc.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/widgets/profile_view_body.dart';
 
 class ProfileView extends StatelessWidget {
@@ -17,7 +17,7 @@ class ProfileView extends StatelessWidget {
       providers: [
         BlocProvider(
           create:
-              (context) => PickProfileImageCubit(
+              (context) => PickProfileImageBloc(
                 getIt.get<PickProfileImageFromCameraUseCase>(),
                 getIt.get<PickProfileImageFromGalleryUseCase>(),
               ),
