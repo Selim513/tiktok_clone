@@ -36,7 +36,7 @@ class TikTokStyleControlsState extends State<TikTokStyleControls> {
 
   void _startHideTimer() {
     _hideTimer?.cancel();
-    _hideTimer = Timer(Duration(seconds: 3), () {
+    _hideTimer = Timer(const Duration(seconds: 3), () {
       if (mounted) {
         setState(() {
           _visible = false;
@@ -57,7 +57,7 @@ class TikTokStyleControlsState extends State<TikTokStyleControls> {
     });
     _startHideTimer();
 
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       if (mounted) {
         setState(() {
           _visible = false;
@@ -79,10 +79,10 @@ class TikTokStyleControlsState extends State<TikTokStyleControls> {
                 left: 10,
                 child: GestureDetector(
                   onTap: () => GoRouter.of(context).pop(),
-                  child: Icon(FontAwesomeIcons.x),
+                  child: const Icon(FontAwesomeIcons.x),
                 ),
               )
-              : SizedBox(),
+              : const SizedBox(),
           Positioned(
             bottom: 40,
             right: 10,
@@ -101,7 +101,7 @@ class TikTokStyleControlsState extends State<TikTokStyleControls> {
           Center(
             child: AnimatedOpacity(
               opacity: _visible ? 1.0 : 0.0,
-              duration: Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 300),
               child: Icon(
                 widget.controller.isPlaying() == true
                     ? FontAwesomeIcons.pause

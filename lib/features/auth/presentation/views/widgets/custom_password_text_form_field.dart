@@ -33,7 +33,7 @@ class _CusotmPasswordTextFormFieldState
       validator: (value) => checkPasswordValidator(value),
       keyboardType: TextInputType.name,
       controller: widget.controller,
-      prefixIcon: Icon(Icons.lock_outline),
+      prefixIcon: const Icon(Icons.lock_outline),
       hintText: 'Password',
     );
   }

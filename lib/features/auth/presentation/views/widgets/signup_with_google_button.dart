@@ -23,7 +23,7 @@ class SignUpWithGoogleButton extends StatelessWidget {
         } else if (state is GoogleAuthCancelled) {
           GoRouter.of(context).pop();
         } else {
-          Center(child: CircularProgressIndicator());
+          const Center(child: CircularProgressIndicator());
         }
       },
       child: CustomAutthSelectionButton(

@@ -38,14 +38,14 @@ class AccountEditField extends StatelessWidget {
 
           keyboardType: TextInputType.name,
           decoration: InputDecoration(
-            hint: Text(hintText, style: TextStyle(color: Colors.grey)),
+            hint: Text(hintText, style: const TextStyle(color: Colors.grey)),
 
             border: customOutLineBorders(),
             enabledBorder: customOutLineBorders(),
             focusedBorder: customOutLineBorders(),
           ),
         ),
-        Gap(30),
+        const Gap(30),
         CustomElevatedButton(
           widget: Text(buttonTitle, style: AppFontstyle.fontStyle20),
           onPress: buttonOnTap,

@@ -16,17 +16,17 @@ class CustomSettingsContainer extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.grey,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
         ),
-        Gap(10),
+        const Gap(10),
         Container(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: Color(0xff1E1E1E),
+            color: const Color(0xff1E1E1E),
             borderRadius: BorderRadius.circular(10),
           ),
           child: widget,

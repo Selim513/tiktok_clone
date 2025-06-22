@@ -14,7 +14,7 @@ class _EditNameViewBodyState extends State<EditNameViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsGeometry.symmetric(horizontal: 15),
+      padding: const EdgeInsetsGeometry.symmetric(horizontal: 15),
       child: AccountEditField(
         buttonTitle: 'Save',
         buttonOnTap: () {

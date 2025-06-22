@@ -21,13 +21,13 @@ class SettingsTile extends StatelessWidget {
         children: [
           Icon(icon),
           Text(title),
-          Spacer(),
+          const Spacer(),
           Text(
             subTitle ?? '',
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(color: Colors.grey),
+            style: const TextStyle(color: Colors.grey),
           ),
-          Icon(Icons.arrow_forward_ios),
+          const Icon(Icons.arrow_forward_ios),
         ],
       ),
     );

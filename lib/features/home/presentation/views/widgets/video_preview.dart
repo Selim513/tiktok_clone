@@ -32,10 +32,8 @@ class _VideoPreviewState extends State<VideoPreview> {
 
     _controller = BetterPlayerController(
       BetterPlayerConfiguration(
-        controlsConfiguration: BetterPlayerControlsConfiguration(
+        controlsConfiguration: const BetterPlayerControlsConfiguration(
           showControls: false,
-
-          enablePlayPause: true,
         ),
 
         autoPlay: widget.autoPlay,

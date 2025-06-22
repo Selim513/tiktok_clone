@@ -14,7 +14,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 2)).then((value) {
+    Future.delayed(const Duration(seconds: 2)).then((value) {
       final user = Supabase.instance.client.auth.currentUser;
       if (user == null) {
         GoRouter.of(context).goNamed(AppRouter.kAuth);

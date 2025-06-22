@@ -14,10 +14,9 @@ class VideoSourceSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsGeometry.all(20),
+      padding: const EdgeInsetsGeometry.all(20),
       child: Column(
         spacing: 20,
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomElevatedButton(

@@ -16,7 +16,7 @@ class _MainTabViewState extends State<MainTabView> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> pages = [HomeView(), CameraRecordView(), ProfileView()];
+    final List<Widget> pages = [const HomeView(), const CameraRecordView(), const ProfileView()];
     return Scaffold(
       body: SafeArea(child: pages[currentIndex]),
 

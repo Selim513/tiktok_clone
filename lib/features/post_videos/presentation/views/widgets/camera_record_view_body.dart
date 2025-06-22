@@ -18,7 +18,7 @@ class CameraRecordViewBody extends StatelessWidget {
             if (state is CameraInitializing) {
               return Expanded(
                 child: Padding(
-                  padding: EdgeInsetsGeometry.only(bottom: 20),
+                  padding: const EdgeInsetsGeometry.only(bottom: 20),
                   child: Column(
                     children: [
                       CameraPreview(context.read<CameraCubit>().controller),
@@ -29,7 +29,7 @@ class CameraRecordViewBody extends StatelessWidget {
                           onTap: () {
                             context.read<CameraCubit>().startRecording();
                           },
-                          child: CircleAvatar(
+                          child: const CircleAvatar(
                             backgroundColor: Colors.white,
                             radius: 30,
                             child: Icon(
@@ -50,12 +50,12 @@ class CameraRecordViewBody extends StatelessWidget {
                   children: [
                     CameraPreview(context.read<CameraCubit>().controller),
                     Padding(
-                      padding: EdgeInsetsGeometry.only(bottom: 20),
+                      padding: const EdgeInsetsGeometry.only(bottom: 20),
                       child: GestureDetector(
                         onTap: () {
                           context.read<CameraCubit>().stopRecording();
                         },
-                        child: CircleAvatar(
+                        child: const CircleAvatar(
                           backgroundColor: Colors.white,
                           radius: 30,
                           child: Icon(
@@ -70,8 +70,7 @@ class CameraRecordViewBody extends StatelessWidget {
                 ),
               );
             } else {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+              return const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [CircularProgressIndicator(color: Colors.white)],
               );

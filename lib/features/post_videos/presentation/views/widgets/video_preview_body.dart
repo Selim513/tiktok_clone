@@ -20,7 +20,7 @@ class VideoPreviewBody extends StatelessWidget {
       children: [
         BetterPlayer(controller: betterPlayerController),
         VideoPreviewActionsButtons(vedioFile: videoFile),
-        CameraExitButton(),
+        const CameraExitButton(),
       ],
     );
   }

@@ -20,7 +20,7 @@ class _PasswordResetViewBodyState extends State<PasswordResetViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: AccountEditField(
         controller: passwordController,
         title: 'New password',

@@ -9,14 +9,14 @@ class CameraExitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsGeometry.only(left: 20, top: 40),
+      padding: const EdgeInsetsGeometry.only(left: 20, top: 40),
       child: Align(
         alignment: Alignment.topLeft,
         child: GestureDetector(
           onTap: () {
             GoRouter.of(context).goNamed(AppRouter.kMainTab);
           },
-          child: Icon(FontAwesomeIcons.x),
+          child: const Icon(FontAwesomeIcons.x),
         ),
       ),
     );

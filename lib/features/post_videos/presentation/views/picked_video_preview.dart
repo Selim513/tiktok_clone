@@ -25,14 +25,12 @@ class _PickedVideoPreviewState extends State<PickedVideoPreview> {
       widget.videoPath,
     );
     betterPlayerController = BetterPlayerController(
-      BetterPlayerConfiguration(
+      const BetterPlayerConfiguration(
         autoPlay: true,
-        looping: false,
 
         controlsConfiguration: BetterPlayerControlsConfiguration(
           showControls: false,
         ),
-        expandToFill: true,
         aspectRatio: 9 / 16,
         fit: BoxFit.contain,
       ),

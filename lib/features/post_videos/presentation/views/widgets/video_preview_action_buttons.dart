@@ -29,7 +29,7 @@ class VideoPreviewActionsButtons extends StatelessWidget {
         }
       },
       child: Padding(
-        padding: EdgeInsetsGeometry.all(20),
+        padding: const EdgeInsetsGeometry.all(20),
         child: Align(
           alignment: AlignmentDirectional.bottomCenter,
           child: Row(

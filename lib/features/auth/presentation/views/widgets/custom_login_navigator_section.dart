@@ -10,7 +10,7 @@ class CustomLoginNavigatorSection extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
+        const Text(
           'Already have an account?',
           style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
         ),
@@ -18,7 +18,7 @@ class CustomLoginNavigatorSection extends StatelessWidget {
           onPressed: () {
             GoRouter.of(context).pushNamed(AppRouter.kLoginView);
           },
-          child: Text(
+          child: const Text(
             'Log in',
             style: TextStyle(
               color: Colors.red,

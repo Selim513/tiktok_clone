@@ -7,9 +7,9 @@ class CameraRecordView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Camera')),
+      appBar: AppBar(title: const Text('Camera')),
       backgroundColor: Colors.black,
-      body: VideoSourceSelector(),
+      body: const VideoSourceSelector(),
     );
   }
 }

@@ -14,21 +14,21 @@ class CustomAutthSelectionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomElevatedButton(
-      color: Color(0xff2E2B32),
+      color: const Color(0xff2E2B32),
       onPress: onPress,
       widget: Row(
         children: [
           Icon(icon, size: 25, color: Colors.white),
-          Spacer(),
+          const Spacer(),
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.white,
               fontSize: 17,
             ),
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );

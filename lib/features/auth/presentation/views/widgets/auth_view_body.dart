@@ -17,18 +17,18 @@ class AuthViewBody extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: 20,
           children: [
-            Spacer(),
-            Text(
+            const Spacer(),
+            const Text(
               'Sign up for TikTok',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
-            SignUpWithEmailButton(),
+            const SignUpWithEmailButton(),
             BlocProvider(
               create: (context) => GoogleAuthCubit(),
-              child: GoogleAuthCubitViewBody(),
+              child: const GoogleAuthCubitViewBody(),
             ),
-            Spacer(),
-            CustomLoginNavigatorSection(),
+            const Spacer(),
+            const CustomLoginNavigatorSection(),
           ],
         ),
       ),
