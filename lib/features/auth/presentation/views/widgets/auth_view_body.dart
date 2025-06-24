@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tiktok_clone/features/auth/presentation/manger/google_auth/google_auth_cubit.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/sign_up_with_google.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/widgets/custom_login_navigator_section.dart';
-import 'package:tiktok_clone/features/auth/presentation/views/widgets/signup_with_email_button.dart';
+import 'package:tiktok_clone/features/auth/presentation/views/widgets/reqgister_with_email_button.dart';
 
 class AuthViewBody extends StatelessWidget {
   const AuthViewBody({super.key});
@@ -22,7 +22,7 @@ class AuthViewBody extends StatelessWidget {
               'Sign up for TikTok',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
-            const SignUpWithEmailButton(),
+            const ReqgisterWithEmailButton(),
             BlocProvider(
               create: (context) => GoogleAuthCubit(),
               child: const GoogleAuthCubitViewBody(),

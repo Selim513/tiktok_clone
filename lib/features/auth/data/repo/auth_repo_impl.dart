@@ -1,4 +1,3 @@
-import 'package:flutter/rendering.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/core/errors/errors.dart';
 import 'package:tiktok_clone/features/auth/data/data_source/auth_remote_data_source.dart';
@@ -19,10 +18,7 @@ class AuthRepoImpl extends AuthRepo {
         password: password,
       );
       return res;
-    } on AuthException  catch (e) {
-      debugPrint(
-        '-------------------${AuthenticationException(extractErrorMessage(e))}',
-      );
+    } on AuthException catch (e) {
       throw AuthenticationException(extractErrorMessage(e));
     }
   }

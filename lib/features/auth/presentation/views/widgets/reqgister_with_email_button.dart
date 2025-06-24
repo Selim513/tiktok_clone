@@ -3,8 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/widgets/custom_auth_selection_button.dart';
 
-class SignUpWithEmailButton extends StatelessWidget {
-  const SignUpWithEmailButton({super.key});
+class ReqgisterWithEmailButton extends StatelessWidget {
+  const ReqgisterWithEmailButton({super.key});
 
   @override
   Widget build(BuildContext context) {

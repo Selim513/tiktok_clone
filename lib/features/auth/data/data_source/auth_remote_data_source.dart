@@ -31,7 +31,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       final identities = response.user?.identities;
 
       if (identities!.isEmpty) {
-        debugPrint('---------->${response.user!.identities}');
+       
         throw AuthenticationException(
           mapSupabaseAuthError('The email is Already exist'),
         );
@@ -46,7 +46,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
           ),
         );
       }
-      debugPrint('------AA---->${response.user!.identities}');
+    
       return response;
     } on AuthException catch (e) {
       throw AuthenticationException(extractErrorMessage(e));
@@ -65,13 +65,9 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       );
       return res;
     }
-    // on AuthException catch (e) {
-    //   throw AuthenticationException(e.message);
-    // }
+   
     on AuthException catch (e) {
-      debugPrint(
-        '-------------------${AuthenticationException(extractErrorMessage(e))}',
-      );
+     
 
       throw AuthenticationException(extractErrorMessage(e));
     }

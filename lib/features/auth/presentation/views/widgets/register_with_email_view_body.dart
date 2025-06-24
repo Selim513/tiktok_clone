@@ -32,7 +32,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
             context,
             message: state.succMessage!,
           );
-          GoRouter.of(context).goNamed(AppRouter.kLoginView);
+          GoRouter.of(context).goNamed(AppRouter.kAuth);
         } else if (state.status == BlocStatus.fail) {
           CustomSnackBar.errorSnackBar(context, message: state.errMessage!);
         }
