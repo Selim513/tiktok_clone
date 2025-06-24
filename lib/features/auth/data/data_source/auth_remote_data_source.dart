@@ -20,24 +20,36 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     required String name,
   }) async {
     try {
-      final AuthResponse res = await Constant.supabase.auth.signUp(
+      //--Signup request
+      final response = await Constant.supabase.auth.signUp(
         email: email,
         password: password,
         emailRedirectTo: 'com.example.tiktok_clone://auth-callback/',
         data: {'Name': name},
       );
+      //---Check if the email exist
+      final identities = response.user?.identities;
 
-      if (res.user!.identities!.isEmpty) {
-        debugPrint('Email is Already exist');
-
-        throw const AuthException(
-          code: 'The email is Already exist',
-          'Email is already used.',
+      if (identities!.isEmpty) {
+        debugPrint('---------->${response.user!.identities}');
+        throw AuthenticationException(
+          mapSupabaseAuthError('The email is Already exist'),
         );
       }
-      return res;
+      //-check if the email not verfied
+      final identityData = identities.first.identityData;
+      final emailVerified = identityData?['email_verified'] as bool?;
+      if (emailVerified == false) {
+        throw AuthenticationException(
+          mapSupabaseAuthError(
+            'This email is already registered but not verified. Please verify your email.',
+          ),
+        );
+      }
+      debugPrint('------AA---->${response.user!.identities}');
+      return response;
     } on AuthException catch (e) {
-      throw mapSupabaseAuthError(e.toString());
+      throw AuthenticationException(extractErrorMessage(e));
     }
   }
 
@@ -56,8 +68,35 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     // on AuthException catch (e) {
     //   throw AuthenticationException(e.message);
     // }
-    on Exception catch (e) {
-      throw AuthenticationException(mapSupabaseAuthError(e.toString()));
+    on AuthException catch (e) {
+      debugPrint(
+        '-------------------${AuthenticationException(extractErrorMessage(e))}',
+      );
+
+      throw AuthenticationException(extractErrorMessage(e));
     }
   }
 }
+
+    // try {
+    //   final AuthResponse res = await Constant.supabase.auth.signUp(
+    //     email: email,
+    //     password: password,
+    //     emailRedirectTo: 'com.example.tiktok_clone://auth-callback/',
+    //     data: {'Name': name},
+    //   );
+    //   if (res.user!.createdAt.isNotEmpty) {
+    //     debugPrint('--------Email is Already exist');
+    //     throw 'Email is Already Exist';
+    //   }
+    //   if (res.user!.identities!.isEmpty) {
+    //     throw const AuthException(
+    //       // extractErrorMessage('The email is Already exist'),
+    //       code: 'The email is Already exist',
+    //       'Email is already used.',
+    //     );
+    //   }
+    //   return res;
+    // } on AuthException catch (e) {
+    //   throw AuthException(extractErrorMessage(e));
+    // }

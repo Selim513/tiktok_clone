@@ -28,11 +28,9 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
               status: BlocStatus.success,
             ),
           );
-        } on AuthApiException catch (e) {
+        } on AuthException catch (e) {
           //-------------------Error------
-          emit(
-            state.copyWith(errMessage: e.toString(), status: BlocStatus.fail),
-          );
+          emit(state.copyWith(errMessage: e.message, status: BlocStatus.fail));
         } catch (e) {
           emit(
             state.copyWith(errMessage: e.toString(), status: BlocStatus.fail),

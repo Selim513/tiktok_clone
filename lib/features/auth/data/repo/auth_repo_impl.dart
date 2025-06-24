@@ -1,3 +1,4 @@
+import 'package:flutter/rendering.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/core/errors/errors.dart';
 import 'package:tiktok_clone/features/auth/data/data_source/auth_remote_data_source.dart';
@@ -13,12 +14,16 @@ class AuthRepoImpl extends AuthRepo {
     required String password,
   }) async {
     try {
-      return await authRemoteDataSourceImpl.login(
+      final res = await authRemoteDataSourceImpl.login(
         email: email,
         password: password,
       );
-    } on AuthenticationException catch (e) {
-      throw AuthenticationException(mapSupabaseAuthError(e.toString()));
+      return res;
+    } on AuthException  catch (e) {
+      debugPrint(
+        '-------------------${AuthenticationException(extractErrorMessage(e))}',
+      );
+      throw AuthenticationException(extractErrorMessage(e));
     }
   }
 
@@ -34,8 +39,8 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-    } on Exception catch (e) {
-      throw mapSupabaseAuthError(e.toString());
+    } on AuthException catch (e) {
+      throw AuthenticationException(extractErrorMessage(e));
     }
   }
 }

@@ -16,6 +16,19 @@ abstract class CustomSnackBar {
     );
   }
 
+  static confrimEmailSnackBar(BuildContext context, {required String message}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          message,
+          textAlign: TextAlign.center,
+          style: AppFontstyle.fontStyle20,
+        ),
+        backgroundColor: Colors.grey,
+      ),
+    );
+  }
+
   //-----------for error Messages
   static errorSnackBar(BuildContext context, {required String message}) {
     ScaffoldMessenger.of(context).showSnackBar(

@@ -28,8 +28,11 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
     return BlocConsumer<RegisterBloc, RegisterState>(
       listener: (context, state) {
         if (state.status == BlocStatus.success) {
-          CustomSnackBar.successSnackBar(context, message: state.succMessage!);
-          GoRouter.of(context).pushNamed(AppRouter.kLoginView);
+          CustomSnackBar.confrimEmailSnackBar(
+            context,
+            message: state.succMessage!,
+          );
+          GoRouter.of(context).goNamed(AppRouter.kLoginView);
         } else if (state.status == BlocStatus.fail) {
           CustomSnackBar.errorSnackBar(context, message: state.errMessage!);
         }
