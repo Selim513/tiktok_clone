@@ -17,8 +17,8 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-    } on AuthApiException catch (e) {
-      throw mapSupabaseAuthError(e.toString());
+    } on AuthenticationException catch (e) {
+      throw AuthenticationException(mapSupabaseAuthError(e.toString()));
     }
   }
 
@@ -34,7 +34,7 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-    } on AuthApiException catch (e) {
+    } on Exception catch (e) {
       throw mapSupabaseAuthError(e.toString());
     }
   }

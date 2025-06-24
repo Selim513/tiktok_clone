@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tiktok_clone/constant.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
 
 class SplashView extends StatefulWidget {
@@ -14,18 +14,29 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2)).then((value) {
-      final user = Supabase.instance.client.auth.currentUser;
-      if (user == null) {
-        GoRouter.of(context).goNamed(AppRouter.kAuth);
-      } else {
-        GoRouter.of(context).goNamed(AppRouter.kMainTab);
-      }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(const Duration(seconds: 4), () {
+        if (!mounted) return;
+        final user = Constant.supabase.auth.currentUser;
+        if (user == null) {
+          GoRouter.of(context).goNamed(AppRouter.kAuth);
+        } else {
+          GoRouter.of(context).goNamed(AppRouter.kMainTab);
+        }
+      });
     });
   }
+ 
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(child: Image.asset('assets/icon_lanuch/app_icon.png')),
+        ],
+      ),
+    );
   }
 }

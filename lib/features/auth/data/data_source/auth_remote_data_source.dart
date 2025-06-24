@@ -30,13 +30,13 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       if (res.user!.identities!.isEmpty) {
         debugPrint('Email is Already exist');
 
-        throw AuthApiException(
+        throw const AuthException(
           code: 'The email is Already exist',
           'Email is already used.',
         );
       }
       return res;
-    } on AuthApiException catch (e) {
+    } on AuthException catch (e) {
       throw mapSupabaseAuthError(e.toString());
     }
   }
@@ -56,8 +56,8 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     // on AuthException catch (e) {
     //   throw AuthenticationException(e.message);
     // }
-    on AuthApiException catch (e) {
-      throw mapSupabaseAuthError(e.toString());
+    on Exception catch (e) {
+      throw AuthenticationException(mapSupabaseAuthError(e.toString()));
     }
   }
 }
