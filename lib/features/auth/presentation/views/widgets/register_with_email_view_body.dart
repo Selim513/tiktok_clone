@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/core/enums/bloc_status.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
+import 'package:tiktok_clone/core/widgets/custom_auth_text_button.dart';
 import 'package:tiktok_clone/core/widgets/custom_elevated_button.dart';
 import 'package:tiktok_clone/core/widgets/custom_snack_bar.dart';
 import 'package:tiktok_clone/features/auth/presentation/manger/register_bloc/register_bloc.dart';
@@ -24,6 +27,16 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    formKey;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterBloc, RegisterState>(
       listener: (context, state) {
@@ -38,39 +51,61 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
         }
       },
       builder: (context, state) {
-        return SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Column(
-              spacing: 20,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                RegisterFormSection(
-                  emailController: emailController,
-                  formKey: formKey,
-                  nameController: nameController,
-                  passwordController: passwordController,
-                ),
-                state.status == BlocStatus.loading
-                    ? const CircularProgressIndicator()
-                    : CustomElevatedButton(
-                      widget: Text(
-                        'Register Now',
-                        style: AppFontstyle.fontStyle20,
-                      ),
-                      onPress: () {
-                        context.read<RegisterBloc>().add(
-                          RegisterSubmittedEvent(
-                            name: nameController.text,
-                            email: emailController.text,
-                            password: passwordController.text,
-                          ),
-                        );
-                      },
+        return CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      spacing: 20.sp,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Gap(40.sp),
+                        RegisterFormSection(
+                          emailController: emailController,
+                          formKey: formKey,
+                          nameController: nameController,
+                          passwordController: passwordController,
+                        ),
+                        state.status == BlocStatus.loading
+                            ? const CircularProgressIndicator()
+                            : CustomElevatedButton(
+                              widget: Text(
+                                'Register Now',
+                                style: AppFontstyle.normal20.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              onPress: () {
+                                context.read<RegisterBloc>().add(
+                                  RegisterSubmittedEvent(
+                                    name: nameController.text,
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                  ),
+                                );
+                              },
+                            ),
+                      ],
                     ),
-              ],
+                    AuthTextButton(
+                      onPressd: () {
+                        context.pushReplacementNamed(AppRouter.kLoginView);
+                      },
+                      title: 'Already Have an Account',
+                      buttonName: 'Login',
+                    ),
+                  ],
+                ),
+              ),
             ),
-          ),
+            // SliverToBoxAdapter(
+            //   child: TextButton(onPressed: () {}, child: const Text('data')),
+            // ),
+          ],
         );
       },
     );

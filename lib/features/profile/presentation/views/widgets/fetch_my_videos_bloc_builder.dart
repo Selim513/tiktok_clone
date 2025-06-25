@@ -24,7 +24,7 @@ class FetchMyVideosBlocBuilder extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           } else if (state is FetchMyVideosFailure) {
             return Center(
-              child: Text(state.errMessage, style: AppFontstyle.fontStyle20),
+              child: Text(state.errMessage, style: AppFontstyle.normal20),
             );
           } else {
             return const Center(child: Text('There is Some thing went Wrong'));

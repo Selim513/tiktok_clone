@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tiktok_clone/core/utils/app_color.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
@@ -20,14 +22,14 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? double.infinity,
-      height: height ?? 60,
+      height: height ?? 60.sp,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           shape: ContinuousRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(20.sp),
             side: borderSide ?? BorderSide.none,
           ),
-          backgroundColor: color ?? Colors.red,
+          backgroundColor: color ?? AppColors.redColor,
         ),
         onPressed: onPress,
         child: widget,

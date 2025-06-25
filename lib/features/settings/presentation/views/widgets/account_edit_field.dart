@@ -29,7 +29,7 @@ class AccountEditField extends StatelessWidget {
           children: [
             Text(
               title,
-              style: AppFontstyle.fontStyle20.copyWith(color: Colors.grey),
+              style: AppFontstyle.normal20.copyWith(color: Colors.grey),
             ),
           ],
         ),
@@ -47,7 +47,7 @@ class AccountEditField extends StatelessWidget {
         ),
         const Gap(30),
         CustomElevatedButton(
-          widget: Text(buttonTitle, style: AppFontstyle.fontStyle20),
+          widget: Text(buttonTitle, style: AppFontstyle.normal20),
           onPress: buttonOnTap,
         ),
       ],

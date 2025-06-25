@@ -20,7 +20,7 @@ class VideoSourceSelector extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomElevatedButton(
-            widget: Text('Camera Shot', style: AppFontstyle.fontStyle20),
+            widget: Text('Camera Shot', style: AppFontstyle.normal20),
             onPress: () {
               GoRouter.of(context).pushNamed(AppRouter.kCameraRecord);
             },
@@ -40,14 +40,13 @@ class VideoSourceSelector extends StatelessWidget {
                 CustomSnackBar.errorSnackBar(
                   context,
                   message: state.errMessage,
-                 
                 );
               } else {
                 CustomSnackBar.successSnackBar(context, message: 'loading...');
               }
             },
             child: CustomElevatedButton(
-              widget: Text('From Gallery', style: AppFontstyle.fontStyle20),
+              widget: Text('From Gallery', style: AppFontstyle.normal20),
               onPress: () async {
                 await context
                     .read<UploadVideoFromGalleryCubit>()

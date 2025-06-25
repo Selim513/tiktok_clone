@@ -21,7 +21,7 @@ class CustomProfileVideosToggleButtons extends StatelessWidget {
             color: Colors.black,
             borderRadius: BorderRadius.circular(15),
           ),
-          child: Text(title, style: AppFontstyle.fontStyle20),
+          child: Text(title, style: AppFontstyle.normal20),
         ),
       ),
     );

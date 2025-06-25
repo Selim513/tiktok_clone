@@ -24,12 +24,12 @@ class FetchVideosBlocBuilder extends StatelessWidget {
               children: [
                 Text(
                   'Error ${state.errMessage}',
-                  style: AppFontstyle.fontStyle20,
+                  style: AppFontstyle.normal20,
                   textAlign: TextAlign.center,
                 ),
                 CustomElevatedButton(
                   width: 150,
-                  widget: Text('Try Again', style: AppFontstyle.fontStyle20),
+                  widget: Text('Try Again', style: AppFontstyle.normal20),
                   onPress: () {},
                 ),
               ],

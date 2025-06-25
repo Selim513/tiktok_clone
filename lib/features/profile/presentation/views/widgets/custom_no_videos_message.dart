@@ -14,7 +14,7 @@ class CustomNoVideosMessage extends StatelessWidget {
           Text(
             'You haven’t uploaded any videos yet. \n Start by uploading your first one!',
             textAlign: TextAlign.center,
-            style: AppFontstyle.fontStyle20,
+            style: AppFontstyle.normal20,
           ),
         ],
       ),

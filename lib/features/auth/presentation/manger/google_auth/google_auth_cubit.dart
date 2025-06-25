@@ -3,28 +3,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/features/auth/presentation/manger/google_auth/google_state.dart';
 
-// class GoogleAuthCubit extends Cubit<GoogleAuthState> {
-//   GoogleAuthCubit() : super(GoogleAuthInitial());
 
-//   Future<void> signInWithGoogle() async {
-//     try {
-//     emit(GoogleAuthLoading());
-//       Supabase supabase = Supabase.instance;
-//       await supabase.client.auth.signInWithOAuth(
-//         OAuthProvider.google,
-//         redirectTo: 'com.example.tiktok_clone://login-callback',
-//       );
-
-//       if (supabase.client.accessToken != null) {
-//         emit(GoogleAuthSuccess());
-//       }
-//     } catch (e) {
-//       emit(GoogleAuthFailure(e.toString()));
-//     }
-//   }
-// }
-// إضافة dependency في pubspec.yaml:
-// google_sign_in: ^6.2.1
 class GoogleAuthCubit extends Cubit<GoogleAuthState> {
   GoogleAuthCubit() : super(GoogleAuthInitial());
 

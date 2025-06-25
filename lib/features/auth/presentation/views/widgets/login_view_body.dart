@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/core/enums/bloc_status.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
+import 'package:tiktok_clone/core/widgets/custom_auth_text_button.dart';
 import 'package:tiktok_clone/core/widgets/custom_elevated_button.dart';
 import 'package:tiktok_clone/core/widgets/custom_snack_bar.dart';
 import 'package:tiktok_clone/features/auth/presentation/manger/login_bloc/login_bloc.dart';
@@ -40,9 +42,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         },
         builder: (context, state) {
           return Column(
-            spacing: 10,
+            spacing: 15,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const Spacer(),
               LoginFormSection(
                 loginEmailController: loginEmailController,
                 loginFormKey: loginFormKey,
@@ -51,7 +54,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               state.status == BlocStatus.loading
                   ? const CircularProgressIndicator()
                   : CustomElevatedButton(
-                    widget: Text('Login', style: AppFontstyle.fontStyle20),
+                    widget: Text('Login', style: AppFontstyle.normal20),
                     onPress: () {
                       if (loginFormKey.currentState!.validate()) {
                         context.read<LoginBloc>().add(
@@ -63,6 +66,13 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                       }
                     },
                   ),
+              const Spacer(),
+              AuthTextButton(
+                onPressd: () => context.pushNamed(AppRouter.kResetPassword),
+                title: 'Forget my password?',
+                buttonName: 'Resset password',
+              ),
+              const Gap(10),
             ],
           );
         },

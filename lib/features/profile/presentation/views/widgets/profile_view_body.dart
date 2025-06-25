@@ -36,7 +36,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
           ProfileViewImage(imageUrl: imageUrl ?? ''),
 
           const Gap(30),
-          Text(name ?? 'User', style: AppFontstyle.fontStyle30),
+          Text(name ?? 'User', style: AppFontstyle.bold30),
           const Gap(20),
           const MyVideosAndSavedVideosSection(),
         ],

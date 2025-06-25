@@ -9,7 +9,7 @@ abstract class CustomSnackBar {
         content: Text(
           message,
           textAlign: TextAlign.center,
-          style: AppFontstyle.fontStyle20,
+          style: AppFontstyle.normal20,
         ),
         backgroundColor: Colors.green,
       ),
@@ -22,7 +22,7 @@ abstract class CustomSnackBar {
         content: Text(
           message,
           textAlign: TextAlign.center,
-          style: AppFontstyle.fontStyle20,
+          style: AppFontstyle.normal20,
         ),
         backgroundColor: Colors.grey,
       ),
@@ -36,7 +36,7 @@ abstract class CustomSnackBar {
         content: Text(
           message,
           textAlign: TextAlign.center,
-          style: AppFontstyle.fontStyle20,
+          style: AppFontstyle.normal20,
         ),
         backgroundColor: Colors.red,
       ),

@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/constant.dart';
 import 'package:tiktok_clone/core/utils/service_locator.dart';
-import 'package:tiktok_clone/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:tiktok_clone/features/auth/domain/use_cases/login_use_case.dart';
 import 'package:tiktok_clone/features/auth/domain/use_cases/register_use_case.dart';
 import 'package:tiktok_clone/features/auth/presentation/manger/login_bloc/login_bloc.dart';
@@ -10,6 +9,7 @@ import 'package:tiktok_clone/features/auth/presentation/manger/register_bloc/reg
 import 'package:tiktok_clone/features/auth/presentation/views/auth_view.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/login_view.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/register_view.dart';
+import 'package:tiktok_clone/features/auth/presentation/views/reset_password.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/sign_up_with_google.dart';
 import 'package:tiktok_clone/features/home/domain/use_cases/fetch_videos_use_case.dart';
 import 'package:tiktok_clone/features/home/presentation/manger/fetch_videos_cubit/fetch_videos_cubit.dart';
@@ -24,7 +24,7 @@ import 'package:tiktok_clone/features/post_videos/presentation/views/picked_vide
 import 'package:tiktok_clone/features/post_videos/presentation/views/widgets/camera_record_view_body.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/profile_view.dart';
 import 'package:tiktok_clone/features/settings/presentation/views/name_edit_view.dart';
-import 'package:tiktok_clone/features/settings/presentation/views/password_reset_view.dart';
+import 'package:tiktok_clone/features/settings/presentation/views/change_password_view.dart';
 import 'package:tiktok_clone/features/settings/presentation/views/settings_view.dart';
 import 'package:tiktok_clone/features/splash/presentation/views/splash_view.dart';
 
@@ -33,6 +33,7 @@ abstract class AppRouter {
   static const kSignUpWithEmail = '/signUpWithEmail';
   static const kSignUpWithGoogle = '/signUpWithGoogle';
   static const kLoginView = '/loginView';
+  static const kResetPassword = '/resetPassword';
   static const kMainTab = '/mainTab';
   static const kCameraRecord = '/cameraRecord';
 
@@ -41,7 +42,7 @@ abstract class AppRouter {
   static const kProfileView = '/profileView';
   static const kSettingsView = '/settings';
   static const kNameEdit = '/nameEdit';
-  static const kPasswordReset = '/reset-password';
+  static const kChangePassword = '/change-password';
 
   static final router = GoRouter(
     routes: [
@@ -73,6 +74,13 @@ abstract class AppRouter {
               create: (context) => LoginBloc(getIt.get<LoginUsesCase>()),
               child: const LoginView(),
             ),
+        routes: <RouteBase>[
+          GoRoute(
+            path: kResetPassword,
+            name: kResetPassword,
+            builder: (context, state) => const ResetPasswordView(),
+          ),
+        ],
       ),
       GoRoute(
         path: kMainTab,
@@ -108,9 +116,9 @@ abstract class AppRouter {
             },
           ),
           GoRoute(
-            path: kPasswordReset,
-            name: kPasswordReset,
-            builder: (context, state) => const PasswordResetView(),
+            path: kChangePassword,
+            name: kChangePassword,
+            builder: (context, state) => const ChangePasswordView(),
           ),
         ],
       ),

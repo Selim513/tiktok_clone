@@ -5,7 +5,12 @@ import 'package:tiktok_clone/core/utils/validator.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/widgets/custom_textform_field.dart';
 
 class LoginFormSection extends StatelessWidget {
-  const LoginFormSection({super.key, required this.loginEmailController, required this.loginPasswordController, required this.loginFormKey});
+  const LoginFormSection({
+    super.key,
+    required this.loginEmailController,
+    required this.loginPasswordController,
+    required this.loginFormKey,
+  });
 
   final TextEditingController loginEmailController;
   final TextEditingController loginPasswordController;
@@ -19,7 +24,7 @@ class LoginFormSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: 15,
         children: [
-          Text('Welcome Back!', style: AppFontstyle.fontStyle30),
+          Text('Welcome Back!', style: AppFontstyle.bold30),
           const Gap(10),
 
           CustomTextFormField(

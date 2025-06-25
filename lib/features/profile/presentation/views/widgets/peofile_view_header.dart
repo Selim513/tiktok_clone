@@ -14,7 +14,7 @@ class ProfileViewHeader extends StatelessWidget {
       children: [
         const Spacer(),
         const Gap(15),
-        Text('Profile', style: AppFontstyle.fontStyle30),
+        Text('Profile', style: AppFontstyle.bold30),
         const Spacer(),
         IconButton(
           onPressed: () {

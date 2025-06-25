@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tiktok_clone/core/utils/function_helper.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -36,7 +37,7 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
-        hintStyle: const TextStyle(fontSize: 14, color: Colors.grey),
+        hintStyle: TextStyle(fontSize: 14.sp, color: Colors.grey),
         hintText: hintText,
         // suffixIcon: suffixIcon,
         border: customOutLineBorders(),

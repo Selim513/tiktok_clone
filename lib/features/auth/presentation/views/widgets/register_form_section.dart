@@ -11,7 +11,8 @@ class RegisterFormSection extends StatelessWidget {
     super.key,
     required this.nameController,
     required this.emailController,
-    required this.passwordController, required this.formKey,
+    required this.passwordController,
+    required this.formKey,
   });
 
   final TextEditingController nameController;
@@ -26,7 +27,7 @@ class RegisterFormSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: 20,
         children: [
-          Text('Join Us', style: AppFontstyle.fontStyle30),
+          Text('Join Us', style: AppFontstyle.bold30),
           const Gap(30),
           CustomTextFormField(
             keyboardType: TextInputType.name,

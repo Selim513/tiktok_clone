@@ -21,11 +21,7 @@ class VideoPreviewActionsButtons extends StatelessWidget {
           CustomSnackBar.successSnackBar(context, message: state.succMessage);
           GoRouter.of(context).pop();
         } else if (state is UploadVideoFailure) {
-          CustomSnackBar.errorSnackBar(
-            context,
-            message: state.errMessage,
-          
-          );
+          CustomSnackBar.errorSnackBar(context, message: state.errMessage);
         }
       },
       child: Padding(
@@ -41,9 +37,7 @@ class VideoPreviewActionsButtons extends StatelessWidget {
                   widget: Text(
                     'Another Shot',
                     textAlign: TextAlign.center,
-                    style: AppFontstyle.fontStyle20.copyWith(
-                      color: Colors.black,
-                    ),
+                    style: AppFontstyle.normal20.copyWith(color: Colors.black),
                   ),
                   onPress: () {
                     GoRouter.of(context).goNamed(AppRouter.kCameraRecord);
@@ -52,7 +46,7 @@ class VideoPreviewActionsButtons extends StatelessWidget {
               ),
               Expanded(
                 child: CustomElevatedButton(
-                  widget: Text('Post', style: AppFontstyle.fontStyle20),
+                  widget: Text('Post', style: AppFontstyle.normal20),
                   onPress: () {
                     context.read<UploadVideoCubit>().uploadVideosToSupaBase(
                       videoFile: vedioFile,

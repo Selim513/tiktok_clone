@@ -20,7 +20,7 @@ class ImagePickerOptionButton extends StatelessWidget {
         ),
       ),
       onPressed: onpress,
-      child: Text(title, style: AppFontstyle.fontStyle20),
+      child: Text(title, style: AppFontstyle.normal20),
     );
   }
 }
