@@ -41,38 +41,45 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           }
         },
         builder: (context, state) {
-          return Column(
-            spacing: 15,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Spacer(),
-              LoginFormSection(
-                loginEmailController: loginEmailController,
-                loginFormKey: loginFormKey,
-                loginPasswordController: loginPasswordController,
+          return CustomScrollView(
+            slivers: [
+              SliverFillRemaining(
+                child: Column(
+                  spacing: 15,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // const Spacer(),
+                    LoginFormSection(
+                      loginEmailController: loginEmailController,
+                      loginFormKey: loginFormKey,
+                      loginPasswordController: loginPasswordController,
+                    ),
+                    state.status == BlocStatus.loading
+                        ? const CircularProgressIndicator()
+                        : CustomElevatedButton(
+                          widget: Text('Login', style: AppFontstyle.normal20),
+                          onPress: () {
+                            if (loginFormKey.currentState!.validate()) {
+                              context.read<LoginBloc>().add(
+                                LoginSubmittedEvent(
+                                  email: loginEmailController.text,
+                                  password: loginPasswordController.text,
+                                ),
+                              );
+                            }
+                          },
+                        ),
+                    // const Spacer(),
+                    AuthTextButton(
+                      onPressd:
+                          () => context.pushNamed(AppRouter.kResetPassword),
+                      title: 'Forget my password?',
+                      buttonName: 'Resset password',
+                    ),
+                    const Gap(10),
+                  ],
+                ),
               ),
-              state.status == BlocStatus.loading
-                  ? const CircularProgressIndicator()
-                  : CustomElevatedButton(
-                    widget: Text('Login', style: AppFontstyle.normal20),
-                    onPress: () {
-                      if (loginFormKey.currentState!.validate()) {
-                        context.read<LoginBloc>().add(
-                          LoginSubmittedEvent(
-                            email: loginEmailController.text,
-                            password: loginPasswordController.text,
-                          ),
-                        );
-                      }
-                    },
-                  ),
-              const Spacer(),
-              AuthTextButton(
-                onPressd: () => context.pushNamed(AppRouter.kResetPassword),
-                title: 'Forget my password?',
-                buttonName: 'Resset password',
-              ),
-              const Gap(10),
             ],
           );
         },

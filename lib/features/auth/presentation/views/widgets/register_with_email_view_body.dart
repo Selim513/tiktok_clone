@@ -51,61 +51,50 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
         }
       },
       builder: (context, state) {
-        return CustomScrollView(
-          slivers: [
-            SliverFillRemaining(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      spacing: 20.sp,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Gap(40.sp),
-                        RegisterFormSection(
-                          emailController: emailController,
-                          formKey: formKey,
-                          nameController: nameController,
-                          passwordController: passwordController,
-                        ),
-                        state.status == BlocStatus.loading
-                            ? const CircularProgressIndicator()
-                            : CustomElevatedButton(
-                              widget: Text(
-                                'Register Now',
-                                style: AppFontstyle.normal20.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              onPress: () {
-                                context.read<RegisterBloc>().add(
-                                  RegisterSubmittedEvent(
-                                    name: nameController.text,
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                  ),
-                                );
-                              },
-                            ),
-                      ],
-                    ),
-                    AuthTextButton(
-                      onPressd: () {
-                        context.pushReplacementNamed(AppRouter.kLoginView);
-                      },
-                      title: 'Already Have an Account',
-                      buttonName: 'Login',
-                    ),
-                  ],
+        return SingleChildScrollView(
+          clipBehavior: Clip.none,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              spacing: 20.sp,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Gap(40.sp),
+                RegisterFormSection(
+                  emailController: emailController,
+                  formKey: formKey,
+                  nameController: nameController,
+                  passwordController: passwordController,
                 ),
-              ),
+                state.status == BlocStatus.loading
+                    ? const CircularProgressIndicator()
+                    : CustomElevatedButton(
+                      widget: Text(
+                        'Register Now',
+                        style: AppFontstyle.normal20.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onPress: () {
+                        context.read<RegisterBloc>().add(
+                          RegisterSubmittedEvent(
+                            name: nameController.text,
+                            email: emailController.text,
+                            password: passwordController.text,
+                          ),
+                        );
+                      },
+                    ),
+                AuthTextButton(
+                  onPressd: () {
+                    context.pushReplacementNamed(AppRouter.kLoginView);
+                  },
+                  title: 'Already Have an Account',
+                  buttonName: 'Login',
+                ),
+              ],
             ),
-            // SliverToBoxAdapter(
-            //   child: TextButton(onPressed: () {}, child: const Text('data')),
-            // ),
-          ],
+          ),
         );
       },
     );
