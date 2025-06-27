@@ -12,7 +12,7 @@ import 'package:tiktok_clone/features/auth/presentation/views/register_view.dart
 import 'package:tiktok_clone/features/auth/presentation/views/reset_password.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/sign_up_with_google.dart';
 import 'package:tiktok_clone/features/home/domain/use_cases/fetch_videos_use_case.dart';
-import 'package:tiktok_clone/features/home/presentation/manger/fetch_videos_cubit/fetch_videos_cubit.dart';
+import 'package:tiktok_clone/features/home/presentation/manger/fetch_videos_bloc/fecth_videos_bloc_bloc.dart';
 import 'package:tiktok_clone/features/home/presentation/views/widgets/video_preview.dart';
 import 'package:tiktok_clone/features/main/presentation/views/main_tab_view.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/dispose_camera_use_case.dart';
@@ -23,8 +23,8 @@ import 'package:tiktok_clone/features/post_videos/presentation/manger/camera_cub
 import 'package:tiktok_clone/features/post_videos/presentation/views/picked_video_preview.dart';
 import 'package:tiktok_clone/features/post_videos/presentation/views/widgets/camera_record_view_body.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/profile_view.dart';
-import 'package:tiktok_clone/features/settings/presentation/views/name_edit_view.dart';
 import 'package:tiktok_clone/features/settings/presentation/views/change_password_view.dart';
+import 'package:tiktok_clone/features/settings/presentation/views/name_edit_view.dart';
 import 'package:tiktok_clone/features/settings/presentation/views/settings_view.dart';
 import 'package:tiktok_clone/features/splash/presentation/views/splash_view.dart';
 
@@ -89,8 +89,8 @@ abstract class AppRouter {
             (context, state) => BlocProvider(
               create:
                   (context) =>
-                      FetchVideosCubit(getIt.get<FetchVideosUsesCase>())
-                        ..fetchVideos(),
+                      FecthVideosBlocBloc(getIt.get<FetchVideosUsesCase>())
+                        ..add(FetchVideosEvent()),
               child: const MainTabView(),
             ),
       ),

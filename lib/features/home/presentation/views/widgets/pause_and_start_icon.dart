@@ -57,7 +57,7 @@ class TikTokStyleControlsState extends State<TikTokStyleControls> {
     });
     _startHideTimer();
 
-    Future.delayed(const Duration(seconds: 1), () {
+    Future.delayed(const Duration(milliseconds: 100), () {
       if (mounted) {
         setState(() {
           _visible = false;
