@@ -2,10 +2,12 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tiktok_clone/core/enums/camera_enum.dart';
 import 'package:tiktok_clone/core/utils/app_color.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
-import 'package:tiktok_clone/features/post_videos/presentation/manger/camera_cubit/camera_cubit.dart';
-import 'package:tiktok_clone/features/post_videos/presentation/manger/camera_cubit/camera_satte.dart';
+import 'package:tiktok_clone/features/post_videos/presentation/manger/camera_bloc/camera_bloc.dart';
+import 'package:tiktok_clone/features/post_videos/presentation/manger/camera_bloc/camera_bloc_event.dart';
+import 'package:tiktok_clone/features/post_videos/presentation/manger/camera_bloc/camera_bloc_state.dart';
 
 class CameraRecordViewBody extends StatefulWidget {
   const CameraRecordViewBody({super.key});
@@ -15,79 +17,50 @@ class CameraRecordViewBody extends StatefulWidget {
 }
 
 class _CameraRecordViewBodyState extends State<CameraRecordViewBody> {
-  CameraController? controller;
   @override
   void initState() {
-    // context.read<CameraCubit>().initCamera();
+    context.read<CameraBloc>().add(CameraInitialEvent());
     super.initState();
-
-    controller = context.read<CameraCubit>().controller;
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CameraCubit, CameraState>(
+    return BlocConsumer<CameraBloc, CameraBlocState>(
       builder: (context, state) {
-        if (state is CameraInitializing) {
-          return CustomCameraRecodingBody(
-            cameraController: controller!,
-
-            onTap: () => context.read<CameraCubit>().startRecording(),
-          );
-        } else if (state is CameraRecordingStarted) {
-          return CustomCameraRecodingBody(
-            cameraController: controller!,
-
-            cameraBackGroundColor: AppColors.redColor,
-            onTap: () => context.read<CameraCubit>().stopRecording(),
-          );
-
-          // SafeArea(
-          //   child: Column(
-          //     children: [
-          //       CameraPreview(context.read<CameraCubit>().controller),
-          //       Padding(
-          //         padding: const EdgeInsetsGeometry.only(bottom: 20),
-          //         child: GestureDetector(
-          //           onTap: () {
-          //             context.read<CameraCubit>().stopRecording();
-          //           },
-          //           child: const CircleAvatar(
-          //             backgroundColor: Colors.white,
-          //             radius: 30,
-          //             child: Icon(Icons.videocam, color: Colors.red, size: 40),
-          //           ),
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // );
-        } else {
-          return const Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [CircularProgressIndicator()],
+        if (state.status == CameraStatus.loading || state.controller == null) {
+          return Container(
+            color: Colors.black,
+            child: const Center(child: CircularProgressIndicator()),
           );
         }
+        final isRecording = state.status == CameraStatus.startRedcord;
+        return CustomCameraRecodingBody(
+          cameraBackGroundColor:
+              isRecording ? AppColors.redColor : AppColors.whiteColor,
+          cameraController: state.controller!,
+
+          onTap: () {
+            if (isRecording) {
+              context.read<CameraBloc>().add(CameraStopRecordingEvent());
+            } else {
+              context.read<CameraBloc>().add(CameraStartRecordingEvent());
+            }
+          },
+        );
       },
       listener: (context, state) {
-        if (state is CameraRecordingStopped) {
-          context.read<CameraCubit>().disposeCamera();
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder:
-          //         (context) => VideoPreview(videoPath: state.videoPath),
-          //   ),
-          // );
+        if (state.status == CameraStatus.stopRecord) {
           GoRouter.of(
             context,
           ).goNamed(AppRouter.kPickedVideoPreviw, extra: state.videoPath);
+          context.read<CameraBloc>().add(CameraDisposeEvent());
         }
       },
     );
   }
 }
 
+//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-///-/-/-/-/-/-/-/-/--/-/-/-///-
 class CustomCameraRecodingBody extends StatelessWidget {
   const CustomCameraRecodingBody({
     super.key,
@@ -115,6 +88,18 @@ class CustomCameraRecodingBody extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ); // SafeArea(
+    //   child: Column(
+    //     children: [
+    //       CameraPreview(context.read<CameraCubit>().controller),
+    //       Padding(
+    //         padding: const EdgeInsetsGeometry.only(bottom: 20),
+    //         child: GestureDetector(
+    //           onTap: () {
+    //             context.read<CameraCubit>().stopRecording();
+    //           },
+    //           child: const CircleAvatar(
+    //             backgroundColor: Colors.white,
+    //             radiu
   }
 }

@@ -19,7 +19,7 @@ import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_ca
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/init_camera_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/start_record_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/stop_record_use_case.dart';
-import 'package:tiktok_clone/features/post_videos/presentation/manger/camera_cubit/camera_cubit.dart';
+import 'package:tiktok_clone/features/post_videos/presentation/manger/camera_bloc/camera_bloc.dart';
 import 'package:tiktok_clone/features/post_videos/presentation/views/picked_video_preview.dart';
 import 'package:tiktok_clone/features/post_videos/presentation/views/widgets/camera_record_view_body.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/profile_view.dart';
@@ -128,12 +128,12 @@ abstract class AppRouter {
         builder:
             (context, state) => BlocProvider(
               create:
-                  (context) => CameraCubit(
+                  (context) => CameraBloc(
                     getIt.get<InitCameraUsesCase>(),
                     getIt.get<StartRecordUsesCase>(),
                     getIt.get<StopRecordUsesCase>(),
                     getIt.get<DisposeCameraUsesCase>(),
-                  )..initCamera(),
+                  ),
               child: const CameraRecordViewBody(),
             ),
       ),
