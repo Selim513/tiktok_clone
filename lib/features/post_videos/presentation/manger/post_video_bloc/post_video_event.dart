@@ -13,9 +13,7 @@ class PostVideoFromCameraEvent extends PostVideoEvent {
 }
 
 class PostVideoFromGalleryEvent extends PostVideoEvent {
-  final String video;
-
-  PostVideoFromGalleryEvent({required this.video});
+  PostVideoFromGalleryEvent();
   @override
   // TODO: implement props
   List<Object?> get props => [];
