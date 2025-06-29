@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/features/profile/presentation/manger/fetch_my_videos_cubit/fetch_my_videos_cubit.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/widgets/custom_profile_videos_toggle_button.dart';
@@ -34,28 +35,39 @@ class _MyVideosAndSavedVideosSectionState
     return Expanded(
       child: Column(
         children: [
-          Row(
-            children: [
-              CustomProfileVideosToggleButtons(
-                title: 'My Videos',
-                onTap: () {
-                  isSelected = 0;
-                  setState(() {});
-                  print(isSelected);
-                },
+          Container(
+            padding: EdgeInsets.all(7.sp),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15.sp),
+              border: Border(
+                bottom: BorderSide(width: 2.sp, color: Colors.grey),
               ),
-              const Gap(10),
-              CustomProfileVideosToggleButtons(
-                title: 'Saved',
-                onTap: () {
-                  isSelected = 1;
-                  setState(() {});
-                  print(isSelected);
-                },
-              ),
-            ],
+            ),
+            child: Row(
+              children: [
+                CustomProfileVideosToggleButtons(
+                  title: 'My Videos',
+                  onTap: () {
+                    isSelected = 0;
+                    setState(() {});
+                    print(isSelected);
+                  },
+                ),
+                const Gap(10),
+                CustomProfileVideosToggleButtons(
+                  title: 'Saved',
+                  onTap: () {
+                    isSelected = 1;
+                    setState(() {});
+                    print(isSelected);
+                  },
+                ),
+              ],
+            ),
           ),
+
           const Gap(15),
+
           if (isSelected == 0) const FetchMyVideosBlocBuilder(),
           if (isSelected == 1) const Center(child: Text('Savved')),
         ],

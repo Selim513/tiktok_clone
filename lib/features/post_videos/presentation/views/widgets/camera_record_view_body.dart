@@ -50,6 +50,7 @@ class _CameraRecordViewBodyState extends State<CameraRecordViewBody> {
       },
       listener: (context, state) {
         if (state.status == CameraStatus.stopRecord) {
+          print("---------${state.videoPath}");
           GoRouter.of(
             context,
           ).goNamed(AppRouter.kPickedVideoPreviw, extra: state.videoPath);

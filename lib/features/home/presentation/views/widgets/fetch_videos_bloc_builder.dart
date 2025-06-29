@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tiktok_clone/core/enums/bloc_status.dart';
+import 'package:tiktok_clone/core/enums/general_bloc_status.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 import 'package:tiktok_clone/core/widgets/custom_elevated_button.dart';
 import 'package:tiktok_clone/features/home/presentation/manger/fetch_videos_bloc/fecth_videos_bloc_bloc.dart';

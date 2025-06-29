@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tiktok_clone/core/enums/bloc_status.dart';
+import 'package:tiktok_clone/core/enums/general_bloc_status.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/core/widgets/custom_auth_text_button.dart';

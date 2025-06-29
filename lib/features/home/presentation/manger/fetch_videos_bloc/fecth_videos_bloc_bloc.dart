@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tiktok_clone/core/enums/bloc_status.dart';
+import 'package:tiktok_clone/core/enums/general_bloc_status.dart';
 import 'package:tiktok_clone/features/home/domain/use_cases/fetch_videos_use_case.dart';
 
 part 'fecth_videos_bloc_event.dart';

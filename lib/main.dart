@@ -43,7 +43,7 @@ class MainApp extends StatelessWidget {
               BlocProvider(
                 create:
                     (context) => UploadVideoFromGalleryCubit(
-                      getIt.get<UploadVideosToSubaBaseFromGalleryUsesCase>(),
+                      getIt.get<UploadVideosFromGalleryToSubaBaseUsesCase>(),
                     ),
               ),
             ],

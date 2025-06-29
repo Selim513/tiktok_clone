@@ -18,7 +18,7 @@ import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_ca
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/start_record_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_cases/stop_record_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/upload_videos_use_cases/upload_video_to_supabase_from_gallery_use_case.dart';
-import 'package:tiktok_clone/features/post_videos/domain/use_cases/upload_videos_use_cases/upload_videos_to_supabase_use_case.dart';
+import 'package:tiktok_clone/features/post_videos/domain/use_cases/upload_videos_use_cases/upload_videos_from_camera_to_supabase_use_case.dart';
 import 'package:tiktok_clone/features/profile/data/data_soruce/fetch_my_videos_remote_data_source/fetch_my_videos_remote_data_source.dart';
 import 'package:tiktok_clone/features/profile/data/data_soruce/pick_profile_image_remote_data_source/pick_profile_image_remote_data_source.dart';
 import 'package:tiktok_clone/features/profile/data/repo/fetch_my_videos_repo_impl.dart';
@@ -91,13 +91,15 @@ void serviceLocatorSetup() {
     ),
   );
   //-Upload video use case
-  getIt.registerSingleton<UploadVideosToSubaBaseUseCase>(
-    UploadVideosToSubaBaseUseCase(getIt.get<UploadVideoToSupabaseRepo>()),
+  getIt.registerSingleton<UploadVideosFromCameraToSubaBaseUseCase>(
+    UploadVideosFromCameraToSubaBaseUseCase(
+      getIt.get<UploadVideoToSupabaseRepo>(),
+    ),
   );
 
   //- Upload From Gallery use case-------------
-  getIt.registerSingleton<UploadVideosToSubaBaseFromGalleryUsesCase>(
-    UploadVideosToSubaBaseFromGalleryUsesCase(
+  getIt.registerSingleton<UploadVideosFromGalleryToSubaBaseUsesCase>(
+    UploadVideosFromGalleryToSubaBaseUsesCase(
       getIt.get<UploadVideoToSupabaseRepo>(),
     ),
   );

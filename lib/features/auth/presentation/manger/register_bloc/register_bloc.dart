@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:tiktok_clone/core/enums/bloc_status.dart';
+import 'package:tiktok_clone/core/enums/general_bloc_status.dart';
 import 'package:tiktok_clone/core/uses_case/auth_uses_case.dart';
 import 'package:tiktok_clone/features/auth/domain/use_cases/register_use_case.dart';
 import 'package:tiktok_clone/features/auth/presentation/manger/register_bloc/register_bloc_state.dart';

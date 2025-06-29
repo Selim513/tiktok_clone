@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:tiktok_clone/core/enums/bloc_status.dart';
+import 'package:tiktok_clone/core/enums/general_bloc_status.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 import 'package:tiktok_clone/features/profile/presentation/manger/fetch_user_info_bloc/fetch_user_bloc_state.dart';
 import 'package:tiktok_clone/features/profile/presentation/manger/fetch_user_info_bloc/fetch_user_info_bloc.dart';
@@ -18,16 +18,6 @@ class ProfileViewBody extends StatefulWidget {
 }
 
 class _ProfileViewBodyState extends State<ProfileViewBody> {
-  // String? name;
-  // String? imageUrl;
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   final user = Constant.supabase.auth.currentUser;
-  //   name = user?.userMetadata?['Name'];
-  //   imageUrl = user?.userMetadata?['picture'] as String?;
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -41,7 +31,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
             builder: (context, state) {
               if (state.status == BlocStatus.success) {
                 var user = state.userInfoEntity;
-                print('----User-----$user');
+
                 return Column(
                   spacing: 20.sp,
                   children: [
@@ -56,7 +46,9 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
               }
             },
           ),
+
           const Gap(20),
+          // ProfileVideoButtonSelection(),
           const MyVideosAndSavedVideosSection(),
         ],
       ),

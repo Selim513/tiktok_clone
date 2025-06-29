@@ -1,6 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:equatable/equatable.dart';
-import 'package:tiktok_clone/core/enums/bloc_status.dart';
+import 'package:tiktok_clone/core/enums/general_bloc_status.dart';
 import 'package:tiktok_clone/core/enums/camera_enum.dart';
 
 class CameraBlocState extends Equatable {

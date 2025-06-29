@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:tiktok_clone/core/enums/bloc_status.dart';
+import 'package:tiktok_clone/core/enums/general_bloc_status.dart';
 import 'package:tiktok_clone/features/profile/domain/entities/user_info_entity.dart';
 
 class FetchUserBlocState extends Equatable {

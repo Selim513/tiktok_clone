@@ -1,28 +1,29 @@
 import 'package:equatable/equatable.dart';
 import 'package:tiktok_clone/core/enums/general_bloc_status.dart';
 
-class LoginBlocState extends Equatable {
+class PostVideoBlocState extends Equatable {
   final BlocStatus status;
-  final String? errMessage;
   final String? succMessage;
+  final String? errMessage;
 
-  const LoginBlocState({
+  const PostVideoBlocState({
     this.status = BlocStatus.initial,
-    this.errMessage,
     this.succMessage,
+    this.errMessage,
   });
-  LoginBlocState copyWith({
+  PostVideoBlocState copyWith({
     BlocStatus? status,
-    String? errMessage,
     String? succMessage,
+    String? errMessage,
   }) {
-    return LoginBlocState(
+    return PostVideoBlocState(
       status: status ?? this.status,
-      errMessage: errMessage ?? this.errMessage,
       succMessage: succMessage ?? this.succMessage,
+      errMessage: errMessage ?? this.errMessage,
     );
   }
 
   @override
-  List<Object?> get props => [succMessage, status, errMessage];
+  // TODO: implement props
+  List<Object?> get props => [status, errMessage, succMessage];
 }

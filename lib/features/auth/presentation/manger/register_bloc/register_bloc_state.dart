@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:tiktok_clone/core/enums/bloc_status.dart';
+import 'package:tiktok_clone/core/enums/general_bloc_status.dart';
 
 //----
 class RegisterState extends Equatable {

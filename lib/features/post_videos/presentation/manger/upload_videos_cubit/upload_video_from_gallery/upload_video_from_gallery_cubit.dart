@@ -5,7 +5,7 @@ import 'package:tiktok_clone/features/post_videos/presentation/manger/upload_vid
 class UploadVideoFromGalleryCubit extends Cubit<UploadVideosFromGallerySatate> {
   UploadVideoFromGalleryCubit(this.uploadVideosToSubaBaseFromGalleryUsesCase)
     : super(InitialUploadFromGallery());
-  final UploadVideosToSubaBaseFromGalleryUsesCase
+  final UploadVideosFromGalleryToSubaBaseUsesCase
   uploadVideosToSubaBaseFromGalleryUsesCase;
   uploadVideosFromGallery() async {
     try {
