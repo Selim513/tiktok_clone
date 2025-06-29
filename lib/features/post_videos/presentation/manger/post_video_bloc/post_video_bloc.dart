@@ -16,7 +16,10 @@ class PostVideoBloc extends Bloc<PostVideoEvent, PostVideoBlocState> {
         emit(state.copyWith(status: BlocStatus.loading));
         await camera.call(event.video);
         emit(
-          state.copyWith(status: BlocStatus.success, succMessage: 'Loading...'),
+          state.copyWith(
+            status: BlocStatus.success,
+            succMessage: '🎉 Video uploaded successfully.',
+          ),
         );
       } catch (e) {
         emit(state.copyWith(status: BlocStatus.fail, errMessage: e.toString()));

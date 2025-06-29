@@ -9,8 +9,6 @@ import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/core/utils/service_locator.dart';
 import 'package:tiktok_clone/features/auth/domain/use_cases/register_use_case.dart';
 import 'package:tiktok_clone/features/auth/presentation/manger/register_bloc/register_bloc.dart';
-import 'package:tiktok_clone/features/post_videos/domain/use_cases/upload_videos_use_cases/upload_video_to_supabase_from_gallery_use_case.dart';
-import 'package:tiktok_clone/features/post_videos/presentation/manger/upload_videos_cubit/upload_video_from_gallery/upload_video_from_gallery_cubit.dart';
 import 'package:tiktok_clone/theme.dart';
 
 void main() async {
@@ -40,25 +38,10 @@ class MainApp extends StatelessWidget {
                 create:
                     (context) => RegisterBloc(getIt.get<RegisterUsesCase>()),
               ),
-              BlocProvider(
-                create:
-                    (context) => UploadVideoFromGalleryCubit(
-                      getIt.get<UploadVideosFromGalleryToSubaBaseUsesCase>(),
-                    ),
-              ),
             ],
             child: MaterialApp.router(
               theme: AppTheme.darkTheme,
-              //  ThemeData.dark().copyWith(
 
-              //   appBarTheme: AppBarTheme(
-              //     centerTitle: true,
-              //     titleTextStyle: AppFontstyle.bold30,
-              //   ),
-              //   progressIndicatorTheme: const ProgressIndicatorThemeData(
-              //     color: Colors.white,
-              //   ),
-              // ),
               debugShowCheckedModeBanner: false,
               // home: const AuthTest(),
               routerConfig: AppRouter.router,
