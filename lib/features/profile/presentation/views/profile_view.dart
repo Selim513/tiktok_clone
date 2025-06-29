@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/core/utils/service_locator.dart';
 import 'package:tiktok_clone/features/profile/data/data_soruce/fetch_user_info_remote_data_source/fetch_user_info_remote_data_source.dart';
 import 'package:tiktok_clone/features/profile/data/repo/fetch_user_info_repo_impl.dart';
@@ -18,31 +20,44 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create:
-              (context) => FetchUserInfoBloc(
-                FetchUserInfoUseCase(
-                  FetchUserInfoRepoImpl(FetchUserInfoRemoteDataSourceImpl()),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              GoRouter.of(context).pushNamed(AppRouter.kSettingsView);
+            },
+            icon: const Icon(Icons.settings),
+          ),
+        ],
+      ),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create:
+                (context) => FetchUserInfoBloc(
+                  FetchUserInfoUseCase(
+                    FetchUserInfoRepoImpl(FetchUserInfoRemoteDataSourceImpl()),
+                  ),
+                )..add(FetchUserInfoEvent()),
+          ),
+          BlocProvider(
+            create:
+                (context) => PickProfileImageBloc(
+                  getIt.get<PickProfileImageFromCameraUseCase>(),
+                  getIt.get<PickProfileImageFromGalleryUseCase>(),
                 ),
-              )..add(FetchUserInfoEvent()),
-        ),
-        BlocProvider(
-          create:
-              (context) => PickProfileImageBloc(
-                getIt.get<PickProfileImageFromCameraUseCase>(),
-                getIt.get<PickProfileImageFromGalleryUseCase>(),
-              ),
-        ),
-        BlocProvider(
-          create:
-              (context) =>
-                  FetchMyVideosCubit(getIt.get<FetchMyVideosUseCase>()),
-        ),
-      ],
+          ),
+          BlocProvider(
+            create:
+                (context) =>
+                    FetchMyVideosCubit(getIt.get<FetchMyVideosUseCase>()),
+          ),
+        ],
 
-      child: const ProfileViewBody(),
+        child: const ProfileViewBody(),
+      ),
     );
   }
 }

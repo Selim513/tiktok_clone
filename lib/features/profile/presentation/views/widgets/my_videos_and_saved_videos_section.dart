@@ -50,7 +50,6 @@ class _MyVideosAndSavedVideosSectionState
                   onTap: () {
                     isSelected = 0;
                     setState(() {});
-                    print(isSelected);
                   },
                 ),
                 const Gap(10),
@@ -59,7 +58,6 @@ class _MyVideosAndSavedVideosSectionState
                   onTap: () {
                     isSelected = 1;
                     setState(() {});
-                    print(isSelected);
                   },
                 ),
               ],

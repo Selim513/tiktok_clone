@@ -14,7 +14,7 @@ class MyVideosGridView extends StatelessWidget {
     return GridView.builder(
       itemCount: videos.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+        crossAxisCount: 3,
       ),
       itemBuilder: (context, index) {
         return Padding(
