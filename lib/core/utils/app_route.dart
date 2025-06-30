@@ -22,6 +22,9 @@ import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_ca
 import 'package:tiktok_clone/features/post_videos/presentation/manger/camera_bloc/camera_bloc.dart';
 import 'package:tiktok_clone/features/post_videos/presentation/views/picked_video_preview.dart';
 import 'package:tiktok_clone/features/post_videos/presentation/views/widgets/camera_record_view_body.dart';
+import 'package:tiktok_clone/features/profile/domain/use_cases/fetch_user_info_use_case/fetch_user_info_use_case.dart';
+import 'package:tiktok_clone/features/profile/presentation/manger/fetch_user_info_bloc/fetch_user_info_bloc.dart';
+import 'package:tiktok_clone/features/profile/presentation/manger/fetch_user_info_bloc/fetch_user_info_event.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/profile_view.dart';
 import 'package:tiktok_clone/features/settings/presentation/views/change_password_view.dart';
 import 'package:tiktok_clone/features/settings/presentation/views/name_edit_view.dart';
@@ -105,7 +108,13 @@ abstract class AppRouter {
         path: kSettingsView,
         name: kSettingsView,
         builder: (context, state) {
-          return const SettingsView();
+          return BlocProvider(
+            create:
+                (context) =>
+                    FetchUserInfoBloc(getIt.get<FetchUserInfoUseCase>())
+                      ..add(FetchUserInfoEvent()),
+            child: const SettingsView(),
+          );
         },
         routes: [
           GoRoute(

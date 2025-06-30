@@ -6,7 +6,7 @@ import 'package:tiktok_clone/features/profile/domain/repo/fetch_user_info_repo.d
 class FetchUserInfoUseCase extends UsesCase<UserInfoEntity, NoParam> {
   final FetchUserInfoRepo user;
 
-  FetchUserInfoUseCase( this.user);
+  FetchUserInfoUseCase(this.user);
   @override
   Future<UserInfoEntity> call([NoParam? params]) async {
     return await user.fetchUserInfo();

@@ -20,11 +20,15 @@ import 'package:tiktok_clone/features/post_videos/domain/use_cases/camera_use_ca
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/upload_videos_use_cases/upload_video_to_supabase_from_gallery_use_case.dart';
 import 'package:tiktok_clone/features/post_videos/domain/use_cases/upload_videos_use_cases/upload_videos_from_camera_to_supabase_use_case.dart';
 import 'package:tiktok_clone/features/profile/data/data_soruce/fetch_my_videos_remote_data_source/fetch_my_videos_remote_data_source.dart';
+import 'package:tiktok_clone/features/profile/data/data_soruce/fetch_user_info_remote_data_source/fetch_user_info_remote_data_source.dart';
 import 'package:tiktok_clone/features/profile/data/data_soruce/pick_profile_image_remote_data_source/pick_profile_image_remote_data_source.dart';
 import 'package:tiktok_clone/features/profile/data/repo/fetch_my_videos_repo_impl.dart';
+import 'package:tiktok_clone/features/profile/data/repo/fetch_user_info_repo_impl.dart';
 import 'package:tiktok_clone/features/profile/data/repo/pick_profile_image_repo_impl.dart';
 import 'package:tiktok_clone/features/profile/domain/repo/fetch_my_videos_repo.dart';
+import 'package:tiktok_clone/features/profile/domain/repo/fetch_user_info_repo.dart';
 import 'package:tiktok_clone/features/profile/domain/use_cases/fetch_my_videos_use_case.dart/fetch_my_videos_use_case.dart';
+import 'package:tiktok_clone/features/profile/domain/use_cases/fetch_user_info_use_case/fetch_user_info_use_case.dart';
 import 'package:tiktok_clone/features/profile/domain/use_cases/pick_profile_image_use_case/pick_image_from_gallery.dart';
 import 'package:tiktok_clone/features/profile/domain/use_cases/pick_profile_image_use_case/pick_profile_image_use_case.dart';
 
@@ -131,6 +135,16 @@ void serviceLocatorSetup() {
   //-fetch my videos use case
   getIt.registerSingleton<FetchMyVideosUseCase>(
     FetchMyVideosUseCase(getIt.get<FetchMyVideosRepo>()),
+  );
+  //-------------------------------------------Fetch User info
+  getIt.registerSingleton<FetchUserInfoRemoteDataSource>(
+    FetchUserInfoRemoteDataSourceImpl(),
+  );
+  getIt.registerSingleton<FetchUserInfoRepo>(
+    FetchUserInfoRepoImpl(getIt.get<FetchUserInfoRemoteDataSource>()),
+  );
+  getIt.registerSingleton<FetchUserInfoUseCase>(
+    FetchUserInfoUseCase(getIt.get<FetchUserInfoRepo>()),
   );
   //----------------------------------------Supabase Client-
   getIt.registerSingleton<SupabaseClient>(Supabase.instance.client);

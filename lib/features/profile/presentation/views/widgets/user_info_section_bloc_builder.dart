@@ -12,7 +12,7 @@ class UserInfoSectionBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FetchUserInfoBloc, FetchUserBlocState>(
+    return BlocBuilder<FetchUserInfoBloc, FetchUserInfoBlocState>(
       builder: (context, state) {
         if (state.status == BlocStatus.success) {
           var user = state.userInfoEntity;

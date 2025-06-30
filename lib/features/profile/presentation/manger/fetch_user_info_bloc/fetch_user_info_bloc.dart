@@ -4,9 +4,9 @@ import 'package:tiktok_clone/features/profile/domain/use_cases/fetch_user_info_u
 import 'package:tiktok_clone/features/profile/presentation/manger/fetch_user_info_bloc/fetch_user_bloc_state.dart';
 import 'package:tiktok_clone/features/profile/presentation/manger/fetch_user_info_bloc/fetch_user_info_event.dart';
 
-class FetchUserInfoBloc extends Bloc<FetchUserEvent, FetchUserBlocState> {
+class FetchUserInfoBloc extends Bloc<FetchUserEvent, FetchUserInfoBlocState> {
   final FetchUserInfoUseCase user;
-  FetchUserInfoBloc(this.user) : super(const FetchUserBlocState()) {
+  FetchUserInfoBloc(this.user) : super(const FetchUserInfoBlocState()) {
     on<FetchUserInfoEvent>((event, emit) async {
       try {
         emit(state.copyWith(status: BlocStatus.loading));
@@ -15,7 +15,6 @@ class FetchUserInfoBloc extends Bloc<FetchUserEvent, FetchUserBlocState> {
           state.copyWith(status: BlocStatus.success, userInfoEntity: response),
         );
       } catch (e) {
-        print('eeeeeeeeeeeeeeeeeeeeeee$e');
         emit(state.copyWith(status: BlocStatus.fail));
       }
     });

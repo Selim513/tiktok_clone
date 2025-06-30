@@ -32,44 +32,40 @@ class _MyVideosAndSavedVideosSectionState
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.all(7.sp),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.sp),
-              border: Border(
-                bottom: BorderSide(width: 2.sp, color: Colors.grey),
-              ),
-            ),
-            child: Row(
-              children: [
-                CustomProfileVideosToggleButtons(
-                  title: 'My Videos',
-                  onTap: () {
-                    isSelected = 0;
-                    setState(() {});
-                  },
-                ),
-                const Gap(10),
-                CustomProfileVideosToggleButtons(
-                  title: 'Saved',
-                  onTap: () {
-                    isSelected = 1;
-                    setState(() {});
-                  },
-                ),
-              ],
-            ),
+    return Column(
+      children: [
+        Container(
+          padding: EdgeInsets.all(7.sp),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15.sp),
+            border: Border(bottom: BorderSide(width: 2.sp, color: Colors.grey)),
           ),
+          child: Row(
+            children: [
+              CustomProfileVideosToggleButtons(
+                title: 'My Videos',
+                onTap: () {
+                  isSelected = 0;
+                  setState(() {});
+                },
+              ),
+              const Gap(10),
+              CustomProfileVideosToggleButtons(
+                title: 'Saved',
+                onTap: () {
+                  isSelected = 1;
+                  setState(() {});
+                },
+              ),
+            ],
+          ),
+        ),
 
-          const Gap(15),
+        const Gap(15),
 
-          if (isSelected == 0) const FetchMyVideosBlocBuilder(),
-          if (isSelected == 1) const Center(child: Text('Savved')),
-        ],
-      ),
+        if (isSelected == 0) const FetchMyVideosBlocBuilder(),
+        if (isSelected == 1) const Center(child: Text('Savved')),
+      ],
     );
   }
 }
