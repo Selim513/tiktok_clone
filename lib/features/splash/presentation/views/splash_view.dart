@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:tiktok_clone/constant.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
 
@@ -15,18 +16,24 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(const Duration(seconds: 4), () {
+      Future.delayed(const Duration(seconds: 4), () async {
+        final bool isConnected =
+            await InternetConnectionChecker.instance.hasConnection;
+
         if (!mounted) return;
-        final user = Constant.supabase.auth.currentUser;
-        if (user == null) {
-          GoRouter.of(context).goNamed(AppRouter.kAuth);
+        if (isConnected) {
+          final user = Constant.supabase.auth.currentUser;
+          if (user == null) {
+            context.goNamed(AppRouter.kAuth);
+          } else {
+            context.goNamed(AppRouter.kMainTab);
+          }
         } else {
-          GoRouter.of(context).goNamed(AppRouter.kMainTab);
+          context.goNamed(AppRouter.kNoInterNet);
         }
       });
     });
   }
- 
 
   @override
   Widget build(BuildContext context) {

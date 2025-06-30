@@ -33,10 +33,12 @@ import 'package:tiktok_clone/features/settings/presentation/manger/update_user_d
 import 'package:tiktok_clone/features/settings/presentation/views/change_password_view.dart';
 import 'package:tiktok_clone/features/settings/presentation/views/name_edit_view.dart';
 import 'package:tiktok_clone/features/settings/presentation/views/settings_view.dart';
+import 'package:tiktok_clone/features/splash/presentation/views/disconect_page.dart';
 import 'package:tiktok_clone/features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
   static const kAuth = '/auth';
+  static const kNoInterNet = '/notInterNet';
   static const kSignUpWithEmail = '/signUpWithEmail';
   static const kSignUpWithGoogle = '/signUpWithGoogle';
   static const kLoginView = '/loginView';
@@ -54,6 +56,11 @@ abstract class AppRouter {
   static final router = GoRouter(
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SplashView()),
+      GoRoute(
+        name: kNoInterNet,
+        path: kNoInterNet,
+        builder: (context, state) => const DisconectPage(),
+      ),
       GoRoute(
         name: kAuth,
         path: kAuth,
