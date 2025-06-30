@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tiktok_clone/core/enums/general_bloc_status.dart';
 import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 import 'package:tiktok_clone/core/widgets/custom_elevated_button.dart';
@@ -11,7 +12,7 @@ class FetchVideosBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FecthVideosBlocBloc, FecthVideosBlocState>(
+    return BlocBuilder<FecthVideosBloc, FecthVideosBlocState>(
       builder: (context, state) {
         if (state.status == BlocStatus.success) {
           var videos = state.videos!;
@@ -19,18 +20,20 @@ class FetchVideosBlocBuilder extends StatelessWidget {
         } else if (state.status == BlocStatus.fail) {
           return Center(
             child: Column(
-              spacing: 20,
+              spacing: 20.sp,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Error ${state.errMessage}',
+                  '${state.errMessage}',
                   style: AppFontstyle.normal20,
                   textAlign: TextAlign.center,
                 ),
                 CustomElevatedButton(
-                  width: 150,
+                  width: 150.sp,
                   widget: Text('Try Again', style: AppFontstyle.normal20),
-                  onPress: () {},
+                  onPress: () {
+                    context.read<FecthVideosBloc>().add(FetchVideosEvent());
+                  },
                 ),
               ],
             ),

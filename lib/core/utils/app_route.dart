@@ -96,7 +96,7 @@ abstract class AppRouter {
             (context, state) => BlocProvider(
               create:
                   (context) =>
-                      FecthVideosBlocBloc(getIt.get<FetchVideosUsesCase>())
+                      FecthVideosBloc(getIt.get<FetchVideosUsesCase>())
                         ..add(FetchVideosEvent()),
               child: const MainTabView(),
             ),

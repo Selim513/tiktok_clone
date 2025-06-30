@@ -8,17 +8,16 @@ import 'package:tiktok_clone/features/home/domain/use_cases/fetch_videos_use_cas
 part 'fecth_videos_bloc_event.dart';
 part 'fecth_videos_bloc_state.dart';
 
-class FecthVideosBlocBloc
-    extends Bloc<FecthVideosBlocEvent, FecthVideosBlocState> {
+class FecthVideosBloc extends Bloc<FecthVideosBlocEvent, FecthVideosBlocState> {
   final FetchVideosUsesCase fetchVideos;
 
-  FecthVideosBlocBloc(this.fetchVideos) : super(const FecthVideosBlocState()) {
+  FecthVideosBloc(this.fetchVideos) : super(const FecthVideosBlocState()) {
     on<FecthVideosBlocEvent>((event, emit) async {
       if (event is FetchVideosEvent) {
         try {
           emit(state.copyWith(status: BlocStatus.loading));
           var videos = await fetchVideos.call().timeout(
-            const Duration(seconds: 15),
+            const Duration(seconds: 10),
             onTimeout: () => throw TimeoutException('Timeout'),
           );
           emit(state.copyWith(status: BlocStatus.success, videos: videos));
@@ -29,9 +28,12 @@ class FecthVideosBlocBloc
               errMessage: 'Please check your Internet and try again',
             ),
           );
-        } on Exception catch (e) {
+        } on Exception {
           emit(
-            state.copyWith(status: BlocStatus.fail, errMessage: e.toString()),
+            state.copyWith(
+              status: BlocStatus.fail,
+              errMessage: 'Please Check your internet',
+            ),
           );
         }
       }
