@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
 import 'package:tiktok_clone/core/utils/service_locator.dart';
-import 'package:tiktok_clone/features/profile/data/data_soruce/fetch_user_info_remote_data_source/fetch_user_info_remote_data_source.dart';
-import 'package:tiktok_clone/features/profile/data/repo/fetch_user_info_repo_impl.dart';
 import 'package:tiktok_clone/features/profile/domain/use_cases/fetch_my_videos_use_case.dart/fetch_my_videos_use_case.dart';
 import 'package:tiktok_clone/features/profile/domain/use_cases/fetch_user_info_use_case/fetch_user_info_use_case.dart';
 import 'package:tiktok_clone/features/profile/domain/use_cases/pick_profile_image_use_case/pick_image_from_gallery.dart';
@@ -36,11 +34,9 @@ class ProfileView extends StatelessWidget {
         providers: [
           BlocProvider(
             create:
-                (context) => FetchUserInfoBloc(
-                  FetchUserInfoUseCase(
-                    FetchUserInfoRepoImpl(FetchUserInfoRemoteDataSourceImpl()),
-                  ),
-                )..add(FetchUserInfoEvent()),
+                (context) =>
+                    FetchUserInfoBloc(getIt.get<FetchUserInfoUseCase>())
+                      ..add(FetchUserInfoEvent()),
           ),
           BlocProvider(
             create:

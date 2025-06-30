@@ -26,6 +26,10 @@ import 'package:tiktok_clone/features/profile/domain/use_cases/fetch_user_info_u
 import 'package:tiktok_clone/features/profile/presentation/manger/fetch_user_info_bloc/fetch_user_info_bloc.dart';
 import 'package:tiktok_clone/features/profile/presentation/manger/fetch_user_info_bloc/fetch_user_info_event.dart';
 import 'package:tiktok_clone/features/profile/presentation/views/profile_view.dart';
+import 'package:tiktok_clone/features/settings/data/remote_data_source/update_user_info_remote_data_source.dart';
+import 'package:tiktok_clone/features/settings/data/repo/update_user_data_repo_impl.dart';
+import 'package:tiktok_clone/features/settings/domain/use_case/update_user_data_use_case.dart';
+import 'package:tiktok_clone/features/settings/presentation/manger/update_user_data_bloc/update_user_data_bloc.dart';
 import 'package:tiktok_clone/features/settings/presentation/views/change_password_view.dart';
 import 'package:tiktok_clone/features/settings/presentation/views/name_edit_view.dart';
 import 'package:tiktok_clone/features/settings/presentation/views/settings_view.dart';
@@ -121,7 +125,17 @@ abstract class AppRouter {
             path: kNameEdit,
             name: kNameEdit,
             builder: (context, state) {
-              return const NameEditView();
+              return BlocProvider(
+                create:
+                    (context) => UpdateUserDataBloc(
+                      UpdateUserDataUseCase(
+                        UpdateUserDataRepoImpl(
+                          UpdateUserInfoRemoteDataSourceImpl(),
+                        ),
+                      ),
+                    ),
+                child: const NameEditView(),
+              );
             },
           ),
           GoRoute(
