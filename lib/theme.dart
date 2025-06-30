@@ -4,6 +4,8 @@ import 'package:tiktok_clone/core/fonts/app_fontstyle.dart';
 
 abstract class AppTheme {
   static ThemeData darkTheme = ThemeData(
+    
+    
     fontFamily: GoogleFonts.roboto().fontFamily,
     colorScheme: const ColorScheme.dark(),
     appBarTheme: AppBarTheme(
@@ -13,5 +15,6 @@ abstract class AppTheme {
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: Colors.white,
     ),
+
   );
 }
