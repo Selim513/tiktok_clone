@@ -10,7 +10,7 @@ class UploadVideosFromCameraToSubaBaseUseCase extends UsesCase<String, File> {
   @override
   Future<String> call([File? videoUrl]) async {
     if (videoUrl == null) throw Exception("videoUrl is required");
-    return await uploadVideoToSupabaseRepo.uploadVideoToSupabase(
+    return await uploadVideoToSupabaseRepo.uploadVideoFromCamraToSupabase(
       videoUrl: videoUrl,
     );
   }

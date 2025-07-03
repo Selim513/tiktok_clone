@@ -35,6 +35,9 @@ import 'package:tiktok_clone/features/profile/domain/use_cases/pick_profile_imag
 final getIt = GetIt.instance;
 
 void serviceLocatorSetup() {
+  //----------------------------------------Supabase Client-
+
+  getIt.registerSingleton<SupabaseClient>(Supabase.instance.client);
   //--------- ----------------------------------Auth service Locator-----
   getIt.registerSingleton<AuthRemoteDataSourceImpl>(AuthRemoteDataSourceImpl());
   //-Auth repo
@@ -90,7 +93,7 @@ void serviceLocatorSetup() {
   );
   //-Upload camera repo
   getIt.registerSingleton<UploadVideoToSupabaseRepo>(
-    UploadVideoToSupabaseRepoimpl(
+    UploadVideoToSupabaseRepoImpl(
       getIt.get<UploadVideoToSupabaseRemoteDataSourceImpl>(),
     ),
   );
@@ -146,6 +149,4 @@ void serviceLocatorSetup() {
   getIt.registerSingleton<FetchUserInfoUseCase>(
     FetchUserInfoUseCase(getIt.get<FetchUserInfoRepo>()),
   );
-  //----------------------------------------Supabase Client-
-  getIt.registerSingleton<SupabaseClient>(Supabase.instance.client);
 }
