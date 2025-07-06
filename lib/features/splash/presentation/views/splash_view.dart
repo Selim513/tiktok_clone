@@ -50,7 +50,6 @@ class _SplashViewState extends State<SplashView> {
                 backgroundImage: const AssetImage(
                   'assets/icon_lanuch/app_icon.png',
                 ),
-                // child: Image.asset('assets/icon_lanuch/app_icon.png')
               ),
             ),
           ],

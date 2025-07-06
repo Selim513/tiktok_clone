@@ -58,26 +58,3 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     }
   }
 }
-
-    // try {
-    //   final AuthResponse res = await Constant.supabase.auth.signUp(
-    //     email: email,
-    //     password: password,
-    //     emailRedirectTo: 'com.example.tiktok_clone://auth-callback/',
-    //     data: {'Name': name},
-    //   );
-    //   if (res.user!.createdAt.isNotEmpty) {
-    //     debugPrint('--------Email is Already exist');
-    //     throw 'Email is Already Exist';
-    //   }
-    //   if (res.user!.identities!.isEmpty) {
-    //     throw const AuthException(
-    //       // extractErrorMessage('The email is Already exist'),
-    //       code: 'The email is Already exist',
-    //       'Email is already used.',
-    //     );
-    //   }
-    //   return res;
-    // } on AuthException catch (e) {
-    //   throw AuthException(extractErrorMessage(e));
-    // }

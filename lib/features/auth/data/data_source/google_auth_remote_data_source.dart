@@ -27,8 +27,6 @@ class GoogleAuthRemoteDataSourceImpl extends GoogleAuthRemoteDataSource {
       final authentication = await account.authentication;
       final idToken = authentication.idToken;
       if (idToken == null) {
-        debugPrint('-----ID--------------------$idToken');
-
         throw extractErrorMessage('Signin was Canceld');
       }
       final res = await userClient.auth.signInWithIdToken(
@@ -37,7 +35,6 @@ class GoogleAuthRemoteDataSourceImpl extends GoogleAuthRemoteDataSource {
       );
       return res;
     } on Exception catch (e) {
-      debugPrint('-*-*-*-**-*-*-*-*-*-*-*${e.toString()}');
       throw extractErrorMessage(e);
     }
   }

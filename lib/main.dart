@@ -32,7 +32,6 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(375, 712),
       builder:
           (context, child) => MultiBlocProvider(
             providers: [
