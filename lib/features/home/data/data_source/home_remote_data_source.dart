@@ -1,5 +1,7 @@
+import 'package:hive/hive.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/constant.dart';
+import 'package:tiktok_clone/core/utils/func/save_videos.dart';
 
 abstract class HomeRemoteDataSource {
   Future<List<String>> fetchVideos();
@@ -17,7 +19,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
       final res = await supabase.storage
           .from('videos')
           .list(path: 'user_videos');
-//-----
+      //-----
       for (final item in res) {
         //-Check if the video in folder or not
 
@@ -48,13 +50,14 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
             allVideoUrls.addAll(subUrls);
           } catch (e) {
             print('Error fetching videos from user folder ${item.name}: $e');
-
-            
           }
         }
       }
-//- fetch the videos randomly 
+      //- fetch the videos randomly
       allVideoUrls.shuffle();
+      //-Cahced first 10 videos
+      final firstTen = allVideoUrls.take(10).toList();
+      saveVideos(videos: firstTen);
       return allVideoUrls;
     } catch (e) {
       print('Error fetching videos: $e');

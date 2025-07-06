@@ -93,7 +93,7 @@ Future<dynamic> customShowDialogResetPasswordRequest(BuildContext context) {
                     var user = Supabase.instance.client.auth;
                     await user.resetPasswordForEmail(
                       user.currentUser!.email!,
-                      redirectTo: "com.example.tiktok_clone://reset-password",
+                      redirectTo: "com.example.vibement://reset-password",
                     );
                     GoRouter.of(context).pop();
                   },

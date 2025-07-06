@@ -1,4 +1,3 @@
-import 'package:flutter/rendering.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/constant.dart';
 import 'package:tiktok_clone/core/errors/errors.dart';
@@ -31,22 +30,12 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       final identities = response.user?.identities;
 
       if (identities!.isEmpty) {
-       
         throw AuthenticationException(
           mapSupabaseAuthError('The email is Already exist'),
         );
       }
       //-check if the email not verfied
-      final identityData = identities.first.identityData;
-      final emailVerified = identityData?['email_verified'] as bool?;
-      if (emailVerified == false) {
-        throw AuthenticationException(
-          mapSupabaseAuthError(
-            'This email is already registered but not verified. Please verify your email.',
-          ),
-        );
-      }
-    
+
       return response;
     } on AuthException catch (e) {
       throw AuthenticationException(extractErrorMessage(e));
@@ -64,11 +53,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
         password: password,
       );
       return res;
-    }
-   
-    on AuthException catch (e) {
-     
-
+    } on AuthException catch (e) {
       throw AuthenticationException(extractErrorMessage(e));
     }
   }

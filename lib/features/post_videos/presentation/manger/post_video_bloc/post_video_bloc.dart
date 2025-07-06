@@ -31,7 +31,7 @@ class PostVideoBloc extends Bloc<PostVideoEvent, PostVideoBlocState> {
         emit(
           state.copyWith(
             status: BlocStatus.loading,
-            loadingMessage: 'Loading...',
+            loadingMessage: 'Loading... Please Wait !.',
           ),
         );
 

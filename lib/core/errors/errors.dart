@@ -18,9 +18,13 @@ String mapSupabaseAuthError(String? errorMessage) {
 
   // Map specific Supabase error codes and messages to friendly messages
   if (errorMessage.contains('The email is Already exist')) {
-    return 'This email is already registered.';
+    return 'This email is already exist.';
   } else if (errorMessage.contains('Invalid login credentials')) {
     return 'Incorrect email or password.';
+  } else if (errorMessage.contains(
+    'This email is already registered but not verified. Please verify your email.',
+  )) {
+    return 'This email is already registred but not verfied.';
   } else if (errorMessage.contains('Email not confirmed')) {
     return 'Please confirm your email address.';
   } else if (errorMessage.contains('Password should be at least')) {

@@ -36,7 +36,7 @@ class AuthViewBody extends StatelessWidget {
             ),
             const Spacer(),
             const CustomLoginNavigatorSection(),
-          ],
+          ],  
         ),
       ),
     );

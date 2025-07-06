@@ -28,7 +28,6 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     nameController.dispose();
     emailController.dispose();

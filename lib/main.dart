@@ -1,8 +1,8 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tiktok_clone/core/observer/simple_bloc_observer.dart';
 import 'package:tiktok_clone/core/utils/app_route.dart';
@@ -19,8 +19,10 @@ void main() async {
     anonKey: dotenv.env['SUPABASE_ANON_KEY'] ?? '',
   );
   serviceLocatorSetup();
+  await Hive.initFlutter();
+  await Hive.openBox('video_cache_box');
   Bloc.observer = SimpleBlocObserver();
-  runApp(DevicePreview(builder: (context) => const MainApp()));
+  runApp(const MainApp());
   //-------------
 }
 
@@ -30,7 +32,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(375, 812),
+      designSize: const Size(375, 712),
       builder:
           (context, child) => MultiBlocProvider(
             providers: [

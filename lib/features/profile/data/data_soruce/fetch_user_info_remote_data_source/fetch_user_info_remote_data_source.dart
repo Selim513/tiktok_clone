@@ -12,11 +12,11 @@ class FetchUserInfoRemoteDataSourceImpl extends FetchUserInfoRemoteDataSource {
     try {
       final userClient = Constant.supabase;
       final user = userClient.auth.currentUser;
-      final name = user?.userMetadata?['Name'] ?? '';
+      final name = user?.userMetadata?['name'] ?? user?.userMetadata?['Name'];
       final image = user?.userMetadata?['picture'] ?? '';
       final email = user?.email;
 
-      return UserInfoModel(name: name, image: image,email: email);
+      return UserInfoModel(name: name, image: image, email: email);
     } on Exception catch (e) {
       debugPrint('Exception:----${e.toString()}');
       throw Exception(e);

@@ -13,10 +13,19 @@ class GoogleAuthRemoteDataSourceImpl extends GoogleAuthRemoteDataSource {
   @override
   Future<AuthResponse> googleAuth() async {
     try {
-      final googleSignIn = GoogleSignIn(scopes: ['email', 'profile']);
+      final googleSignIn = GoogleSignIn(
+        serverClientId:
+            '385558626026-jnjce476cq3ove25mgt4vp9533gcobq1.apps.googleusercontent.com',
+        scopes: ['email', 'profile'],
+      );
+
       final account = await googleSignIn.signIn();
-      final authentication = await account?.authentication;
-      final idToken = authentication?.idToken;
+      if (account == null) {
+        debugPrint('User cancelled the sign-in');
+        throw extractErrorMessage('Signin was Cancelled');
+      }
+      final authentication = await account.authentication;
+      final idToken = authentication.idToken;
       if (idToken == null) {
         debugPrint('-----ID--------------------$idToken');
 
@@ -28,6 +37,7 @@ class GoogleAuthRemoteDataSourceImpl extends GoogleAuthRemoteDataSource {
       );
       return res;
     } on Exception catch (e) {
+      debugPrint('-*-*-*-**-*-*-*-*-*-*-*${e.toString()}');
       throw extractErrorMessage(e);
     }
   }

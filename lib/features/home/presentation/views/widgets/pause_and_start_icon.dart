@@ -36,7 +36,7 @@ class TikTokStyleControlsState extends State<TikTokStyleControls> {
 
   void _startHideTimer() {
     _hideTimer?.cancel();
-    _hideTimer = Timer(const Duration(seconds: 3), () {
+    _hideTimer = Timer(const Duration(seconds: 1), () {
       if (mounted) {
         setState(() {
           _visible = false;
@@ -83,21 +83,21 @@ class TikTokStyleControlsState extends State<TikTokStyleControls> {
                 ),
               )
               : const SizedBox(),
-          Positioned(
-            bottom: 40,
-            right: 10,
-            child: GestureDetector(
-              onTap: () {
-                isSaved = !isSaved;
-                setState(() {});
-              },
-              child: Icon(
-                Icons.bookmark_outlined,
-                size: 40,
-                color: isSaved ? Colors.amber : Colors.white,
-              ),
-            ),
-          ),
+          // Positioned(
+          //   bottom: 40,
+          //   right: 10,
+          //   child: GestureDetector(
+          //     onTap: () {
+          //       isSaved = !isSaved;
+          //       setState(() {});
+          //     },
+          //     child: Icon(
+          //       Icons.bookmark_outlined,
+          //       size: 40,
+          //       color: isSaved ? Colors.amber : Colors.white,
+          //     ),
+          //   ),
+          // ),
           Center(
             child: AnimatedOpacity(
               opacity: _visible ? 1.0 : 0.0,

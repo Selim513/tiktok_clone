@@ -5,6 +5,7 @@ import 'package:tiktok_clone/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:tiktok_clone/features/auth/domain/repo/auth_repo.dart';
 import 'package:tiktok_clone/features/auth/domain/use_cases/login_use_case.dart';
 import 'package:tiktok_clone/features/auth/domain/use_cases/register_use_case.dart';
+import 'package:tiktok_clone/features/home/data/data_source/home_local_data_source.dart';
 import 'package:tiktok_clone/features/home/data/data_source/home_remote_data_source.dart';
 import 'package:tiktok_clone/features/home/data/repo/home_repo_impl.dart';
 import 'package:tiktok_clone/features/home/domain/use_cases/fetch_videos_use_case.dart';
@@ -52,10 +53,12 @@ void serviceLocatorSetup() {
   );
   //------------------------------------------- FetchVideos service locator----
   getIt.registerSingleton<HomeRemoteDataSourceImpl>(HomeRemoteDataSourceImpl());
+  getIt.registerSingleton<HomeLocalDataSourceImpl>(HomeLocalDataSourceImpl());
   //--Home repo
   getIt.registerSingleton<HomeRepoImpl>(
     HomeRepoImpl(
-      homeRemoteDataSourceImpl: getIt.get<HomeRemoteDataSourceImpl>(),
+      localVideos: getIt.get<HomeLocalDataSourceImpl>(),
+      remoteVideos: getIt.get<HomeRemoteDataSourceImpl>(),
     ),
   );
   //-fetch videos uses case

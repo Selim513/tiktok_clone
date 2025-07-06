@@ -50,13 +50,13 @@ class _MyVideosAndSavedVideosSectionState
                 },
               ),
               const Gap(10),
-              CustomProfileVideosToggleButtons(
-                title: 'Saved',
-                onTap: () {
-                  isSelected = 1;
-                  setState(() {});
-                },
-              ),
+              // CustomProfileVideosToggleButtons(
+              //   title: 'Saved',
+              //   onTap: () {
+              //     isSelected = 1;
+              //     setState(() {});
+              //   },
+              // ),
             ],
           ),
         ),

@@ -22,6 +22,7 @@ class GoogleAuthCubitViewBody extends StatelessWidget {
             Constant.supabase.accessToken != null) {
           GoRouter.of(context).goNamed(AppRouter.kMainTab);
         } else if (state.status == BlocStatus.fail) {
+          print('------------------${state.errMessage}');
           CustomSnackBar.errorSnackBar(context, message: state.errMessage!);
         } else {
           const Center(child: CircularProgressIndicator());
@@ -37,3 +38,34 @@ class GoogleAuthCubitViewBody extends StatelessWidget {
     );
   }
 }
+/* CustomAutthSelectionButton(
+      onPress: () async {
+        try { 
+          final GoogleSignIn googleSignIn = GoogleSignIn(
+            
+
+          );
+          final googleUser = await googleSignIn.signIn();
+          final googleAuth = await googleUser!.authentication;
+          final accessToken = googleAuth.accessToken;
+          final idToken = googleAuth.idToken;
+          if (accessToken == null) {
+            throw 'No Access Token found.';
+          }
+          if (idToken == null) {
+            throw 'No ID Token found.';
+          }
+          final response = await Constant.supabase.auth.signInWithIdToken(
+            provider: OAuthProvider.google,
+            idToken: idToken,
+            accessToken: accessToken,
+          );
+        } catch (e) {
+          print('---------${e.toString()}');
+        }
+
+        // context.read<GoogleAuthBloc>().add(GoogleAuthButtonEvent());
+      },
+      icon: FontAwesomeIcons.google,
+      title: 'Continue with Google',
+    );*/

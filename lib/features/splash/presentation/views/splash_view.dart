@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:tiktok_clone/constant.dart';
@@ -16,7 +17,7 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(const Duration(seconds: 4), () async {
+      Future.delayed(const Duration(seconds: 2), () async {
         final bool isConnected =
             await InternetConnectionChecker.instance.hasConnection;
 
@@ -38,11 +39,22 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(child: Image.asset('assets/icon_lanuch/app_icon.png')),
-        ],
+      body: Padding(
+        padding: EdgeInsets.all(15.sp),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: CircleAvatar(
+                radius: 150.sp,
+                backgroundImage: const AssetImage(
+                  'assets/icon_lanuch/app_icon.png',
+                ),
+                // child: Image.asset('assets/icon_lanuch/app_icon.png')
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
