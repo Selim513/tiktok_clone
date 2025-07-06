@@ -16,7 +16,7 @@ class UserInfoSectionBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         if (state.status == BlocStatus.success) {
           var user = state.userInfoEntity;
-
+          print('-----------------------------------${user?.image}');
           return Column(
             spacing: 20.sp,
             children: [

@@ -28,6 +28,11 @@ class _VideoPreviewState extends State<VideoPreview> {
     BetterPlayerDataSource dataSource = BetterPlayerDataSource(
       BetterPlayerDataSourceType.network,
       widget.videoUrl,
+      cacheConfiguration: const BetterPlayerCacheConfiguration(
+        useCache: true,
+        maxCacheSize: 200 * 1024 * 1024,
+        maxCacheFileSize: 20 * 1024 * 1024,
+      ),
     );
 
     _controller = BetterPlayerController(
