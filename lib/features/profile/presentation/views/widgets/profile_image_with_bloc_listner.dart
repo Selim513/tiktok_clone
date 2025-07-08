@@ -16,6 +16,8 @@ class ProfileImageWithBlocListner extends StatelessWidget {
     return BlocListener<PickProfileImageBloc, PickProfileImageStates>(
       listener: (context, state) {
         if (state.status == BlocStatus.success) {
+          print('-------------Image old  $imageUrl');
+          print('-------------Image New${state.imageUrl}');
           CustomSnackBar.successSnackBar(context, message: state.succMessage!);
         } else if (state.status == BlocStatus.fail) {
           CustomSnackBar.errorSnackBar(context, message: state.errMessage!);
@@ -24,10 +26,16 @@ class ProfileImageWithBlocListner extends StatelessWidget {
       child: CircleAvatar(
         radius: 80,
         backgroundColor: Colors.grey[200],
+        // backgroundImage:
+        //     imageUrl.isEmpty
+        //         ? const AssetImage('assets/images/profile.png')
+        //         : NetworkImage(imageUrl),
         child:
             imageUrl.isEmpty
                 ? Image.asset('assets/images/profile.png')
-                : ClipOval(
+                :
+                //  Image.network(imageUrl),
+                ClipOval(
                   child: CachedNetworkImage(
                     imageUrl: imageUrl,
                     fit: BoxFit.cover,
