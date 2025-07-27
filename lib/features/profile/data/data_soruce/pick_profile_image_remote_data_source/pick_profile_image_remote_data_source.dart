@@ -65,14 +65,24 @@ class PickProfileImageRemoteDataSourceImpl
         return '';
       }
       var imageFile = File(image.path);
-
-      final puplicUrl = storage.from('profile-image').getPublicUrl('$userId');
+      final now = DateTime.now().millisecondsSinceEpoch;
+      final fileName = '${userId}_$now.jpg';
+      final puplicUrl = storage.from('profile-image').getPublicUrl(fileName);
       if (userClient.auth.currentUser?.userMetadata?['picture'] == puplicUrl) {
-        await userClient.storage.from('profile-image').remove(['$userId']);
+        await userClient.storage.from('profile-image').remove([fileName]);
+
         await storage
             .from('profile-image')
             .upload(
-              '$userId',
+              fileName,
+              imageFile,
+              fileOptions: const FileOptions(upsert: true),
+            );
+      } else {
+        await storage
+            .from('profile-image')
+            .upload(
+              fileName,
               imageFile,
               fileOptions: const FileOptions(upsert: true),
             );

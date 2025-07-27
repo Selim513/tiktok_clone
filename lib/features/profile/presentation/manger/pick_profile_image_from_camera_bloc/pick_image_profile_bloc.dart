@@ -21,7 +21,7 @@ class PickProfileImageBloc
           emit(
             state.copyWith(
               imageUrl: imageUrl,
-              succMessage: 'Image Uploading...',
+              succMessage: 'Profile picture updated successfully.',
               status: BlocStatus.success,
             ),
           );
@@ -29,7 +29,7 @@ class PickProfileImageBloc
           emit(
             state.copyWith(
               status: BlocStatus.fail,
-              errMessage: 'There is some thing went wrong $e',
+              errMessage: 'There is some thing went wrong',
             ),
           );
         }
@@ -43,7 +43,7 @@ class PickProfileImageBloc
             state.copyWith(
               imageUrl: imageUrl,
 
-              succMessage: 'Image Uploading...',
+              succMessage: 'Profile picture updated successfully.',
               status: BlocStatus.success,
             ),
           );
@@ -51,7 +51,7 @@ class PickProfileImageBloc
           emit(
             state.copyWith(
               status: BlocStatus.fail,
-              errMessage: 'There is some thing went wrong $e',
+              errMessage: 'There is some thing went wrong',
             ),
           );
         }

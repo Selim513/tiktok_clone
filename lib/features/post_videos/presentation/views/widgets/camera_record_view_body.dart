@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/core/enums/camera_enum.dart';
 import 'package:tiktok_clone/core/utils/app_color.dart';
@@ -50,7 +51,6 @@ class _CameraRecordViewBodyState extends State<CameraRecordViewBody> {
       },
       listener: (context, state) {
         if (state.status == CameraStatus.stopRecord) {
-       
           GoRouter.of(
             context,
           ).goNamed(AppRouter.kPickedVideoPreviw, extra: state.videoPath);
@@ -74,20 +74,22 @@ class CustomCameraRecodingBody extends StatelessWidget {
   final Color? cameraBackGroundColor;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
-      child: Column(
-        children: [
-          Expanded(child: CameraPreview(cameraController)),
-          GestureDetector(
-            onTap: onTap,
-            child: CircleAvatar(
-              backgroundColor: cameraBackGroundColor ?? Colors.white,
-              radius: 30,
-              child: const Icon(Icons.videocam, color: Colors.black, size: 40),
+    return SafeArea(
+      child: Container(
+        color: Colors.black,
+        child: Column(
+          children: [
+            Expanded(child: CameraPreview(cameraController)),
+            GestureDetector(
+              onTap: onTap,
+              child: CircleAvatar(
+                backgroundColor: cameraBackGroundColor ?? Colors.white,
+                radius: 30.sp,
+                child: Icon(Icons.videocam, color: Colors.black, size: 40.sp),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     ); // SafeArea(
     //   child: Column(

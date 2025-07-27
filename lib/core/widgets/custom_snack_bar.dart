@@ -6,6 +6,11 @@ abstract class CustomSnackBar {
   static successSnackBar(BuildContext context, {required String message}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        duration: const Duration(seconds: 2),
+        shape: ContinuousRectangleBorder(
+          borderRadius: BorderRadiusGeometry.circular(25),
+        ),
+        dismissDirection: DismissDirection.horizontal,
         content: Text(
           message,
           textAlign: TextAlign.center,
@@ -19,12 +24,17 @@ abstract class CustomSnackBar {
   static confrimEmailSnackBar(BuildContext context, {required String message}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        duration: const Duration(seconds: 2),
+        shape: ContinuousRectangleBorder(
+          borderRadius: BorderRadiusGeometry.circular(25),
+        ),
+        dismissDirection: DismissDirection.horizontal,
         content: Text(
           message,
           textAlign: TextAlign.center,
           style: AppFontstyle.normal20,
         ),
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.black,
       ),
     );
   }
@@ -33,6 +43,11 @@ abstract class CustomSnackBar {
   static errorSnackBar(BuildContext context, {required String message}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        duration: const Duration(seconds: 2),
+        shape: ContinuousRectangleBorder(
+          borderRadius: BorderRadiusGeometry.circular(25),
+        ),
+        dismissDirection: DismissDirection.horizontal,
         content: Text(
           message,
           textAlign: TextAlign.center,

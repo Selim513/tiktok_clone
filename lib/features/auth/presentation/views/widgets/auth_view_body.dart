@@ -32,11 +32,11 @@ class AuthViewBody extends StatelessWidget {
                       GoogleAuthRepoImpl(GoogleAuthRemoteDataSourceImpl()),
                     ),
                   ),
-              child: const GoogleAuthCubitViewBody(),
+              child: const GoogleAuthBlocViewBody(),
             ),
             const Spacer(),
             const CustomLoginNavigatorSection(),
-          ],  
+          ],
         ),
       ),
     );

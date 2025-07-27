@@ -11,8 +11,8 @@ import 'package:tiktok_clone/features/auth/presentation/manger/google_auth_bloc/
 import 'package:tiktok_clone/features/auth/presentation/manger/google_auth_bloc/google_auth_state.dart';
 import 'package:tiktok_clone/features/auth/presentation/views/widgets/custom_auth_selection_button.dart';
 
-class GoogleAuthCubitViewBody extends StatelessWidget {
-  const GoogleAuthCubitViewBody({super.key});
+class GoogleAuthBlocViewBody extends StatelessWidget {
+  const GoogleAuthBlocViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {

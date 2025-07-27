@@ -16,6 +16,7 @@ class CustomLoginNavigatorSection extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
+            // CustomSnackBar.confrimEmailSnackBar(context, message: 'Success');
             GoRouter.of(context).pushNamed(AppRouter.kLoginView);
           },
           child: const Text(

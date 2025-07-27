@@ -25,6 +25,7 @@ class PostVideoViewBody extends StatelessWidget {
             widget: Text('Camera Shot', style: AppFontstyle.normal20),
             onPress: () {
               GoRouter.of(context).pushNamed(AppRouter.kCameraRecord);
+              
             },
           ),
           BlocListener<PostVideoBloc, PostVideoBlocState>(

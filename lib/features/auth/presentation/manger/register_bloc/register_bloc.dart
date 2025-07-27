@@ -24,7 +24,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
           );
           emit(
             state.copyWith(
-              succMessage: 'Confrim your email !.',
+              succMessage: 'Confirm your email !.',
               status: BlocStatus.success,
             ),
           );

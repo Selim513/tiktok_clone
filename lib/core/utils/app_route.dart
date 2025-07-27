@@ -78,7 +78,7 @@ abstract class AppRouter {
       GoRoute(
         name: kSignUpWithGoogle,
         path: kSignUpWithGoogle,
-        builder: (context, state) => const GoogleAuthCubitViewBody(),
+        builder: (context, state) => const GoogleAuthBlocViewBody(),
       ),
       GoRoute(
         path: kLoginView,

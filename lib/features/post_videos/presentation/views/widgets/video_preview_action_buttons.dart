@@ -21,7 +21,7 @@ class VideoPreviewActionsButtons extends StatelessWidget {
       listener: (context, state) {
         if (state.status == BlocStatus.success) {
           CustomSnackBar.successSnackBar(context, message: state.succMessage!);
-          GoRouter.of(context).pop();
+          GoRouter.of(context).canPop();
         } else if (state.status == BlocStatus.fail) {
           CustomSnackBar.errorSnackBar(context, message: state.errMessage!);
         }
